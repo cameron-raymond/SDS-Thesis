@@ -19,11 +19,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-  }
-  button {
+    background-color: transparent;
     max-width: 4rem;
-    padding: 0.75rem;
-    border: 1px solid #d1d5da;
+    padding: 0.75rem 0.75rem 0.3rem 0.75rem;
+	border: 1px solid #d1d5da;
+	text-decoration: none;
+	background-color: rgba(238, 238, 238, 0.5);
     border-radius: 8px;
     cursor: pointer;
     transition: 0.3s;
@@ -32,15 +33,13 @@
     transform: translatey(-0.2em);
     transition: 0.3s;
     box-shadow: 2px 7px 7px 2px rgba(0, 0, 0, 0.12);
-  }
-  button a:hover {
     color: initial;
   }
 </style>
 
-<svelte:head>
+<!-- <svelte:head>
   <title>Sapper project template</title>
-</svelte:head>
+</svelte:head> -->
 
 <span>
   <h1>We need your consent to proceed</h1>
@@ -82,9 +81,7 @@
     participate, press "Begin" now. Please do not access external information
     during the experiment.
   </p>
-  <a href="/about" class="button">
-    <button>
-      <h2>Begin</h2>
-    </button>
+  <a href="/preliminary_questions" class="button">
+    <h2>Begin</h2>
   </a>
 </span>
