@@ -1,5 +1,5 @@
 <script>
-	import successkid from 'images/successkid.jpg';
+	// import successkid from 'images/successkid.jpg';
 </script>
 
 <style>
@@ -42,9 +42,9 @@
 
 <h1>Great success!</h1>
 
-<figure>
+<!-- <figure>
 	<img alt="Success Kid" src="{successkid}">
 	<figcaption>Have fun with Sapper!</figcaption>
-</figure>
+</figure> -->
 
 <p><strong>Try editing this file (src/routes/index.svelte) to test live reloading.</strong></p>
