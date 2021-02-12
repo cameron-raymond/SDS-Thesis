@@ -1,5 +1,7 @@
 # sapper-template
 
+* [svelte + firestore](https://www.youtube.com/watch?v=Rr2kKjYIYRM&feature=youtu.be)
+
 The default template for setting up a [Sapper](https://github.com/sveltejs/sapper) project. Can use either Rollup or webpack as bundler.
 
 

@@ -1,49 +1,37 @@
 <script>
-  function handleClick() {
-    alert("clicked");
+  import { stores } from "@sapper/app";
+  import { PROLIFIC_PID, SESSION_ID, STUDY_ID } from "../stores/local-store";
+  const { page } = stores();
+  const valid_params =
+    "PROLIFIC_PID" in $page.query &&
+    "SESSION_ID" in $page.query &&
+    "STUDY_ID" in $page.query;
+  if (valid_params) {
+    PROLIFIC_PID.set(parseInt($page.query.PROLIFIC_PID));
+    SESSION_ID.set(parseInt($page.query.SESSION_ID));
+    STUDY_ID.set(parseInt($page.query.STUDY_ID));
   }
 </script>
 
 <style>
-  span {
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-    width: 80vw;
-    max-width: 40rem;
-  }
-
   .button {
-    align-self: center;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: transparent;
+    align-self: center;
+    text-decoration: none;
     max-width: 4rem;
-    padding: 0.75rem 0.75rem 0.3rem 0.75rem;
-	border: 1px solid #d1d5da;
-	text-decoration: none;
-	background-color: rgba(238, 238, 238, 0.5);
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-  .button:hover {
-    transform: translatey(-0.2em);
-    transition: 0.3s;
-    box-shadow: 2px 7px 7px 2px rgba(0, 0, 0, 0.12);
-    color: initial;
   }
 </style>
 
-<!-- <svelte:head>
-  <title>Sapper project template</title>
-</svelte:head> -->
-
-<span>
+<span class="container">
   <h1>We need your consent to proceed</h1>
-
+  {#if !valid_params}
+    <small>
+      Did you come to this study from <a href="https://app.prolific.co/">Prolific</a>? We had trouble getting your
+      Prolific ID (it should be appended to the URL in the form
+      <code>/?PROLIFIC_PID=YOUR_ID</code>
+      ). Without this we have no means of ensuring you are paid for your time.
+    </small>
+  {/if}
   <p>
     This research is being conducted by Cameron Raymond, an MSc student at the
     University of Oxford, under the supervision of Dr. Peaks Krafft and Dr. Joss
@@ -54,16 +42,17 @@
 
   <p>
     This study takes approximately 10 minutes. If you agree to take part in the
-    research, you will complete a study that involves answering a short survey
-    about COVID-19 and social media. All of the information we obtain during the
-    research will be kept confidential, and not associated with your name in any
-    way, however, while the study is running it will be associated with your
-    Prolific participant ID. We will publically release the data from this
-    experiment, with Prolific IDs removed. Your participation in this research
-    is voluntary. You are free to refuse to take part, and you may stop taking
-    part at any time. You are free to discontinue participation in this study at
-    any time with no penalty. If you have any questions about this research, do
-    not hesitate to contact Cameron Raymond at
+    research, you will complete a study that involves answering a short survey,
+    and interacting with a mock social media simulation during a protest. All of
+    the information we obtain during the research will be kept confidential, and
+    not associated with your name or social media accounts in any way, however,
+    while the study is running it will be associated with your Prolific
+    participant ID. We will publically release the data from this experiment,
+    with Prolific IDs removed. Your participation in this research is voluntary.
+    You are free to refuse to take part, and you may stop taking part at any
+    time. You are free to discontinue participation in this study at any time
+    with no penalty. If you have any questions about this research, do not
+    hesitate to contact Cameron Raymond at
     <a href="mailto:cameron.raymond@oii.ox.ac.uk" target="_blank">
       cameron.raymond@oii.ox.ac.uk
     </a>
@@ -82,6 +71,6 @@
     during the experiment.
   </p>
   <a href="/preliminary_questions" class="button">
-    <h2>Begin</h2>
+    <button>Begin</button>
   </a>
 </span>

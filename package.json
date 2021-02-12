@@ -13,7 +13,9 @@
     "front-matter": "^4.0.2",
     "marked": "^1.2.7",
     "polka": "next",
-    "sirv": "^1.0.0"
+    "sirv": "^1.0.0",
+    "svelte-forms-lib": "^1.6.0",
+    "yup": "^0.32.8"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",

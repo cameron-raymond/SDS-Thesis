@@ -1,7 +1,5 @@
 <script>
-  import Nav from "../components/Nav.svelte";
 
-  export let segment;
 </script>
 
 <style>
@@ -13,12 +11,12 @@
     display: flex;
     flex-direction: column;
     position: relative;
-    /* margin: 0 auto; */
-    /* box-sizing: border-box; */
   }
 </style>
 
-<!-- <Nav {segment}/> -->
+<svelte:head>
+  <title>OII Social Media Protest Experiment</title>
+</svelte:head>
 
 <main>
   <slot />

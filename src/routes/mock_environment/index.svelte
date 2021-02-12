@@ -15,13 +15,6 @@
 </script>
 
 <style>
-  .content {
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-    width: 80vw;
-    max-width: 40rem;
-  }
   .subtitle {
     color: #555;
     max-width: 40rem;
@@ -58,10 +51,7 @@
   }
 </style>
 
-<svelte:head>
-  <title>Blog</title>
-</svelte:head>
-<h1>COVID-19 and Social Media</h1>
+<h1>Social Media and Protests</h1>
 <div class="subtitle">
   <p>
     Explain the experiment... Lorem ipsum lorem ispum lorem ispum lorem ipsum
