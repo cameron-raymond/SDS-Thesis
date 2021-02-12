@@ -12,6 +12,12 @@
     flex-direction: column;
     position: relative;
   }
+    a{
+    position: absolute;
+    visibility: hidden;
+    bottom: 0;
+    left: 0;
+  }
 </style>
 
 <svelte:head>
@@ -21,3 +27,5 @@
 <main>
   <slot />
 </main>
+
+<a href="/mock_environment" aria-label=" ">mock_env</a>
