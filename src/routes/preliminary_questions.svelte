@@ -1,11 +1,16 @@
 <script>
   import { createForm } from "svelte-forms-lib";
+  import Select from "svelte-select";
   import { PROLIFIC_PID, SESSION_ID, STUDY_ID } from "../stores/local-store";
   import { goto } from "@sapper/app";
   import * as yup from "yup";
+
   var localProlificPID = -1;
   var localSessionID = -1;
   var localStudyID = -1;
+  var typedGender = "";
+  var typedPolAffiliation = "";
+  var typedAffiliatedMovements = "";
 
   // Make sure we're running on the client
   if (process.browser) {
@@ -19,30 +24,50 @@
 
   const { form, errors, state, handleChange, handleSubmit } = createForm({
     initialValues: {
-      name: "",
-      email: "",
-      age: 18,
-      politicalAffiliation: "None",
+      age: undefined,
+      gender: [],
+      politicalAffiliation: undefined,
       attendsProtests: "",
-      num_protests: 0
+      affiliatedMovements: []
     },
     validationSchema: yup.object().shape({
-      title: yup.string().notRequired(),
-      name: yup.string().notRequired(),
-      email: yup
-        .string()
-        .email()
-        .notRequired(),
       age: yup
         .number()
         .notRequired()
+        .nullable(true)
+        .transform((v, o) => (o === "" ? null : v))
         .typeError("Please enter your age in years.")
         .max(120, "Are you sure you're over 120 years old?")
         .min(18, "You must be 18 or older to participate in this experiment."),
+      gender: yup.mixed().notRequired(),
       politicalAffiliation: yup.string().notRequired(),
-      attendsProtests: yup.mixed().notRequired().oneOf(["",true,false])
+      attendsProtests: yup
+        .mixed()
+        .notRequired()
+        .oneOf(["", "Yes", "No", "I'd prefer not to answer"]),
+      affiliatedMovements: yup.mixed().notRequired()
     }),
     onSubmit: values => {
+      // If the user typed in their own gender we will add that to the list and remove the "typedInput" value
+      if ($form.gender.includes("typedInput")) {
+        // If the user didn't actually type anything just keep the list as is
+        $form.gender =
+          typedGender === "" ? $form.gender : [typedGender, ...$form.gender];
+        // Remove the typedInput button
+        $form.gender = $form.gender.filter(e => e !== "typedInput");
+      }
+      if ($form.politicalAffiliation === "typedInput") {
+        $form.politicalAffiliation = typedPolAffiliation;
+      }
+      // Same for the affiliated movements Q
+      if ($form.affiliatedMovements.includes("typedInput")) {
+        // If the user didn't actually type anything just keep the list as is
+        $form.affiliatedMovements =
+          typedAffiliatedMovements === "" ? $form.affiliatedMovements : [typedAffiliatedMovements, ...$form.affiliatedMovements];
+        // Remove the typedInput button
+        $form.affiliatedMovements = $form.affiliatedMovements.filter(e => e !== "typedInput");
+      }
+
       let toSubmit = {
         PROLIFIC_PID: localProlificPID,
         SESSION_ID: localSessionID,
@@ -55,6 +80,10 @@
   });
 </script>
 
+<style>
+
+</style>
+
 <span class="container">
   <h1>Preliminary Questionnaire</h1>
   <p class="subtitle">
@@ -63,42 +92,6 @@
     that you would not like to answer.
   </p>
   <form on:submit|preventDefault={handleSubmit}>
-    <label for="title">Title</label>
-    <select
-      id="title"
-      name="title"
-      on:blur={handleChange}
-      bind:value={$form.title}>
-      <option />
-      <option>Mr.</option>
-      <option>Mrs.</option>
-      <option>Mx.</option>
-    </select>
-    {#if $errors.title}
-      <small>{$errors.title}</small>
-    {/if}
-
-    <label for="name">Name</label>
-    <input
-      id="name"
-      name="name"
-      on:change={handleChange}
-      on:blur={handleChange}
-      bind:value={$form.name} />
-    {#if $errors.name}
-      <small>{$errors.name}</small>
-    {/if}
-
-    <label for="email">Email</label>
-    <input
-      id="email"
-      name="email"
-      on:change={handleChange}
-      on:blur={handleChange}
-      bind:value={$form.email} />
-    {#if $errors.email}
-      <small>{$errors.email}</small>
-    {/if}
     <label for="age">Age</label>
     <input
       type="number"
@@ -111,6 +104,45 @@
       <small>{$errors.age}</small>
     {/if}
 
+    <label for="gender">How would you describe your gender?</label>
+    <span class="multiselect">
+      <label>
+        <input type="checkbox" bind:group={$form.gender} value="Female" />
+        Female
+      </label>
+      <label>
+        <input type="checkbox" bind:group={$form.gender} value="Intersex" />
+        Intersex
+      </label>
+      <label>
+        <input type="checkbox" bind:group={$form.gender} value="Male" />
+        Male
+      </label>
+      <label>
+        <input type="checkbox" bind:group={$form.gender} value="Non-binary" />
+        Non-binary
+      </label>
+      <label>
+        <input type="checkbox" bind:group={$form.gender} value="Transgender" />
+        Transgender
+      </label>
+      <label>
+        <input type="checkbox" bind:group={$form.gender} value="typedInput" />
+        Let me type... (not listed)
+      </label>
+    </span>
+    {#if $errors.gender}
+      <small>{$errors.gender}</small>
+    {/if}
+
+    {#if $form.gender.includes('typedInput')}
+      <label for="name">
+        In addition to whatever you may have selected, how would you describe
+        your gender?
+      </label>
+      <input id="gender" name="gender" bind:value={typedGender} />
+    {/if}
+
     <label for="politicalAffiliation">
       Some people describe political affiliation on a left to right spectrum.
       Please indicate where you believe your political ideology lies on this
@@ -121,35 +153,34 @@
       name="politicalAffiliation"
       on:blur={handleChange}
       bind:value={$form.politicalAffiliation}>
-      <option>None</option>
+      <option />
       <option>Left</option>
-      <option>Centre-Left</option>
+      <option>Centre-left</option>
       <option>Centre</option>
-      <option>Centre-Right</option>
+      <option>Centre-right</option>
       <option>Right</option>
-      <option>Other (Please Enter)</option>
+      <option>None</option>
+      <option value="typedInput">Let me type... (not listed)</option>
     </select>
     {#if $errors.politicalAffiliation}
       <small>{$errors.politicalAffiliation}</small>
     {/if}
 
-    {#if !['Left', 'Centre-Left', 'Centre', 'Centre-Right', 'Right', 'None'].includes($form.politicalAffiliation)}
+    {#if $form.politicalAffiliation === 'typedInput'}
       <label for="name">
         In a word, how would you describe your political affiliation?
       </label>
       <input
         id="politicalAffiliation"
         name="politicalAffiliation"
-        on:change={handleChange}
-        on:blur={handleChange}
-        bind:value={$form.politicalAffiliation} />
+        bind:value={typedPolAffiliation} />
       {#if $errors.politicalAffiliation}
         <small>{$errors.politicalAffiliation}</small>
       {/if}
     {/if}
 
     <label for="attendsProtests">
-      Have you attended at protest in the past 2 years?
+      Have you attended a protest in the past 2 years?
     </label>
     <select
       id="attendsProtests"
@@ -157,11 +188,67 @@
       on:blur={handleChange}
       bind:value={$form.attendsProtests}>
       <option />
-      <option value={true}>Yes</option>
-      <option value={false}>No</option>
+      <option>Yes</option>
+      <option>No</option>
     </select>
     {#if $errors.attendsProtests}
       <small>{$errors.attendsProtests}</small>
+    {/if}
+
+    <label for="affiliatedMovements">
+      Select the social movements that you would or have protested in support
+      of:
+    </label>
+    <span class="multiselect">
+      <label>
+        <input
+          type="checkbox"
+          bind:group={$form.affiliatedMovements}
+          value="Movement A" />
+        Movement A
+      </label>
+      <label>
+        <input
+          type="checkbox"
+          bind:group={$form.affiliatedMovements}
+          value="Movement B" />
+        Movement B
+      </label>
+      <label>
+        <input
+          type="checkbox"
+          bind:group={$form.affiliatedMovements}
+          value="Movement C" />
+        Movement C
+      </label>
+      <label>
+        <input
+          type="checkbox"
+          bind:group={$form.affiliatedMovements}
+          value="None" />
+        None
+      </label>
+      <label>
+        <input
+          type="checkbox"
+          bind:group={$form.affiliatedMovements}
+          value="typedInput" />
+        Let me type... (not listed)
+      </label>
+    </span>
+    {#if $errors.affiliatedMovements}
+      <small>{$errors.affiliatedMovements}</small>
+    {/if}
+
+    {#if $form.affiliatedMovements.includes('typedInput')}
+      <label for="name">
+        In addition to whatever you may have selected, what other social
+        movements would or have you protested in support of?
+      </label>
+      <input
+        id="affiliatedMovements"
+        name="affiliatedMovements"
+        bind:value={typedAffiliatedMovements} />
     {/if}
 
     <button type="submit">Submit</button>

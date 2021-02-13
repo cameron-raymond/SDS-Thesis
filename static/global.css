@@ -83,9 +83,6 @@ a:hover {
 	body {
 		font-size: 14px;
 	}
-	code {
-		font-size: calc(1em - 4px);
-	}
 }
 
 @media (max-width: 30rem) {
@@ -110,9 +107,6 @@ a:hover {
 		color: var(--red);
 		margin-top: 10px;
 	}
-	code {
-		font-size: calc(1em - 4px);
-	}
 }
 
 .subtitle {
@@ -131,6 +125,26 @@ input, select, textarea {
 	border-radius: 4px;
 	transition: all 150ms ease;
 	background: var(--white);
+}
+
+.multiselect {
+	display: inline-block;
+	font-family: inherit;
+	font-size: inherit;
+	max-width: 400px;
+	width: 100%;
+	padding: 0px 12px 12px 12px;
+	background: var(--white);
+}
+
+.multiselect>label {
+	margin: 0 0 0 0;
+	width: auto;
+	padding: 0;
+}
+
+label>input {
+	width: initial
 }
 
 select {
@@ -184,6 +198,6 @@ label {
 	margin-top: 20px;
 	margin-bottom: 4px;
 	font-size: inherit;
-	letter-spacing: 1.7px;
+	letter-spacing: 1.5px;
 	line-height: 2;
 }

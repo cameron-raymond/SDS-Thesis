@@ -13,8 +13,10 @@
     "front-matter": "^4.0.2",
     "marked": "^1.2.7",
     "polka": "next",
+    "select": "^1.1.2",
     "sirv": "^1.0.0",
     "svelte-forms-lib": "^1.6.0",
+    "svelte-select": "^3.16.1",
     "yup": "^0.32.8"
   },
   "devDependencies": {

@@ -26,8 +26,10 @@
   <h1>We need your consent to proceed</h1>
   {#if !valid_params}
     <small>
-      Did you come to this study from <a href="https://app.prolific.co/">Prolific</a>? We had trouble getting your
-      Prolific ID (it should be appended to the URL in the form
+      Did you come to this study from
+      <a href="https://app.prolific.co/">Prolific</a>
+      ? We had trouble getting your Prolific ID (it should be appended to the
+      URL in the form
       <code>/?PROLIFIC_PID=YOUR_ID</code>
       ). Without this we have no means of ensuring you are paid for your time.
     </small>
@@ -43,16 +45,16 @@
   <p>
     This study takes approximately 10 minutes. If you agree to take part in the
     research, you will complete a study that involves answering a short survey,
-    and interacting with a mock social media simulation during a protest. All of
-    the information we obtain during the research will be kept confidential, and
-    not associated with your name or social media accounts in any way, however,
-    while the study is running it will be associated with your Prolific
-    participant ID. We will publically release the data from this experiment,
-    with Prolific IDs removed. Your participation in this research is voluntary.
-    You are free to refuse to take part, and you may stop taking part at any
-    time. You are free to discontinue participation in this study at any time
-    with no penalty. If you have any questions about this research, do not
-    hesitate to contact Cameron Raymond at
+    and interacting with a mock social media environment that simulates an
+    ongoing protest. All of the information we obtain during the research will
+    be kept confidential, and not associated with your name or social media
+    accounts in any way, however, while the study is running it will be
+    associated with your Prolific participant ID. We will publically release the
+    data from this experiment, with Prolific IDs removed. Your participation in
+    this research is voluntary. You are free to refuse to take part, and you may
+    stop taking part at any time. You are free to discontinue participation in
+    this study at any time with no penalty. If you have any questions about this
+    research, do not hesitate to contact Cameron Raymond at
     <a href="mailto:cameron.raymond@oii.ox.ac.uk" target="_blank">
       cameron.raymond@oii.ox.ac.uk
     </a>
