@@ -26,6 +26,7 @@
     initialValues: {
       age: undefined,
       gender: [],
+      educationLevel: "",
       politicalAffiliation: undefined,
       attendsProtests: "",
       affiliatedMovements: []
@@ -40,11 +41,11 @@
         .max(120, "Are you sure you're over 120 years old?")
         .min(18, "You must be 18 or older to participate in this experiment."),
       gender: yup.mixed().notRequired(),
+      educationLevel: yup.string().notRequired(),
       politicalAffiliation: yup.string().notRequired(),
       attendsProtests: yup
         .mixed()
-        .notRequired()
-        .oneOf(["", "Yes", "No", "I'd prefer not to answer"]),
+        .notRequired(),
       affiliatedMovements: yup.mixed().notRequired()
     }),
     onSubmit: values => {
@@ -63,9 +64,13 @@
       if ($form.affiliatedMovements.includes("typedInput")) {
         // If the user didn't actually type anything just keep the list as is
         $form.affiliatedMovements =
-          typedAffiliatedMovements === "" ? $form.affiliatedMovements : [typedAffiliatedMovements, ...$form.affiliatedMovements];
+          typedAffiliatedMovements === ""
+            ? $form.affiliatedMovements
+            : [typedAffiliatedMovements, ...$form.affiliatedMovements];
         // Remove the typedInput button
-        $form.affiliatedMovements = $form.affiliatedMovements.filter(e => e !== "typedInput");
+        $form.affiliatedMovements = $form.affiliatedMovements.filter(
+          e => e !== "typedInput"
+        );
       }
 
       let toSubmit = {
@@ -107,23 +112,23 @@
     <label for="gender">How would you describe your gender?</label>
     <span class="multiselect">
       <label>
-        <input type="checkbox" bind:group={$form.gender} value="Female" />
+        <input type="checkbox" bind:group={$form.gender} value="female" />
         Female
       </label>
       <label>
-        <input type="checkbox" bind:group={$form.gender} value="Intersex" />
+        <input type="checkbox" bind:group={$form.gender} value="intersex" />
         Intersex
       </label>
       <label>
-        <input type="checkbox" bind:group={$form.gender} value="Male" />
+        <input type="checkbox" bind:group={$form.gender} value="male" />
         Male
       </label>
       <label>
-        <input type="checkbox" bind:group={$form.gender} value="Non-binary" />
+        <input type="checkbox" bind:group={$form.gender} value="nonBinary" />
         Non-binary
       </label>
       <label>
-        <input type="checkbox" bind:group={$form.gender} value="Transgender" />
+        <input type="checkbox" bind:group={$form.gender} value="transgender" />
         Transgender
       </label>
       <label>
@@ -143,6 +148,30 @@
       <input id="gender" name="gender" bind:value={typedGender} />
     {/if}
 
+    <label for="educationLevel">
+      Which of these is the highest level of education you have completed?
+    </label>
+    <select
+      id="educationLevel"
+      name="educationLevel"
+      on:blur={handleChange}
+      bind:value={$form.educationLevel}>
+      <option />
+      <option value="none">No formal qualifications</option>
+      <option value="secondary">Secondary education (e.g. GED/GCSE)</option>
+      <option value="highSchool">High school diploma/A-levels</option>
+      <option value="communityCollege">Technical/community college</option>
+      <option value="undergrad">Undergraduate degree (BA/BSc/other)</option>
+      <option value="graduateSchool">
+        Graduate degree (MA/MSc/MPhil/other)
+      </option>
+      <option value="doctorate">Doctorate degree (PhD/other)</option>
+      <option value="NA">Don't know / not applicable</option>
+    </select>
+    {#if $errors.educationLevel}
+      <small>{$errors.educationLevel}</small>
+    {/if}
+
     <label for="politicalAffiliation">
       Some people describe political affiliation on a left to right spectrum.
       Please indicate where you believe your political ideology lies on this
@@ -154,12 +183,12 @@
       on:blur={handleChange}
       bind:value={$form.politicalAffiliation}>
       <option />
-      <option>Left</option>
-      <option>Centre-left</option>
-      <option>Centre</option>
-      <option>Centre-right</option>
-      <option>Right</option>
-      <option>None</option>
+      <option value="left">Left</option>
+      <option value="centreLeft">Centre-left</option>
+      <option value="centre">Centre</option>
+      <option value="centreRight">Centre-right</option>
+      <option value="right">Right</option>
+      <option value="none">None</option>
       <option value="typedInput">Let me type... (not listed)</option>
     </select>
     {#if $errors.politicalAffiliation}
@@ -188,8 +217,8 @@
       on:blur={handleChange}
       bind:value={$form.attendsProtests}>
       <option />
-      <option>Yes</option>
-      <option>No</option>
+      <option value={true}>Yes</option>
+      <option value={false}>No</option>
     </select>
     {#if $errors.attendsProtests}
       <small>{$errors.attendsProtests}</small>
