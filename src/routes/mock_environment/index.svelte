@@ -20,35 +20,6 @@
     max-width: 40rem;
     margin-bottom: 0.5rem;
   }
-  .title {
-    display: flex;
-    flex-direction: row;
-  }
-  .title h2 {
-    margin-left: 0.7rem;
-  }
-  h1 {
-    margin-top: 4rem;
-    max-width: 58rem;
-  }
-  .tags {
-    display: flex;
-    flex: 1;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-  .postFilter {
-    margin-bottom: 3rem;
-  }
-  .tags span {
-    display: flex;
-  }
-  @media (max-width: 40rem) {
-    .title h2 {
-      margin-left: 0.4rem;
-    }
-  }
 </style>
 
 <h1>Social Media and Protests</h1>
