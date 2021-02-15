@@ -10,8 +10,13 @@
 
 <script>
   import { onMount, onDestroy } from "svelte";
+  import Header from "../../components/Env_Nav.svelte";
   import Card from "../../components/Card.svelte";
   export let posts;
+  const time = 60;
+  let started = false;
+  let finished = false;
+  let timeLeft = time;
 </script>
 
 <style>
@@ -22,6 +27,7 @@
   }
 </style>
 
+<Header {time} bind:started bind:finished bind:timeLeft />
 <h1>Social Media and Protests</h1>
 <div class="subtitle">
   <p>
@@ -29,8 +35,14 @@
     lorem ipsum lorem ipsum...
   </p>
 </div>
-<span class="content">
-  {#each posts as post, i}
-    <Card {post} />
-  {/each}
-</span>
+{#if started}
+  {#if !finished}
+    <!-- <span class="content"> -->
+      {#each posts as post, i}
+        <Card {post} />
+      {/each}
+    <!-- </span> -->
+  {:else}
+    <p>Thank you! You took {time - timeLeft} seconds.</p>
+  {/if}
+{/if}

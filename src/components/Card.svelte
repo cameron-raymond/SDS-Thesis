@@ -10,7 +10,7 @@
     align-items: center;
     margin: 1rem;
     width: 30rem;
-    border: 1px solid #d1d5da;
+    border: 1px solid var(--grey-light);
     border-radius: 8px;
     transition: 0.3s;
     overflow: hidden;
@@ -24,11 +24,6 @@
     display: -webkit-box;
     -webkit-line-clamp: 4; /* number of lines to show */
     -webkit-box-orient: vertical;
-  }
-  .card:hover {
-    transform: translatey(-0.5em);
-    transition: 0.3s;
-    box-shadow: 2px 10px 10px 2px rgba(0, 0, 0, 0.12);
   }
   .head {
     display: flex;

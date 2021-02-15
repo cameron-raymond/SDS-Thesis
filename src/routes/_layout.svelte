@@ -71,9 +71,9 @@
   <title>OII Social Media Protest Experiment</title>
 </svelte:head>
 
-<div class="buffer" />
 
 {#if !(segment === 'mock_environment')}
+<div class="buffer" />
 <span>
   <a href="https://www.oii.ox.ac.uk/">
     <div

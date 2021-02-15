@@ -8,6 +8,7 @@
 	--grey: #555;
 	--grey-dark: #292a2c;
 	--grey-darkest: #202124;
+	--yellow: #e3e151;
 	--red: #ff6b6b;
 	--orange: #ff3e00;
 }
@@ -25,7 +26,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	margin: auto;
-	width: 80vw;
+	width: calc(80vw - 4em);
 	min-width: 15rem;
 	max-width: 40rem;
 }
@@ -75,14 +76,15 @@ a:hover {
 		font-size: 1.17em;
 	}
 	h3 {
-		font-size: 1em;
+		font-size: 1.1em;
 	}
 	h4 {
-		font-size: 0.83em;
+		font-size: 1em;
 	}
 	body {
 		font-size: 14px;
 	}
+
 }
 
 @media (max-width: 30rem) {
@@ -90,10 +92,10 @@ a:hover {
 		font-size: 1.3em;
 	}
 	h2 {
-		font-size: 1em;
+		font-size: 1.1em;
 	}
 	h3 {
-		font-size: .9em;
+		font-size: 1em;
 	}
 	h4 {
 		font-size: 0.7em;
@@ -101,6 +103,7 @@ a:hover {
 	body {
 		font-size: 11px;
 	}
+
 	small {
 		display: block;
 		font-size: 9px;
@@ -173,7 +176,7 @@ button {
 	display: block;
 	margin-top: 12px;
 	line-height: 1.8;
-	font-size: 12px;
+	font-size: 14px;
 	padding: 10px 18px;
 	/* min-width: 120px; */
 	transition: all 150ms ease;
@@ -182,6 +185,7 @@ button {
 
 button:disabled {
 	background-color: var(--grey);
+	cursor: default;
 }
 
 button:focus:not(:disabled) {

@@ -1,6 +1,5 @@
 <script>
   import { createForm } from "svelte-forms-lib";
-  import Select from "svelte-select";
   import { PROLIFIC_PID, SESSION_ID, STUDY_ID } from "../stores/local-store";
   import { goto } from "@sapper/app";
   import * as yup from "yup";
