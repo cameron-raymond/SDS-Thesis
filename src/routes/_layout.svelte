@@ -1,4 +1,5 @@
 <script>
+  import Foot from "../components/ExitFooter.svelte";
   export let segment;
 </script>
 
@@ -71,26 +72,27 @@
   <title>OII Social Media Protest Experiment</title>
 </svelte:head>
 
-
 {#if !(segment === 'mock_environment')}
-<div class="buffer" />
-<span>
-  <a href="https://www.oii.ox.ac.uk/">
-    <div
-      role="navigation"
-      aria-label="Oxford Internet Institute"
-      class="oii_blue_logo" />
-  </a>
-  <a href="https://www.ox.ac.uk/">
-    <div
-      role="navigation"
-      aria-label="Oxford University"
-      class="oxford_blue_logo" />
-  </a>
-</span>
+  <div class="buffer" />
+  <span>
+    <a href="https://www.oii.ox.ac.uk/">
+      <div
+        role="navigation"
+        aria-label="Oxford Internet Institute"
+        class="oii_blue_logo" />
+    </a>
+    <a href="https://www.ox.ac.uk/">
+      <div
+        role="navigation"
+        aria-label="Oxford University"
+        class="oxford_blue_logo" />
+    </a>
+  </span>
 {/if}
 <main>
   <slot />
 </main>
-
+{#if !(segment === undefined)}
+  <Foot />
+{/if}
 <a href="/mock_environment" class="hide_link" aria-label=" ">mock_env</a>

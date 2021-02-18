@@ -10,7 +10,7 @@
 
 <script>
   import { onMount, onDestroy } from "svelte";
-  import Header from "../../components/Env_Nav.svelte";
+  import Header from "../../components/EnvNav.svelte";
   import Card from "../../components/Card.svelte";
   export let posts;
   const time = 60;
