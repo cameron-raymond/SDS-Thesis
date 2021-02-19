@@ -17,7 +17,10 @@ export const posts = fs.readdirSync(dirPath).map((postFilename) => {
   });
   const postFrontMatter = frontMatter(postContent);
   let post = postFrontMatter.attributes
-  post.profileImage = "/fakeProfilePictures/ff"+(Math.floor(Math.random() * 9) + 1)+".png";
+  post.profileImage = undefined
+  post.timestamp = undefined
+  post.username = undefined
+  post.name = undefined
   post.text = marked(postFrontMatter.body).replace(/^\t{3}/gm, "")
   return post
 });

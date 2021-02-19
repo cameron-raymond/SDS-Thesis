@@ -9,6 +9,7 @@
     border-radius: 50%;
     overflow: hidden;
     border: 1px solid var(--grey-light);
+    margin-right: 1.5rem;
   }
   .card {
     display: flex;
@@ -30,16 +31,12 @@
     display: flex;
     align-self: stretch;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     background-color: rgba(238, 238, 238, 0.5);
     height: 4.6rem;
     padding: 0.3rem 1.5rem 0.1rem 1.5rem;
     text-align: right;
-  }
-  .head .profilePic {
-    text-align: center;
-    margin-right: 1.5rem;
   }
   .head .title {
     text-align: right;
@@ -53,7 +50,7 @@
     -webkit-line-clamp: 2; /* number of lines to show */
     -webkit-box-orient: vertical;
   }
-  .link {
+  .username {
     text-decoration: underline;
     text-decoration-color: rgb(255, 62, 0);
   }
@@ -92,14 +89,15 @@
 
 <div class="card">
   <div class="head">
-    <div class="profilePic">
-      <img
-        src={post.profileImage}
-        alt="Profile"/>
-      <span class="link">
-        @{@html post.link}
-      </span>
-    </div>
+    <img src={post.profileImage} alt="Profile" />
+    <strong>
+      {post.name}
+    </strong>
+    <p class="subtitle">
+      <span class="username">@{post.username}</span>
+      -
+      {post.timestamp}m ago
+    </p>
   </div>
 
   <p>

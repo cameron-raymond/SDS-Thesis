@@ -2,7 +2,20 @@
   export function preload() {
     return this.fetch(`mock-environment.json`)
       .then(r => r.json())
+      .then(posts =>
+        posts.map(post => {
+          post.profileImage =
+            "/fakeProfilePictures/ff" +
+            (Math.floor(Math.random() * 9) + 1) +
+            ".png";
+          post.timestamp = Math.floor(Math.random() * 30) + 1;
+          post.username = "username"
+          post.name = "name"
+          return post;
+        })
+      )
       .then(posts => {
+        posts = posts.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
         return { posts };
       });
   }
@@ -57,9 +70,9 @@
 {#if started}
   {#if !finished}
     <span class="cont">
-        {#each posts as post, i}
-          <Card {post} />
-        {/each}
+      {#each posts as post, i}
+        <Card {post} />
+      {/each}
     </span>
   {:else}
     <p>Thank you! You took {time - timeLeft} seconds.</p>
