@@ -14,7 +14,7 @@
   import Card from "../../components/Card.svelte";
   export let posts;
   const time = 60;
-  let started = true;
+  let started = false;
   let finished = false;
   let timeLeft = time;
 </script>
