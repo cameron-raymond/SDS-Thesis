@@ -6,7 +6,6 @@
   export let finished = false;
   const start = () => {
     started = true;
-    console.log("hi");
   };
   const finish = () => {
     if (confirm("Are you sure you want to finish?")) {

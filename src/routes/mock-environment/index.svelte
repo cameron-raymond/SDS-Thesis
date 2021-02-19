@@ -1,23 +1,41 @@
 <script context="module">
-  export function preload() {
-    return this.fetch(`mock-environment.json`)
+  export async function getData(fetchFunc, post) {
+    const res = await fetchFunc(
+      "https://randomuser.me/api/?inc=gender,name,picture"
+    ).then(res => res.json());
+    const data = res.results[0];
+    console.log(data);
+    post.gender = data.gender;
+    post.profileImage = data.picture.thumbnail;
+    post.username = data.first + data.results[0].last;
+    post.name = data.first + " " + data.results[0].last;
+    post.timestamp = Math.floor(Math.random() * 30) + 1;
+    // console.log(post)
+    return post;
+  }
+  export async function preload() {
+    const posts = await this.fetch(`mock-environment.json`)
       .then(r => r.json())
       .then(posts =>
-        posts.map(post => {
-          post.profileImage =
-            "/fakeProfilePictures/ff" +
-            (Math.floor(Math.random() * 9) + 1) +
-            ".png";
-          post.timestamp = Math.floor(Math.random() * 30) + 1;
-          post.username = "username"
-          post.name = "name"
-          return post;
-        })
-      )
-      .then(posts => {
-        posts = posts.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
-        return { posts };
-      });
+        posts.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp))
+      );
+    const body = JSON.stringify({
+      method: "POST",
+      dataType: "json"
+    });
+    for (const post of posts) {
+      const res = await this.fetch(
+        "https://randomuser.me/api/?inc=gender,name,picture"
+      ).then(res => res.json());
+      const data = res.results[0];
+      post.gender = data.gender;
+      post.profileImage = data.picture.thumbnail;
+      post.username = data.name.first +""+ data.name.last;
+      post.name =data.name.first +" "+ data.name.last;
+      post.timestamp = Math.floor(Math.random() * 30) + 1;
+    }
+
+    return { posts };
   }
 </script>
 
