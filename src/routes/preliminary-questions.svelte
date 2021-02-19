@@ -79,7 +79,7 @@
         ...values
       };
       alert(JSON.stringify(toSubmit));
-      goto(`/mock_environment`);
+      goto(`/mock-environment`);
     }
   });
 </script>

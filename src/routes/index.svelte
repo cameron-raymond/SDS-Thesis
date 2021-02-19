@@ -72,7 +72,7 @@
     participate, press "Begin" now. Please do not access external information
     during the experiment.
   </p>
-  <a href="/preliminary_questions" class="button">
+  <a href="/preliminary-questions" class="button">
     <button>Begin</button>
   </a>
 </span>

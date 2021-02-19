@@ -3,13 +3,20 @@
 </script>
 
 <style>
+  img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid var(--grey-light);
+  }
   .card {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     margin: 1rem;
-    width: 30rem;
+    width: 600px;
     border: 1px solid var(--grey-light);
     border-radius: 8px;
     transition: 0.3s;
@@ -18,12 +25,6 @@
   p {
     text-align: left;
     padding: 0 1.5rem 0 1.5rem;
-    height: 6rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 4; /* number of lines to show */
-    -webkit-box-orient: vertical;
   }
   .head {
     display: flex;
@@ -36,10 +37,9 @@
     padding: 0.3rem 1.5rem 0.1rem 1.5rem;
     text-align: right;
   }
-  .head .emoji {
+  .head .profilePic {
     text-align: center;
     margin-right: 1.5rem;
-    font-size: 0.7rem;
   }
   .head .title {
     text-align: right;
@@ -65,14 +65,15 @@
     align-items: center;
     height: 2rem;
     padding: 0 0.5rem 0 1.5rem;
+    width: calc(600px + 4em);
   }
   .foot span {
     display: flex;
     flex-wrap: wrap;
   }
-  @media (max-width: 40rem) {
+  @media (max-width: 800px) {
     .card {
-      width: 100vw;
+      width: 100%;
       align-self: center;
       border-radius: 0;
       margin: 0rem;
@@ -88,37 +89,23 @@
     }
   }
 </style>
+
 <div class="card">
   <div class="head">
-    <div class="emoji">
-      <h4>
-        <span role="img">{post.emoji}</span>
-      </h4>
-      {#if post.link}
-        <span class="link">
-          {@html post.link}
-        </span>
-      {/if}
-    </div>
-    <div class="title">
-      <h4>{post.title}</h4>
-      {#if post.date}{post.date}{/if}
+    <div class="profilePic">
+      <img
+        src={post.profileImage}
+        alt="Profile"/>
+      <span class="link">
+        @{@html post.link}
+      </span>
     </div>
   </div>
 
   <p>
-    {@html post.blurb}
+    {@html post.text}
   </p>
 
-  <!-- {#if post.tags}
-    <div class="foot">
-      {#if post.tags}
-        <span>
-          {#each [post.type, ...post.tags] as tagId}
-            <p>tagId</p>
-          {/each}
-        </span>
-      {/if}
-    </div>
-  {/if} -->
+  <!-- WARNING GOES HERE -->
+  <span />
 </div>
