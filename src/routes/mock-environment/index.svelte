@@ -55,8 +55,7 @@
   </p>
 </div>
 {#if started}
-  <!-- {#if !finished} -->
-  {#if true}
+  {#if !finished}
     <span class="cont">
         {#each posts as post, i}
           <Card {post} />
