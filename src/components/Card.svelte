@@ -106,9 +106,11 @@
       margin-left: 0.5rem;
       flex-direction: column;
       align-items: flex-start;
-      justify-content: flex-start;
+      justify-content: center;
+
     }
     .subtitle {
+      margin: 0;
       padding: 0;
     }
     .profilePic {

@@ -14,11 +14,7 @@
     return post;
   }
   export async function preload() {
-    const posts = await this.fetch(`mock-environment.json`)
-      .then(r => r.json())
-      .then(posts =>
-        posts.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp))
-      );
+    const posts = await this.fetch(`mock-environment.json`).then(r => r.json());
     const body = JSON.stringify({
       method: "POST",
       dataType: "json"
@@ -26,16 +22,38 @@
     for (const post of posts) {
       const res = await this.fetch(
         "https://randomuser.me/api/?inc=gender,name,picture&nat=us,ca,gb"
-      ).then(res => res.json());
+      )
+        .then(res => res.json())
+        .catch(error => {
+          return {
+            results: [
+              {
+                gender: "unknown",
+                picture: {
+                  thumbnail:
+                    "/fakeProfilePictures/ff" +
+                    (Math.floor(Math.random() * 10) + 1) +
+                    ".png"
+                },
+                name: {
+                  first: "user",
+                  last: Math.floor(Math.random() * 200) + 1
+                }
+              }
+            ]
+          };
+          throw error;
+        });
       const data = res.results[0];
       post.gender = data.gender;
       post.profileImage = data.picture.thumbnail;
-      post.username = data.name.first +""+ data.name.last;
-      post.name =data.name.first +" "+ data.name.last;
-      post.timestamp = Math.floor(Math.random() * 30) + 1;
+      post.username = data.name.first + "" + data.name.last;
+      post.name = data.name.first + " " + data.name.last;
+      post.timestamp = Math.floor(Math.random() * 60) + 1;
     }
-
-    return { posts };
+    return {
+      posts: posts.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp))
+    };
   }
 </script>
 
