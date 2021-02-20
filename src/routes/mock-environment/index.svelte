@@ -1,59 +1,7 @@
 <script context="module">
-  export async function getData(fetchFunc, post) {
-    const res = await fetchFunc(
-      "https://randomuser.me/api/?inc=gender,name,picture"
-    ).then(res => res.json());
-    const data = res.results[0];
-    console.log(data);
-    post.gender = data.gender;
-    post.profileImage = data.picture.thumbnail;
-    post.username = data.first + data.results[0].last;
-    post.name = data.first + " " + data.results[0].last;
-    post.timestamp = Math.floor(Math.random() * 30) + 1;
-    // console.log(post)
-    return post;
-  }
   export async function preload() {
     const posts = await this.fetch(`mock-environment.json`).then(r => r.json());
-    const body = JSON.stringify({
-      method: "POST",
-      dataType: "json"
-    });
-    for (const post of posts) {
-      const res = await this.fetch(
-        "https://randomuser.me/api/?inc=gender,name,picture&nat=us,ca,gb"
-      )
-        .then(res => res.json())
-        .catch(error => {
-          return {
-            results: [
-              {
-                gender: "unknown",
-                picture: {
-                  thumbnail:
-                    "/fakeProfilePictures/ff" +
-                    (Math.floor(Math.random() * 10) + 1) +
-                    ".png"
-                },
-                name: {
-                  first: "user",
-                  last: Math.floor(Math.random() * 200) + 1
-                }
-              }
-            ]
-          };
-          throw error;
-        });
-      const data = res.results[0];
-      post.gender = data.gender;
-      post.profileImage = data.picture.thumbnail;
-      post.username = data.name.first + "" + data.name.last;
-      post.name = data.name.first + " " + data.name.last;
-      post.timestamp = Math.floor(Math.random() * 60) + 1;
-    }
-    return {
-      posts: posts.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp))
-    };
+    return { posts };
   }
 </script>
 
@@ -63,9 +11,26 @@
   import Card from "../../components/Card.svelte";
   export let posts;
   const time = 60;
+  let dataLoaded = false;
   let started = false;
   let finished = false;
   let timeLeft = time;
+
+  onMount(async () => {
+    const res = await fetch(
+      "https://randomuser.me/api/?inc=gender,name,picture&nat=us,ca,gb&results=" +
+        posts.length
+    ).then(res => res.json());
+    for (const [index, post] of posts.entries()) {
+      const data = res.results[index];
+      post.gender = data.gender;
+      post.profileImage = data.picture.thumbnail;
+      post.username = data.name.first + "" + data.name.last;
+      post.name = data.name.first + " " + data.name.last;
+      post.timestamp = Math.floor(Math.random() * 60) + 1;
+    }
+    dataLoaded = true;
+  });
 </script>
 
 <style>
@@ -105,11 +70,13 @@
 </div>
 {#if started}
   {#if !finished}
-    <span class="cont">
-      {#each posts as post, i}
-        <Card {post} />
-      {/each}
-    </span>
+    {#if dataLoaded}
+      <span class="cont">
+        {#each posts as post, i}
+          <Card {post} />
+        {/each}
+      </span>
+    {/if}
   {:else}
     <p>Thank you! You took {time - timeLeft} seconds.</p>
   {/if}
