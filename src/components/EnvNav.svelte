@@ -25,7 +25,8 @@
     position: fixed;
     top: 0em;
     left: 0em;
-    width: calc(100vw - 4em);
+    width: calc(100% - 4em);
+    min-width: 20rem;
     padding: 2em;
     z-index: 2;
     display: flex;

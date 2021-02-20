@@ -25,7 +25,7 @@
     });
     for (const post of posts) {
       const res = await this.fetch(
-        "https://randomuser.me/api/?inc=gender,name,picture"
+        "https://randomuser.me/api/?inc=gender,name,picture&nat=us,ca,gb"
       ).then(res => res.json());
       const data = res.results[0];
       post.gender = data.gender;
