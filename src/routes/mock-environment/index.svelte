@@ -20,7 +20,7 @@
     const res = await fetch(
       "https://randomuser.me/api/?inc=gender,name,picture&nat=us,ca,gb&results=" +
         posts.length
-    ).then(res => res.json());
+    ).then(res => res.json())
     for (const [index, post] of posts.entries()) {
       const data = res.results[index];
       post.gender = data.gender;
@@ -29,6 +29,7 @@
       post.name = data.name.first + " " + data.name.last;
       post.timestamp = Math.floor(Math.random() * 60) + 1;
     }
+    posts = posts.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
     dataLoaded = true;
   });
 </script>
