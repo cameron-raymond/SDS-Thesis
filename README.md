@@ -2,24 +2,24 @@
 
 ## Options
 
-#### [] Managing Online Rumours During Offline Protest**
+#### &#9744; Managing Online Rumours During Offline Protest**
 
 - Context: information shared during protests.
 - Data: tweets from previous protests that later turned out to be True or False (e.g. notifications of violence/police crackdowns/counter protests)
 - Intervention(s):
-  - [] Salience content intervention  (Be aware that not everything online is true.)
-  - [] Contrastive content warning (others disagree with this statement)
-  - [] Birdwatch warning (see: [birdwatch homepage](https://twitter.github.io/birdwatch/)) 
+  - &#9744; Salience content intervention  (Be aware that not everything online is true.)
+  - &#9744; Contrastive content warning (others disagree with this statement)
+  - &#9744; Birdwatch warning (see: [birdwatch homepage](https://twitter.github.io/birdwatch/)) 
   
-#### [] Experimental Analysis of Crowdsourced Rumour Verifications**
+#### &#9744; Experimental Analysis of Crowdsourced Rumour Verifications**
 
 - Context: Evaluating the efficacy of Twitter's birdwatch program, relative to traditional top-down forms of content interventions.
 - Data: Tweets flagged in Twitter's pilot birdwatch program.
   - Use the meta-data from the flags as the evidence level for the original proposition.
 - Intervention(s):
-  - [x] Salience content intervention  (Be aware that not everything online is true.)
-  - [] Contrastive content warning (others disagree with this statement)
-  - [x] Birdwatch warning (see: [birdwatch homepage](https://twitter.github.io/birdwatch/))
+  - &#9745; Salience content intervention  (Be aware that not everything online is true.)
+  - &#9744; Contrastive content warning (others disagree with this statement)
+  - &#9745; Birdwatch warning (see: [birdwatch homepage](https://twitter.github.io/birdwatch/))
 
 ## Branches
 
