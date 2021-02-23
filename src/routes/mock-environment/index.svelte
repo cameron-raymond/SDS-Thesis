@@ -18,7 +18,7 @@
 
   onMount(async () => {
     const res = await fetch(
-      "https://randomuser.me/api/?inc=gender,name,picture&nat=us,ca,gb&results=" +
+      "https://randomuser.me/api/?inc=gender,name,picture&nat=us&results=" +
         posts.length
     ).then(res => res.json())
     for (const [index, post] of posts.entries()) {
