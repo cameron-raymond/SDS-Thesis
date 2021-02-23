@@ -24,8 +24,8 @@
 ## Branches
 
 - `/main`: information regarding the project
-- `/website`: the study website
-- `/analysis`: code used to study the results of the experiment
+- [`/website`](https://github.com/cameron-raymond/SDS-Thesis/tree/website): the study website
+- [`/analysis`](https://github.com/cameron-raymond/SDS-Thesis/tree/analysis): code used to study the results of the experiment
 
 ## License
 
