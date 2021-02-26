@@ -1,5 +1,7 @@
 <script>
+  import FaRetweet from "svelte-icons/fa/FaRetweet.svelte";
   export let post;
+  export let reshared = false;
 </script>
 
 <style>
@@ -17,6 +19,10 @@
     justify-content: flex-start;
     align-items: center;
   }
+
+  .subtitle {
+    padding: 0px 1.5rem 0rem 1rem;
+  }
   .profilePic img {
     width: 50px;
     height: auto;
@@ -33,7 +39,7 @@
     transition: 0.3s;
     overflow: hidden;
   }
-  p {
+  .content {
     text-align: left;
     padding: 0 1.5rem 0 1.5rem;
   }
@@ -47,18 +53,6 @@
     height: 4.6rem;
     padding: 0.3rem 1.5rem 0.1rem 1.5rem;
   }
-  .head .title {
-    text-align: right;
-    font-size: 0.7rem;
-  }
-  .head h4 {
-    font-size: initial;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 2; /* number of lines to show */
-    -webkit-box-orient: vertical;
-  }
   .username {
     text-decoration: underline;
     text-decoration-color: rgb(255, 62, 0);
@@ -69,18 +63,37 @@
     align-self: stretch;
     justify-content: space-between;
     align-items: center;
-    height: 2rem;
-    padding: 0 0.5rem 0 1.5rem;
-    width: calc(600px + 4em);
+    padding: 0px 1.5rem 0.5rem 1rem;
   }
-  .subtitle {
-    padding: 0px 1.5rem 0px 1rem;
-  }
-
   .foot span {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: 0.2s;
+    border-radius: 50%;
+    padding: 3px;
   }
+  .foot span:hover {
+    background-color: rgba(209, 213, 218, 0.2);
+    color: var(--orange-dark);
+    cursor: pointer;
+    transition: 0.2s;
+  }
+  .icon-text {
+    margin: 0;
+    padding: 0;
+    font-size: smaller;
+  }
+  .icon {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+
+  .reshared {
+    color: var(--orange);
+  }
+
   @media (max-width: 800px) {
     .subtitle {
       padding: 0px 1.5rem 0px 0.5rem;
@@ -97,17 +110,20 @@
     .foot {
       height: 1rem;
     }
-    p {
+    .content {
       height: initial;
     }
   }
   @media (max-width: 30rem) {
+    .icon {
+      height: 1rem;
+      width: 1rem;
+    }
     .userinfo {
       margin-left: 0.5rem;
       flex-direction: column;
       align-items: flex-start;
       justify-content: center;
-
     }
     .subtitle {
       margin: 0;
@@ -133,10 +149,29 @@
     </span>
   </div>
 
-  <p>
+  <p class="content">
     {@html post.text}
   </p>
 
-  <!-- WARNING GOES HERE -->
-  <span />
+  <span class="foot">
+    {#if post.warning}
+      {@html post.warning}
+    {:else}
+      <div/>
+    {/if}
+    <span
+      on:click={() => {
+        reshared = !reshared;
+      }}
+      class:reshared>
+      <div class="icon">
+        <FaRetweet class="icon" />
+      </div>
+      {#if !reshared}
+        <p class="icon-text">Reshare</p>
+      {:else}
+        <p class="icon-text">Unshare</p>
+      {/if}
+    </span>
+  </span>
 </div>

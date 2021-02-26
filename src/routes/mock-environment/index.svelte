@@ -10,7 +10,7 @@
   import Header from "../../components/EnvNav.svelte";
   import Card from "../../components/Card.svelte";
   export let posts;
-  const time = 60;
+  const time = 60*3;
   let dataLoaded = false;
   let started = false;
   let finished = false;

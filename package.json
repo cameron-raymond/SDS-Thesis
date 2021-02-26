@@ -11,12 +11,13 @@
   "dependencies": {
     "compression": "^1.7.1",
     "front-matter": "^4.0.2",
-    "marked": "^1.2.7",
+    "marked": "^2.0.0",
     "node-fetch": "^2.6.1",
     "polka": "next",
     "select": "^1.1.2",
     "sirv": "^1.0.0",
     "svelte-forms-lib": "^1.6.0",
+    "svelte-icons": "^2.1.0",
     "yup": "^0.32.8"
   },
   "devDependencies": {
