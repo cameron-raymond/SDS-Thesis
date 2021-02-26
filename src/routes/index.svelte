@@ -8,13 +8,11 @@
     "SESSION_ID" in $page.query &&
     "STUDY_ID" in $page.query;
 
-  onMount(() => {
-    if (valid_params) {
-      PROLIFIC_PID.set(parseInt($page.query.PROLIFIC_PID));
-      SESSION_ID.set(parseInt($page.query.SESSION_ID));
-      STUDY_ID.set(parseInt($page.query.STUDY_ID));
-    }
-  });
+  if (valid_params) {
+    PROLIFIC_PID.set(parseInt($page.query.PROLIFIC_PID));
+    SESSION_ID.set(parseInt($page.query.SESSION_ID));
+    STUDY_ID.set(parseInt($page.query.STUDY_ID));
+  }
 </script>
 
 <style>
