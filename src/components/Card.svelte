@@ -74,11 +74,13 @@
     border-radius: 50%;
     padding: 3px;
   }
-  .foot span:hover {
-    background-color: rgba(209, 213, 218, 0.2);
-    color: var(--orange-dark);
-    cursor: pointer;
-    transition: 0.2s;
+  @media (hover: hover) {
+    .foot span:hover {
+      background-color: rgba(209, 213, 218, 0.2);
+      color: var(--orange-dark);
+      cursor: pointer;
+      transition: 0.2s;
+    }
   }
   .icon-text {
     margin: 0;
@@ -157,7 +159,7 @@
     {#if post.warning}
       {@html post.warning}
     {:else}
-      <div/>
+      <div />
     {/if}
     <span
       on:click={() => {
