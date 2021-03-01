@@ -4,6 +4,8 @@
 
 Code used to organize and quantify the results of any experiments.
 
+Mock data from Mockaroo: [scheme](https://www.mockaroo.com/schemas/294135)
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/cameron-raymond/SDS-Thesis/blob/main/LICENSE.md) file for details.
