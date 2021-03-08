@@ -1,25 +1,21 @@
 <script>
   import { createForm } from "svelte-forms-lib";
-  import { PROLIFIC_PID, SESSION_ID, STUDY_ID } from "../stores/local-store";
+  import {
+    PROLIFIC_PID,
+    SESSION_ID,
+    STUDY_ID,
+    startTime
+  } from "../stores/local-store";
   import { goto } from "@sapper/app";
   import * as yup from "yup";
-
-  var localProlificPID = -1;
-  var localSessionID = -1;
-  var localStudyID = -1;
   var typedGender = "";
   var typedPolAffiliation = "";
   var typedAffiliatedMovements = "";
-
-  // Make sure we're running on the client
-  if (process.browser) {
-    PROLIFIC_PID.useLocalStorage();
-    SESSION_ID.useLocalStorage();
-    STUDY_ID.useLocalStorage();
-    localProlificPID = parseInt(localStorage.getItem("PROLIFIC_PID"));
-    localSessionID = parseInt(localStorage.getItem("SESSION_ID"));
-    localStudyID = parseInt(localStorage.getItem("STUDY_ID"));
-  }
+  var typedSocialMedias = "";
+  $: parsedMovements =
+    typedAffiliatedMovements === "" ? [] : typedAffiliatedMovements.split(",");
+  $: parsedSocialMedias =
+    typedSocialMedias === "" ? [] : typedSocialMedias.split(",");
 
   const { form, errors, state, handleChange, handleSubmit } = createForm({
     initialValues: {
@@ -28,7 +24,8 @@
       educationLevel: "",
       politicalAffiliation: undefined,
       attendsProtests: "",
-      affiliatedMovements: []
+      affiliatedMovements: [],
+      socialMedias: []
     },
     validationSchema: yup.object().shape({
       age: yup
@@ -38,14 +35,13 @@
         .transform((v, o) => (o === "" ? null : v))
         .typeError("Please enter your age in years.")
         .max(120, "Are you sure you're over 120 years old?")
-        .min(18, "You must be 18 or older to participate in this experiment."),
+        .min(18, "You must be 18 or older to participate in this study."),
       gender: yup.mixed().notRequired(),
       educationLevel: yup.string().notRequired(),
       politicalAffiliation: yup.string().notRequired(),
-      attendsProtests: yup
-        .mixed()
-        .notRequired(),
-      affiliatedMovements: yup.mixed().notRequired()
+      attendsProtests: yup.mixed().notRequired(),
+      affiliatedMovements: yup.mixed().notRequired(),
+      socialMedias: yup.mixed().notRequired()
     }),
     onSubmit: values => {
       // If the user typed in their own gender we will add that to the list and remove the "typedInput" value
@@ -62,20 +58,28 @@
       // Same for the affiliated movements Q
       if ($form.affiliatedMovements.includes("typedInput")) {
         // If the user didn't actually type anything just keep the list as is
-        $form.affiliatedMovements =
-          typedAffiliatedMovements === ""
-            ? $form.affiliatedMovements
-            : [typedAffiliatedMovements, ...$form.affiliatedMovements];
+        $form.affiliatedMovements = [
+          ...parsedMovements,
+          ...$form.affiliatedMovements
+        ];
         // Remove the typedInput button
         $form.affiliatedMovements = $form.affiliatedMovements.filter(
           e => e !== "typedInput"
         );
       }
+      // Same for the affiliated movements Q
+      if ($form.socialMedias.includes("typedInput")) {
+        // If the user didn't actually type anything just keep the list as is
+        $form.socialMedias = [...parsedSocialMedias, ...$form.socialMedias];
+        // Remove the typedInput button
+        $form.socialMedias = $form.socialMedias.filter(e => e !== "typedInput");
+      }
 
       let toSubmit = {
-        PROLIFIC_PID: localProlificPID,
-        SESSION_ID: localSessionID,
-        STUDY_ID: localStudyID,
+        PROLIFIC_PID: $PROLIFIC_PID,
+        SESSION_ID: $SESSION_ID,
+        STUDY_ID: $STUDY_ID,
+        startTime: $startTime,
         ...values
       };
       alert(JSON.stringify(toSubmit));
@@ -232,28 +236,49 @@
         <input
           type="checkbox"
           bind:group={$form.affiliatedMovements}
-          value="Movement A" />
-        Movement A
+          value="race" />
+        Racial Equity
       </label>
       <label>
         <input
           type="checkbox"
           bind:group={$form.affiliatedMovements}
-          value="Movement B" />
-        Movement B
+          value="gender" />
+        Gender Equity
       </label>
       <label>
         <input
           type="checkbox"
           bind:group={$form.affiliatedMovements}
-          value="Movement C" />
-        Movement C
+          value="climate" />
+        Climate Change
       </label>
       <label>
         <input
           type="checkbox"
           bind:group={$form.affiliatedMovements}
-          value="None" />
+          value="labour" />
+        Labour Rights (Union Rights)
+      </label>
+      <label>
+        <input
+          type="checkbox"
+          bind:group={$form.affiliatedMovements}
+          value="indigenous" />
+        Indigenous Rights
+      </label>
+      <label>
+        <input
+          type="checkbox"
+          bind:group={$form.affiliatedMovements}
+          value="religion" />
+        Religious Rights
+      </label>
+      <label>
+        <input
+          type="checkbox"
+          bind:group={$form.affiliatedMovements}
+          value="none" />
         None
       </label>
       <label>
@@ -267,16 +292,87 @@
     {#if $errors.affiliatedMovements}
       <small>{$errors.affiliatedMovements}</small>
     {/if}
-
     {#if $form.affiliatedMovements.includes('typedInput')}
       <label for="name">
         In addition to whatever you may have selected, what other social
-        movements would or have you protested in support of?
+        movements would or have you protested in support of? If multiple
+        separate with commas.
       </label>
       <input
         id="affiliatedMovements"
         name="affiliatedMovements"
         bind:value={typedAffiliatedMovements} />
+    {/if}
+
+    <label for="socialMedias">
+      Which of the following social media sites do you use on a regular basis
+      (at least once a month)?
+    </label>
+    <span class="multiselect">
+      <label>
+        <input
+          type="checkbox"
+          bind:group={$form.socialMedias}
+          value="facebook" />
+        Facebook
+      </label>
+      <label>
+        <input
+          type="checkbox"
+          bind:group={$form.socialMedias}
+          value="twitter" />
+        Twitter
+      </label>
+      <label>
+        <input
+          type="checkbox"
+          bind:group={$form.socialMedias}
+          value="instagram" />
+        Instagram
+      </label>
+      <label>
+        <input
+          type="checkbox"
+          bind:group={$form.socialMedias}
+          value="snapchat" />
+        Snapchat
+      </label>
+      <label>
+        <input type="checkbox" bind:group={$form.socialMedias} value="reddit" />
+        Reddit
+      </label>
+      <label>
+        <input type="checkbox" bind:group={$form.socialMedias} value="tiktok" />
+        TikTok
+      </label>
+      <label>
+        <input type="checkbox" bind:group={$form.socialMedias} value="meetup" />
+        Meetup
+      </label>
+      <label>
+        <input type="checkbox" bind:group={$form.socialMedias} value="None" />
+        None
+      </label>
+      <label>
+        <input
+          type="checkbox"
+          bind:group={$form.socialMedias}
+          value="typedInput" />
+        Let me type... (not listed)
+      </label>
+    </span>
+    {#if $errors.socialMedias}
+      <small>{$errors.socialMedias}</small>
+    {/if}
+    {#if $form.socialMedias.includes('typedInput')}
+      <label for="name">
+        In addition to whatever you may have selected, what other social media
+        sites do you use on a regular basis? If multiple separate with commas.
+      </label>
+      <input
+        id="socialMedias"
+        name="socialMedias"
+        bind:value={typedSocialMedias} />
     {/if}
 
     <button type="submit">Submit</button>
