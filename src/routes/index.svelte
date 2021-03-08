@@ -1,18 +1,24 @@
 <script>
   import { stores } from "@sapper/app";
   import { onMount, onDestroy } from "svelte";
-  import { PROLIFIC_PID, SESSION_ID, STUDY_ID } from "../stores/local-store";
+  import {
+    PROLIFIC_PID,
+    SESSION_ID,
+    STUDY_ID,
+    startTime
+  } from "../stores/local-store";
   const { page } = stores();
   const valid_params =
     "PROLIFIC_PID" in $page.query &&
     "SESSION_ID" in $page.query &&
     "STUDY_ID" in $page.query;
-
-  if (valid_params) {
-    PROLIFIC_PID.set(parseInt($page.query.PROLIFIC_PID));
-    SESSION_ID.set(parseInt($page.query.SESSION_ID));
-    STUDY_ID.set(parseInt($page.query.STUDY_ID));
-  }
+  onMount(() => {
+    const start = new Date().getTime();
+    startTime.update(val => (val == 0 ? start : val));
+    PROLIFIC_PID.update(val => "PROLIFIC_PID" in $page.query ? $page.query.PROLIFIC_PID : val);
+    SESSION_ID.update(val => "SESSION_ID" in $page.query ? $page.query.SESSION_ID : val);
+    STUDY_ID.update(val => "STUDY_ID" in $page.query ? $page.query.STUDY_ID : val);
+  });
 </script>
 
 <style>

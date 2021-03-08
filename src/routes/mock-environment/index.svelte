@@ -7,31 +7,45 @@
 
 <script>
   import { onMount, onDestroy } from "svelte";
+  import { goto } from "@sapper/app";
   import Header from "../../components/EnvNav.svelte";
   import Card from "../../components/Card.svelte";
   export let posts;
-  const time = 60*3;
+  const time = 60 * 2;
   let dataLoaded = false;
   let started = false;
   let finished = false;
   let timeLeft = time;
-
   onMount(async () => {
     const res = await fetch(
       "https://randomuser.me/api/?inc=gender,name,picture&nat=us&results=" +
         posts.length
-    ).then(res => res.json())
+    ).then(res => res.json());
     for (const [index, post] of posts.entries()) {
       const data = res.results[index];
       post.gender = data.gender;
       post.profileImage = data.picture.thumbnail;
       post.username = data.name.first + "" + data.name.last;
       post.name = data.name.first + " " + data.name.last;
-      post.timestamp = Math.floor(Math.random() * 60) + 1;
+      post.timestamp = Math.floor(Math.random() * 59) + 1;
     }
     posts = posts.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
     dataLoaded = true;
   });
+  // A reactive block
+  $: if (started && finished) {
+    let toSubmit = posts.map(post => {
+      let { text, profileImage, username, name, gender, ...y } = post;
+      y.mockGender = gender;
+      return y;
+    });
+    // POST DATA
+    // alert(JSON.stringify(toSubmit));
+    setTimeout(() => {
+      console.log("HIII")
+      goto(`/post-study-questionaire`);
+    }, 15000);
+  }
 </script>
 
 <style>
@@ -48,11 +62,6 @@
     margin: 0px -2em 0px -2em;
     padding: 0px 0px 0px 8em;
     border-top: 1px solid var(--grey-light);
-  }
-  .posts {
-    border-left: 1px solid var(--grey-light);
-    border-right: 1px solid var(--grey-light);
-    max-width: 600px;
   }
   @media (max-width: 800px) {
     .cont {
@@ -74,11 +83,18 @@
     {#if dataLoaded}
       <span class="cont">
         {#each posts as post, i}
-          <Card {post} />
+          <!-- binds the reshare variable in the child component to the post.reshared subfield in our array -->
+          <Card {post} bind:reshared={post.reshared} />
         {/each}
       </span>
     {/if}
   {:else}
     <p>Thank you! You took {time - timeLeft} seconds.</p>
+    <p>
+      You will be automatically redirected to the post-study questionnaire in 15
+      seconds. If that does not happen, please click on this link:
+      <a href="/post-study-questionaire">post-study questionnaire</a>
+      , to continue.
+    </p>
   {/if}
 {/if}
