@@ -82,7 +82,7 @@
         startTime: $startTime,
         ...values
       };
-      alert(JSON.stringify(toSubmit));
+      console.log(JSON.stringify(toSubmit));
       goto(`/mock-environment`);
     }
   });

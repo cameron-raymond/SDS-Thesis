@@ -40,9 +40,8 @@
       return y;
     });
     // POST DATA
-    // alert(JSON.stringify(toSubmit));
+    console.log(JSON.stringify(toSubmit));
     setTimeout(() => {
-      console.log("HIII")
       goto(`/post-study-questionaire`);
     }, 15000);
   }
@@ -53,6 +52,9 @@
     color: #555;
     max-width: 40rem;
     margin-bottom: 0.5rem;
+  }
+  .note {
+    color: var(--red);
   }
   .cont {
     display: flex;
@@ -72,12 +74,28 @@
 
 <Header {time} bind:started bind:finished bind:timeLeft />
 <h1>Social Media and Protests</h1>
+{#if !started}
 <div class="subtitle">
   <p>
-    Explain the experiment... Lorem ipsum lorem ispum lorem ispum lorem ipsum
-    lorem ipsum lorem ipsum...
+    In this experiment, we will describe the context of a particular protest
+    scenario. We will then ask you to participate in a simulated social media
+    environment as if you were in the scenario we describe.
+  </p>
+  <p>
+    This task involves a description of a scenario and real content from social
+    media activity during recent anti-racism protests.
+    <span class="note">
+      Please do not particate if you anticipate that this content may cause you
+      significant distress.
+    </span>
+    You may end the experiment at any time without penalty. Please do not refer
+    to outside sources during the experiment.
+  </p>
+  <p>
+    Press the "START" button at the top of your screen to begin.
   </p>
 </div>
+{/if}
 {#if started}
   {#if !finished}
     {#if dataLoaded}
@@ -93,8 +111,7 @@
     <p>
       You will be automatically redirected to the post-study questionnaire in 15
       seconds. If that does not happen, please click on this link:
-      <a href="/post-study-questionaire">post-study questionnaire</a>
-      , to continue.
+      <a href="/post-study-questionaire">post-study questionnaire</a>, to continue.
     </p>
   {/if}
 {/if}
