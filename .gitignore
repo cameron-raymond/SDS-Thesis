@@ -1,5 +1,6 @@
 node_modules/
 __sapper__/
+src/
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
