@@ -79,7 +79,7 @@
   <p>
     In this experiment, we will describe the context of a particular protest
     scenario. We will then ask you to participate in a simulated social media
-    environment as if you were in the scenario we describe.
+    environment as if you were in the scenario described.
   </p>
   <p>
     This task involves a description of a scenario and real content from social
