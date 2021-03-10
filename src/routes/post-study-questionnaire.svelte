@@ -26,7 +26,7 @@
       };
       console.log(JSON.stringify(toSubmit));
       // UPDATE WITH CORRECT COMPLETION CODE
-      goto("https://app.prolific.co/submissions/complete?cc=5297E3A5");
+      // goto("https://app.prolific.co/submissions/complete?cc=5297E3A5");
     }
   });
 </script>

@@ -15,8 +15,7 @@
     if ("STUDY_ID" in $page.query) STUDY_ID.set($page.query.STUDY_ID);
     parsed = true;
   });
-  $: valid_params =
-    parsed && ($PROLIFIC_PID != -1 && $SESSION_ID != -1 && STUDY_ID != -1);
+  $: valid_params = parsed && $PROLIFIC_PID != -1 && $SESSION_ID != -1 && $STUDY_ID != -1;
 </script>
 
 <style>
@@ -80,7 +79,7 @@
   </p>
   <a
     href="/preliminary-questions"
-    on:mousedown={() => consent.set(true)}
+    on:mousedown={() => consent.set(1)}
     class="button">
     <button>Begin</button>
   </a>
