@@ -8,6 +8,12 @@ Mock data from Mockaroo: [scheme](https://www.mockaroo.com/schemas/294135)
 
 Pregistration done with: [aspredicted.org](https://aspredicted.org/)
 
+## Branches
+
+- [`/main`](https://github.com/cameron-raymond/SDS-Thesis/tree/main): information regarding the project
+- [`/website`](https://github.com/cameron-raymond/SDS-Thesis/tree/website): the study website
+- `/analysis`: code used to study the results of the experiment
+  
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/cameron-raymond/SDS-Thesis/blob/main/LICENSE.md) file for details.
