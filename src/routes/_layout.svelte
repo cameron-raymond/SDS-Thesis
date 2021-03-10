@@ -96,7 +96,7 @@
 {#if !(segment === undefined)}
   <Foot />
 {/if}
-<a href="/post-study-questionaire" class="hide_link" aria-label=" ">preliminary-questions</a>
+<a href="/post-study-questionnaire" class="hide_link" aria-label=" ">post-study-questionnaire</a>
 <a href="/mock-environment" class="hide_link" aria-label=" ">mock-env</a>
 <a href="/preliminary-questions" class="hide_link" aria-label=" ">preliminary-questions</a>
 
