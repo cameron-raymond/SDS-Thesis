@@ -3,11 +3,12 @@
     PROLIFIC_PID,
     SESSION_ID,
     STUDY_ID,
-    startTime
+    consent,
   } from "../stores/local-store";
-  const message = `Are you sure you want to withdraw consent and leave this study? \nIn doing so we will remove any data associated with your Prolific ID that is not stored locally and you will be redirected to the Prolific homepage.`;
+  const message = `Are you sure you want to withdraw consent and leave this study? \nIn doing so we will remove any data associated with your Prolific ID that is not stored locally.`;
   const finish = () => {
     if (confirm(message)) {
+      consent.set(false)
       //   DELETE DATA AND REDIRECT
     }
   };

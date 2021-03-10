@@ -1,11 +1,6 @@
 <script>
   import { createForm } from "svelte-forms-lib";
-  import {
-    PROLIFIC_PID,
-    SESSION_ID,
-    STUDY_ID,
-    startTime
-  } from "../stores/local-store";
+  import { PROLIFIC_PID, SESSION_ID, STUDY_ID,consent} from "../stores/local-store";
   import { goto } from "@sapper/app";
   import * as yup from "yup";
   var typedGender = "";
@@ -79,7 +74,7 @@
         PROLIFIC_PID: $PROLIFIC_PID,
         SESSION_ID: $SESSION_ID,
         STUDY_ID: $STUDY_ID,
-        startTime: $startTime,
+        consent: $consent,
         ...values
       };
       console.log(JSON.stringify(toSubmit));

@@ -5,20 +5,18 @@
     PROLIFIC_PID,
     SESSION_ID,
     STUDY_ID,
-    startTime
+    consent
   } from "../stores/local-store";
   const { page } = stores();
-  const valid_params =
-    "PROLIFIC_PID" in $page.query &&
-    "SESSION_ID" in $page.query &&
-    "STUDY_ID" in $page.query;
+  let parsed = false;
   onMount(() => {
-    const start = new Date().getTime();
-    startTime.update(val => (val == 0 ? start : val));
-    PROLIFIC_PID.update(val => "PROLIFIC_PID" in $page.query ? $page.query.PROLIFIC_PID : val);
-    SESSION_ID.update(val => "SESSION_ID" in $page.query ? $page.query.SESSION_ID : val);
-    STUDY_ID.update(val => "STUDY_ID" in $page.query ? $page.query.STUDY_ID : val);
+    if ("PROLIFIC_PID" in $page.query) PROLIFIC_PID.set($page.query.PROLIFIC_PID);
+    if ("SESSION_ID" in $page.query) SESSION_ID.set($page.query.SESSION_ID);
+    if ("STUDY_ID" in $page.query) STUDY_ID.set($page.query.STUDY_ID);
+    parsed = true;
   });
+  $: valid_params =
+    parsed && ($PROLIFIC_PID != -1 && $SESSION_ID != -1 && STUDY_ID != -1);
 </script>
 
 <style>
@@ -80,7 +78,10 @@
     participate, press "Begin" now. Please do not access external information
     during the experiment.
   </p>
-  <a href="/preliminary-questions" class="button">
+  <a
+    href="/preliminary-questions"
+    on:mousedown={() => consent.set(true)}
+    class="button">
     <button>Begin</button>
   </a>
 </span>

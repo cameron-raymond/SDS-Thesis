@@ -1,5 +1,6 @@
 <script>
   import Foot from "../components/ExitFooter.svelte";
+  import { consent } from "../stores/local-store";
   export let segment;
 </script>
 
@@ -73,30 +74,42 @@
   <title>OII Social Media Protest Experiment</title>
 </svelte:head>
 
-{#if !(segment === 'mock_environment')}
-  <div class="buffer" />
-  <span>
-    <a href="https://www.oii.ox.ac.uk/">
-      <div
-        role="navigation"
-        aria-label="Oxford Internet Institute"
-        class="oii_blue_logo" />
-    </a>
-    <a href="https://www.ox.ac.uk/">
-      <div
-        role="navigation"
-        aria-label="Oxford University"
-        class="oxford_blue_logo" />
-    </a>
-  </span>
-{/if}
-<main>
-  <slot />
-</main>
-{#if !(segment === undefined)}
+<div class="buffer" />
+<span>
+  <a href="https://www.oii.ox.ac.uk/">
+    <div
+      role="navigation"
+      aria-label="Oxford Internet Institute"
+      class="oii_blue_logo" />
+  </a>
+  <a href="https://www.ox.ac.uk/">
+    <div
+      role="navigation"
+      aria-label="Oxford University"
+      class="oxford_blue_logo" />
+  </a>
+</span>
+{#if segment === undefined}
+  <main>
+    <slot />
+  </main>
+{:else if $consent}
+  <main>
+    <slot />
+  </main>
   <Foot />
+{:else}
+  <small>
+    According to our record we do not have your informed consent for this study.
+    Please go back to the
+    <a href="/">homepage</a>
+    to consent and take part in the study.
+  </small>
 {/if}
-<a href="/post-study-questionnaire" class="hide_link" aria-label=" ">post-study-questionnaire</a>
+<a href="/post-study-questionnaire" class="hide_link" aria-label=" ">
+  post-study-questionnaire
+</a>
 <a href="/mock-environment" class="hide_link" aria-label=" ">mock-env</a>
-<a href="/preliminary-questions" class="hide_link" aria-label=" ">preliminary-questions</a>
-
+<a href="/preliminary-questions" class="hide_link" aria-label=" ">
+  preliminary-questions
+</a>

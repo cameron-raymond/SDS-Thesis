@@ -4,7 +4,6 @@
     PROLIFIC_PID,
     SESSION_ID,
     STUDY_ID,
-    startTime
   } from "../stores/local-store";
   import { goto } from "@sapper/app";
   import * as yup from "yup";

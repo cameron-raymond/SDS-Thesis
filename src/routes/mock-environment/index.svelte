@@ -10,8 +10,10 @@
   import { goto } from "@sapper/app";
   import Header from "../../components/EnvNav.svelte";
   import Card from "../../components/Card.svelte";
+  import { PROLIFIC_PID, SESSION_ID, STUDY_ID } from "../../stores/local-store";
   export let posts;
   const time = 60 * 2;
+  let treatment = Math.random() > 0.5 ? true : false;
   let dataLoaded = false;
   let started = false;
   let finished = false;
@@ -34,11 +36,19 @@
   });
   // A reactive block
   $: if (started && finished) {
-    let toSubmit = posts.map(post => {
+    let simplePosts = posts.map(post => {
       let { text, profileImage, username, name, gender, ...y } = post;
       y.mockGender = gender;
       return y;
     });
+    let toSubmit = {
+      PROLIFIC_PID: $PROLIFIC_PID,
+      SESSION_ID: $SESSION_ID,
+      STUDY_ID: $STUDY_ID,
+      treatment: treatment,
+      secondsTaken: time - timeLeft,
+      posts: simplePosts
+    };
     // POST DATA
     console.log(JSON.stringify(toSubmit));
     setTimeout(() => {
@@ -75,26 +85,24 @@
 <Header {time} bind:started bind:finished bind:timeLeft />
 <h1>Social Media and Protests</h1>
 {#if !started}
-<div class="subtitle">
-  <p>
-    In this experiment, we will describe the context of a particular protest
-    scenario. We will then ask you to participate in a simulated social media
-    environment as if you were in the scenario described.
-  </p>
-  <p>
-    This task involves a description of a scenario and real content from social
-    media activity during recent anti-racism protests.
-    <span class="note">
-      Please do not particate if you anticipate that this content may cause you
-      significant distress.
-    </span>
-    You may end the experiment at any time without penalty. Please do not refer
-    to outside sources during the experiment.
-  </p>
-  <p>
-    Press the "START" button at the top of your screen to begin.
-  </p>
-</div>
+  <div class="subtitle">
+    <p>
+      In this experiment, we will describe the context of a particular protest
+      scenario. We will then ask you to participate in a simulated social media
+      environment as if you were in the scenario described.
+    </p>
+    <p>
+      This task involves a description of a scenario and real content from
+      social media activity during recent anti-racism protests.
+      <span class="note">
+        Please do not particate if you anticipate that this content may cause
+        you significant distress.
+      </span>
+      You may end the experiment at any time without penalty. Please do not
+      refer to outside sources during the experiment.
+    </p>
+    <p>Press the "START" button at the top of your screen to begin.</p>
+  </div>
 {/if}
 {#if started}
   {#if !finished}
@@ -111,7 +119,8 @@
     <p>
       You will be automatically redirected to the post-study questionnaire in 15
       seconds. If that does not happen, please click on this link:
-      <a href="/post-study-questionnaire">post-study questionnaire</a>, to continue.
+      <a href="/post-study-questionnaire">post-study questionnaire</a>
+      , to continue.
     </p>
   {/if}
 {/if}
