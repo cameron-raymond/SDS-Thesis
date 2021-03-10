@@ -1,10 +1,6 @@
 <script>
   import { createForm } from "svelte-forms-lib";
-  import {
-    PROLIFIC_PID,
-    SESSION_ID,
-    STUDY_ID,
-  } from "../stores/local-store";
+  import { PROLIFIC_PID, SESSION_ID, STUDY_ID } from "../stores/local-store";
   import { goto } from "@sapper/app";
   import * as yup from "yup";
 
@@ -22,7 +18,13 @@
       comments: yup.string().notRequired()
     }),
     onSubmit: values => {
-      console.log(JSON.stringify(values));
+      let toSubmit = {
+        PROLIFIC_PID: $PROLIFIC_PID,
+        SESSION_ID: $SESSION_ID,
+        STUDY_ID: $STUDY_ID,
+        ...values
+      };
+      console.log(JSON.stringify(toSubmit));
       // UPDATE WITH CORRECT COMPLETION CODE
       goto("https://app.prolific.co/submissions/complete?cc=5297E3A5");
     }
