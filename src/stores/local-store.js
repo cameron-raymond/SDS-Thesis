@@ -1,10 +1,10 @@
 import { writable } from 'svelte/store';
 
 
-export let PROLIFIC_PID;
-export let STUDY_ID;
-export let SESSION_ID;
-export let consent;
+export let PROLIFIC_PID = -1;
+export let STUDY_ID = -1;
+export let SESSION_ID = -1;
+export let consent = false;
 
 if (typeof window !== "undefined") {
     // If localStorage has the key then it will be used
@@ -23,9 +23,9 @@ if (typeof window !== "undefined") {
     consent = writable(storedConsent);
     consent.subscribe(value => localStorage.setItem("consent", value));
 } else {
-    PROLIFIC_PID = writable(null);
-    STUDY_ID = writable(null);
-    SESSION_ID = writable(null);
-    consent = writable(null);
+    PROLIFIC_PID = writable(-1);
+    STUDY_ID = writable(-1);
+    SESSION_ID = writable(-1);
+    consent = writable(false);
 }
 
