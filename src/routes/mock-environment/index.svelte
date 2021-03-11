@@ -87,9 +87,11 @@
 {#if !started}
   <div class="subtitle">
     <p>
-      In this experiment, we will describe the context of a particular protest
+      In this study, we will describe the context of a particular protest
       scenario. We will then ask you to participate in a simulated social media
-      environment as if you were in the scenario described.
+      environment as if you were in the scenario described. Specifically, we
+      would like you to share information that you feel is relevant for other
+      demonstrators to be aware of given the protest scenario.
     </p>
     <p>
       This task involves a description of a scenario and real content from
@@ -99,7 +101,10 @@
         you significant distress.
       </span>
       You may end the experiment at any time without penalty. Please do not
-      refer to outside sources during the experiment.
+      refer to outside sources during the experiment. You will have two minutes
+      in the environment to reshare information. If finish choosing what posts
+      to reshare early, you can press the "I'm Done" button at the top of your
+      screen.
     </p>
     <p>Press the "START" button at the top of your screen to begin.</p>
   </div>
