@@ -102,7 +102,7 @@
       </span>
       You may end the experiment at any time without penalty. Please do not
       refer to outside sources during the experiment. You will have two minutes
-      in the environment to reshare information. If finish choosing what posts
+      in the environment to reshare information. If you finish choosing what posts
       to reshare early, you can press the "I'm Done" button at the top of your
       screen.
     </p>
