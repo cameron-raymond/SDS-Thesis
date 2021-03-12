@@ -6,9 +6,14 @@
 
 - Context: information shared during protests.
 - Data: tweets from previous protests that later turned out to be True or False (e.g. notifications of violence/police crackdowns/counter protests)
+- Rumours: Two rumours, one that is more plausible than the other. Derived from fact-checking news sites after the fact.
+  - [Were Portland Protesters ‘Kidnapped’ by Federal Officers in Unmarked Vans?](https://www.snopes.com/fact-check/feds-unmarked-vans-portland/)
+    - Twitter Threads / articles: [thread](https://twitter.com/matcha_chai/status/1283328232033411072), [denying rumour](https://twitter.com/honeybearius/status/1283951101486731264), [denying rumour](https://twitter.com/BootsyMagnums/status/1284014453621772288), [affirming rumour](https://twitter.com/bitsandsnatches/status/1283520381249191936)
+  - [Minnesota law enforcement isn’t “contact tracing” protesters, despite an official’s comment](https://www.vox.com/recode/2020/6/1/21277393/minnesota-protesters-contact-tracing-covid-19)
+    - Twitter Threads/ articles: [thread](https://twitter.com/mikarv/status/1266855229557014531), [article](https://www.verdict.co.uk/brittany-kaiser-contact-tracing-police/)), [article](https://www.coindesk.com/minnesota-official-alarms-privacy-advocates-with-contact-tracing-comments)
 - Intervention(s):
   - &#9744; Salience content intervention  (Be aware that not everything online is true.)
-  - &#9744; Contrastive content warning (others disagree with this statement)
+  - &#9745; Contrastive content warning (others disagree with this statement)
   - &#9745; Birdwatch warning (see: [birdwatch homepage](https://twitter.github.io/birdwatch/)) 
   
 #### &#9744; Experimental Analysis of Crowdsourced Rumour Verifications
