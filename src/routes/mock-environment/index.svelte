@@ -8,8 +8,10 @@
 <script>
   import { onMount, onDestroy } from "svelte";
   import { goto } from "@sapper/app";
+  import { fly } from "svelte/transition";
   import Header from "../../components/EnvNav.svelte";
   import Card from "../../components/Card.svelte";
+  import { FaAngleDown } from "svelte-icons/fa";
   import { PROLIFIC_PID, SESSION_ID, STUDY_ID } from "../../stores/local-store";
   export let posts;
   const time = 60 * 2;
@@ -75,7 +77,18 @@
     padding: 0px 0px 0px 8em;
     border-top: 1px solid var(--grey-light);
   }
+  .down-arrow {
+    display: inline-block;
+    color: var(--orange);
+    height: 2.5rem;
+    width: 2.5rem;
+    margin: 0 calc(50% - 2em);
+  }
   @media (max-width: 800px) {
+    .down-arrow {
+      height: 1.75rem;
+      width: 1.75rem;
+    }
     .cont {
       padding: 0;
     }
@@ -85,31 +98,36 @@
 <Header {time} bind:started bind:finished bind:timeLeft />
 <h1>Social Media and Protests</h1>
 {#if !finished}
-<div class="subtitle">
-  <p>
-    In this study, we will describe the context of a particular protest
-    scenario. We will then ask you to participate in a simulated social media
-    environment as if you were in the scenario described. Specifically, we would
-    like you to share information that you feel is relevant for other
-    demonstrators to be aware of given the protest scenario. You can reshare
-    information by pressing the "reshare" button on the bottom right-hand corner
-    of a post.
-  </p>
-  <p>
-    This task involves a description of a scenario and real content from social
-    media activity during recent anti-racism protests.
-    <span class="note">
-      Please do not particate if you anticipate that this content may cause you
-      significant distress.
-    </span>
-    You may end the experiment at any time without penalty. Please do not refer
-    to outside sources during the experiment. You will have two minutes in the
-    environment to reshare information. If you finish choosing what posts to
-    reshare early, you can press the "I'm Done" button at the top of your
-    screen.
-  </p>
-  <p>Press the "START" button at the top of your screen to begin.</p>
-</div>
+  <div class="subtitle">
+    <p>
+      In this study, we will describe the context of a particular protest
+      scenario. We will then ask you to participate in a simulated social media
+      environment as if you were in the scenario described. Specifically, we
+      would like you to share information that you feel is relevant for other
+      demonstrators to be aware of given the protest scenario. You can reshare
+      information by pressing the "reshare" button on the bottom right-hand
+      corner of a post.
+    </p>
+    <p>
+      This task involves a description of a scenario and real content from
+      social media activity during recent anti-racism protests.
+      <span class="note">
+        Please do not particate if you anticipate that this content may cause
+        you significant distress.
+      </span>
+      You may end the experiment at any time without penalty. Please do not
+      refer to outside sources during the experiment. You will have two minutes
+      in the environment to reshare information. If you finish choosing what
+      posts to reshare early, you can press the "I'm Done" button at the top of
+      your screen.
+    </p>
+    <p>Press the "START" button at the top of your screen to begin.</p>
+    {#if started}
+      <span class="down-arrow" in:fly="{{y: -50, duration: 300 }}">
+        <FaAngleDown />
+      </span>
+    {/if}
+  </div>
 {/if}
 {#if started}
   {#if !finished}
