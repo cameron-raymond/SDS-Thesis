@@ -36,7 +36,7 @@
     border-bottom: 1px solid var(--grey-light);
   }
   .buffer {
-    height: 100px;
+    height: 40px;
   }
   @media (max-width: 40rem) {
 	button {

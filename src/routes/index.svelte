@@ -54,7 +54,7 @@
     ongoing protest. All of the information we obtain during the research will
     be kept confidential, and not associated with your name or social media
     accounts in any way, however, while the study is running it will be
-    associated with your Prolific participant ID. We will publically release the
+    associated with your Prolific participant ID. We will publicly release the
     data from this experiment, with Prolific IDs removed. Your participation in
     this research is voluntary. You are free to refuse to take part, and you may
     stop taking part at any time. You are free to discontinue participation in

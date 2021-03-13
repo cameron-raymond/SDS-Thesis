@@ -84,30 +84,32 @@
 
 <Header {time} bind:started bind:finished bind:timeLeft />
 <h1>Social Media and Protests</h1>
-{#if !started}
-  <div class="subtitle">
-    <p>
-      In this study, we will describe the context of a particular protest
-      scenario. We will then ask you to participate in a simulated social media
-      environment as if you were in the scenario described. Specifically, we
-      would like you to share information that you feel is relevant for other
-      demonstrators to be aware of given the protest scenario.
-    </p>
-    <p>
-      This task involves a description of a scenario and real content from
-      social media activity during recent anti-racism protests.
-      <span class="note">
-        Please do not particate if you anticipate that this content may cause
-        you significant distress.
-      </span>
-      You may end the experiment at any time without penalty. Please do not
-      refer to outside sources during the experiment. You will have two minutes
-      in the environment to reshare information. If you finish choosing what posts
-      to reshare early, you can press the "I'm Done" button at the top of your
-      screen.
-    </p>
-    <p>Press the "START" button at the top of your screen to begin.</p>
-  </div>
+{#if !finished}
+<div class="subtitle">
+  <p>
+    In this study, we will describe the context of a particular protest
+    scenario. We will then ask you to participate in a simulated social media
+    environment as if you were in the scenario described. Specifically, we would
+    like you to share information that you feel is relevant for other
+    demonstrators to be aware of given the protest scenario. You can reshare
+    information by pressing the "reshare" button on the bottom right-hand corner
+    of a post.
+  </p>
+  <p>
+    This task involves a description of a scenario and real content from social
+    media activity during recent anti-racism protests.
+    <span class="note">
+      Please do not particate if you anticipate that this content may cause you
+      significant distress.
+    </span>
+    You may end the experiment at any time without penalty. Please do not refer
+    to outside sources during the experiment. You will have two minutes in the
+    environment to reshare information. If you finish choosing what posts to
+    reshare early, you can press the "I'm Done" button at the top of your
+    screen.
+  </p>
+  <p>Press the "START" button at the top of your screen to begin.</p>
+</div>
 {/if}
 {#if started}
   {#if !finished}
@@ -124,8 +126,7 @@
     <p>
       You will be automatically redirected to the post-study questionnaire in 15
       seconds. If that does not happen, please click on this link:
-      <a href="/post-study-questionnaire">post-study questionnaire</a>
-      , to continue.
+      <a href="/post-study-questionnaire">post-study questionnaire</a>, to continue.
     </p>
   {/if}
 {/if}
