@@ -17,6 +17,7 @@
     background-color: var(--red);
     font-size: 11px;
     padding: 4px 8px;
+    z-index: 1001;
   }
   button:hover:not(:disabled) {
     background-color: var(--red-dark);

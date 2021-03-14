@@ -64,6 +64,7 @@
     color: #555;
     max-width: 40rem;
     margin-bottom: 0.5rem;
+    padding-bottom: 2.5rem;
   }
   .note {
     color: var(--red);
@@ -76,19 +77,27 @@
     margin: 0px -2em 0px -2em;
     padding: 0px 0px 0px 8em;
     border-top: 1px solid var(--grey-light);
+    background-color: white;
+    z-index: 2;
   }
   .down-arrow {
     display: inline-block;
+    position: fixed;
+    bottom: 3em;
+    left: 50%;
     color: var(--orange);
     height: 2.5rem;
     width: 2.5rem;
-    margin: 0 calc(50% - 2em);
+    z-index: 1;
   }
-  @media (max-width: 800px) {
+  @media (max-width: 40rem) {
     .down-arrow {
       height: 1.75rem;
       width: 1.75rem;
     }
+  }
+
+  @media (max-width: 800px) {
     .cont {
       padding: 0;
     }
@@ -123,7 +132,7 @@
     </p>
     <p>Press the "START" button at the top of your screen to begin.</p>
     {#if started}
-      <span class="down-arrow" in:fly="{{y: -50, duration: 300 }}">
+      <span class="down-arrow" in:fly={{ y: -50, duration: 300 }}>
         <FaAngleDown />
       </span>
     {/if}
