@@ -20,6 +20,7 @@
   let started = false;
   let finished = false;
   let timeLeft = time;
+  let y = 0;
   onMount(async () => {
     const res = await fetch(
       "https://randomuser.me/api/?inc=gender,name,picture&nat=us&results=" +
@@ -104,6 +105,8 @@
   }
 </style>
 
+<svelte:window bind:scrollY={y} />
+
 <Header {time} bind:started bind:finished bind:timeLeft />
 <h1>Social Media and Protests</h1>
 {#if !finished}
@@ -131,7 +134,7 @@
       your screen.
     </p>
     <p>Press the "START" button at the top of your screen to begin.</p>
-    {#if started}
+    {#if started && y < 100}
       <span class="down-arrow" in:fly={{ y: -50, duration: 300 }}>
         <FaAngleDown />
       </span>
@@ -153,7 +156,8 @@
     <p>
       You will be automatically redirected to the post-study questionnaire in 15
       seconds. If that does not happen, please click on this link:
-      <a href="/post-study-questionnaire">post-study questionnaire</a>, to continue.
+      <a href="/post-study-questionnaire">post-study questionnaire</a>
+      , to continue.
     </p>
   {/if}
 {/if}

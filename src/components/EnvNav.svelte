@@ -34,6 +34,7 @@
     align-items: baseline;
     background-color: white;
     border-bottom: 1px solid var(--grey-light);
+    z-index: 1000;
   }
   .buffer {
     height: 40px;
