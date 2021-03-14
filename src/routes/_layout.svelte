@@ -10,7 +10,7 @@
     min-width: 20rem;
     /* max-width: 56em; */
     background-color: white;
-    padding: 4em 2em 7em 2em;
+    padding: 4em 2em 0em 2em;
     display: flex;
     flex-direction: column;
     position: relative;
@@ -20,6 +20,11 @@
     visibility: hidden;
     bottom: 0;
     left: 0;
+  }
+  .bottom-buff{
+    height: 7em;
+    z-index: 2;
+    background-color: white;
   }
 
   span {
@@ -101,6 +106,7 @@
       to consent and take part in the study.
     </small>
   {/if}
+  <div class="bottom-buff">
   {#if segment !== undefined}
     <Foot />
   {/if}
