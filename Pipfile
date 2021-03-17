@@ -23,6 +23,7 @@ radian = "*"
 linearmodels = "*"
 tableone = "*"
 pyprocessmacro = "*"
+bioinfokit = "*"
 
 [requires]
 python_version = "3.9"
