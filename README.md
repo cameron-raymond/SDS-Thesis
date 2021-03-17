@@ -1,8 +1,7 @@
 # Experimental Analysis of Rumour Systems
 
-## Options
 
-#### &#9745; Managing Online Rumours During Offline Protest
+## &#9745; Managing Online Rumours During Offline Protest
 
 - Context: information shared during protests.
 - Data: tweets from previous protests that later turned out to be True or False (e.g. notifications of violence/police crackdowns/counter protests)
@@ -14,17 +13,23 @@
 - Intervention(s):
   - &#9744; Salience content intervention  (Be aware that not everything online is true.)
   - &#9745; Contrastive content warning (others disagree with this statement)
-  - &#9745; Birdwatch warning (see: [birdwatch homepage](https://twitter.github.io/birdwatch/)) 
-  
-#### &#9744; Experimental Analysis of Crowdsourced Rumour Verifications
+  - &#9745; Birdwatch warning (see: [birdwatch homepage](https://twitter.github.io/birdwatch/))
 
-- Context: Evaluating the efficacy of Twitter's birdwatch program, relative to traditional top-down forms of content interventions.
-- Data: Tweets flagged in Twitter's pilot birdwatch program.
-  - Use the meta-data from the flags as the evidence level for the original proposition.
-- Intervention(s):
-  - &#9744; Salience content intervention  (Be aware that not everything online is true.)
-  - &#9744; Contrastive content warning (others disagree with this statement)
-  - &#9744; Birdwatch warning (see: [birdwatch homepage](https://twitter.github.io/birdwatch/))
+## Hypotheses
+
+### System level hypotheses
+
+The presence of credibility indicators in the system will:
+
+- $H_1$: *decrease* the *affirmation rate* for rumours with lower evidence levels.
+- $H_2$: *increase* the *denial rate* for rumours with lower evidence levels.
+- $H_3$: *increase* the *affirmation rate* for rumours with higher evidence levels.
+- $H_4$: *decrease* the *denial rate* for rumours with higher evidence levels.
+
+### Post level hypotheses
+
+- $H_5$: No credibility indicator will moderate the effect of evidence in resharing
+- $H_6$: The effect of credibility indicators will be impacted by post meta-data, such as the poster's gender and the temporal proximity of the information.
 
 ## Branches
 
