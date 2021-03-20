@@ -26,6 +26,7 @@ pyprocessmacro = "*"
 bioinfokit = "*"
 numba = "*"
 tqdm = "*"
+pingouin = "*"
 
 [requires]
 python_version = "3.9"

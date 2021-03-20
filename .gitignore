@@ -1,7 +1,7 @@
 node_modules/
 __sapper__/
 src/
-*.DS_STORE
+*.DS_STOREgi
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
