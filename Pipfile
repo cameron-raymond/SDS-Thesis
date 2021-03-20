@@ -24,6 +24,8 @@ linearmodels = "*"
 tableone = "*"
 pyprocessmacro = "*"
 bioinfokit = "*"
+numba = "*"
+tqdm = "*"
 
 [requires]
 python_version = "3.9"
