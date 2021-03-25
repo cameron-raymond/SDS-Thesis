@@ -1,4 +1,5 @@
 <script>
+  import { prefetch } from "@sapper/app";
   import Timer from "./Timer.svelte";
   export let time;
   export let timeLeft;
@@ -40,12 +41,11 @@
     height: 40px;
   }
   @media (max-width: 40rem) {
-	button {
-		font-size: 11px;
-		padding: 4px 8px;
-	}
-}
-
+    button {
+      font-size: 11px;
+      padding: 4px 8px;
+    }
+  }
 </style>
 
 <div class="buffer">
@@ -56,7 +56,11 @@
         <button disabled>I'm Done</button>
       {:else if !finished}
         <button class="margin" disabled>Start</button>
-        <button on:click={finish}>I'm Done</button>
+        <button
+          on:mouseover={() => prefetch(`/post-study-questionnaire`)}
+          on:click={finish}>
+          I'm Done
+        </button>
       {:else}
         <button class="margin" disabled>Start</button>
         <button disabled>I'm Done</button>
@@ -64,7 +68,7 @@
     </span>
 
     {#if started}
-      <Timer {time} bind:finished bind:timeLeft/>
+      <Timer {time} bind:finished bind:timeLeft />
     {/if}
   </span>
 </div>

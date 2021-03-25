@@ -156,8 +156,8 @@
     <p>
       You will be automatically redirected to the post-study questionnaire in 15
       seconds. If that does not happen, please click on this link:
-      <a href="/post-study-questionnaire">post-study questionnaire</a>
-      , to continue.
+      <a href="/post-study-questionnaire">post-study questionnaire</a>,
+       to continue.
     </p>
   {/if}
 {/if}

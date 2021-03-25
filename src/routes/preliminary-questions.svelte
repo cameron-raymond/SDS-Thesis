@@ -1,4 +1,5 @@
 <script>
+  import { prefetch } from '@sapper/app';
   import { createForm } from "svelte-forms-lib";
   import { PROLIFIC_PID, SESSION_ID, STUDY_ID,consent} from "../stores/local-store";
   import { goto } from "@sapper/app";
@@ -370,6 +371,6 @@
         bind:value={typedSocialMedias} />
     {/if}
 
-    <button type="submit">Submit</button>
+    <button on:mouseover={() => prefetch(`/mock-environment`)} type="submit">Submit</button>
   </form>
 </span>
