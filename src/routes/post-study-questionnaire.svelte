@@ -61,7 +61,7 @@
     {/if}
 
     <label for="awareR2">
-      Were you previously aware of this other rumour that I'm still deciding on?
+      Were you previously aware of the rumour that federal agents were kidnapping protestors?
     </label>
     <select
       id="awareR2"
