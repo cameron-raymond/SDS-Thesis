@@ -32,7 +32,6 @@
 </style>
 
 <span class="container">
-  <h4>{$condition}</h4>
   <h1>We need your consent to proceed</h1>
   {#if !valid_params}
     <small>

@@ -11,10 +11,16 @@
   import { fly } from "svelte/transition";
   import Header from "../../components/EnvNav.svelte";
   import Card from "../../components/Card.svelte";
+  import CredibilityIndicator from "../../components/CredibilityIndicator.svelte"
   import { FaAngleDown } from "svelte-icons/fa";
-  import { PROLIFIC_PID, SESSION_ID, STUDY_ID } from "../../stores/local-store";
+  import {
+    PROLIFIC_PID,
+    SESSION_ID,
+    STUDY_ID,
+    condition
+  } from "../../stores/local-store";
   export let posts;
-  const time = 60 * 2;
+  const time = 60 * 10;
   let treatment = Math.random() > 0.5 ? true : false;
   let dataLoaded = false;
   let started = false;
@@ -57,6 +63,20 @@
     setTimeout(() => {
       goto(`/post-study-questionnaire`);
     }, 15000);
+  }
+
+  $: if (dataLoaded && $condition == "treatment") {
+    let lowEvaffirms = posts.map((e, i) =>  e.evidence === "low" && e.code === "affirms" ? i : -1).filter(x => x > -1);
+    let numIndicators = Math.ceil(lowEvaffirms.length / 2)
+    let credIndicators = lowEvaffirms.sort(() => .5 - Math.random()).slice(0,numIndicators)
+    for (const i of credIndicators){
+      posts[i].warning = true;
+    }
+  } else {
+    posts = posts.map(post => {
+      post.warning = false;
+      return post
+    });
   }
 </script>
 
@@ -122,7 +142,7 @@
     </p>
     <p>
       This task involves a description of a scenario and real content from
-      social media activity during recent anti-racism protests.
+      social media activity during recent protests.
       <span class="note">
         Please do not particate if you anticipate that this content may cause
         you significant distress.
@@ -147,7 +167,7 @@
       <span class="cont">
         {#each posts as post, i}
           <!-- binds the reshare variable in the child component to the post.reshared subfield in our array -->
-          <Card {post} bind:reshared={post.reshared} />
+          <Card {post} bind:reshared={post.reshared} warning={post.warning ? CredibilityIndicator : undefined}/>
         {/each}
       </span>
     {/if}
@@ -156,8 +176,8 @@
     <p>
       You will be automatically redirected to the post-study questionnaire in 15
       seconds. If that does not happen, please click on this link:
-      <a href="/post-study-questionnaire">post-study questionnaire</a>,
-       to continue.
+      <a href="/post-study-questionnaire">post-study questionnaire</a>
+      , to continue.
     </p>
   {/if}
 {/if}

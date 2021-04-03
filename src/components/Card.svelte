@@ -1,6 +1,7 @@
 <script>
   import FaRetweet from "svelte-icons/fa/FaRetweet.svelte";
   export let post;
+  export let warning;
   export let reshared = false;
 </script>
 
@@ -156,8 +157,8 @@
   </p>
 
   <span class="foot">
-    {#if post.warning}
-      {@html post.warning}
+    {#if warning}
+      <svelte:component this={warning} />
     {:else}
       <div />
     {/if}
