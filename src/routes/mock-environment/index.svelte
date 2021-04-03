@@ -20,7 +20,7 @@
     condition
   } from "../../stores/local-store";
   export let posts;
-  const time = 60 * 10;
+  const time = 60 * 2;
   let treatment = Math.random() > 0.5 ? true : false;
   let dataLoaded = false;
   let started = false;
@@ -64,7 +64,7 @@
       goto(`/post-study-questionnaire`);
     }, 15000);
   }
-
+  // Move this to on mount, is only in a reactive block for dev purposes (to switch back and forth easily)
   $: if (dataLoaded && $condition == "treatment") {
     let lowEvaffirms = posts.map((e, i) =>  e.evidence === "low" && e.code === "affirms" ? i : -1).filter(x => x > -1);
     let numIndicators = Math.ceil(lowEvaffirms.length / 2)

@@ -22,15 +22,20 @@
   button:hover:not(:disabled) {
     background-color: var(--red-dark);
   }
-  h4 {
+  select {
     position: fixed;
     bottom: 3em;
     left: 3em;
     z-index: 1001;
+    width: 10rem;
   }
 </style>
 
 <button on:click={finish}>Withdraw</button>
-<h4>
-  <input bind:value={$condition} />
-</h4>
+
+<select
+  bind:value={$condition}>
+  <option value=-1 />
+  <option value="treatment">Treatment</option>
+  <option value="control">Control</option>
+</select>
