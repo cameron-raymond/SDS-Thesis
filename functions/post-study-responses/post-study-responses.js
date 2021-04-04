@@ -1,0 +1,40 @@
+var admin = require("firebase-admin");
+
+var serviceAccount = require("../../firebasekey.json");
+
+if (!admin.apps.length) {
+  admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount)
+  });
+}
+
+const firestore = admin.firestore()
+
+exports.handler = async (event, context) => {
+  let data = JSON.parse(event.body)
+  const { PROLIFIC_PID } = data
+  console.log("Creating a new post-study response for " + PROLIFIC_PID)
+  try {
+    const query = await firestore.collection('post-study-responses').doc(PROLIFIC_PID.toString()).set(data)
+    console.log(query)
+    if (query.empty) {
+      return {
+        statusCode: 404,
+        body: JSON.stringify({
+          message: 'User not found'
+        })
+      }
+    }
+  } catch (error) {
+    return {
+      statusCode: 500,
+      body: JSON.stringify({
+        error: error.message
+      })
+    }
+  }
+  return {
+    statusCode: 200,
+    body: JSON.stringify(data)
+  }
+}

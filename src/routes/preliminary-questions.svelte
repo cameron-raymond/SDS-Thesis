@@ -83,7 +83,7 @@
         consent: $consent,
         ...values
       };
-      const url = "/participant";
+      const url = "/.netlify/functions/participants";
       fetch(url, {
         method: "POST",
         body: JSON.stringify(toSubmit),
@@ -91,10 +91,8 @@
           "Content-Type": "application/json"
         }
       })
-        // .then(r => r.json())
         .then(r => console.log(r))
         .catch(err => {console.log("POST error", err.message);});
-      // console.log(JSON.stringify(toSubmit));
       goto(`/mock-environment`);
     }
   });

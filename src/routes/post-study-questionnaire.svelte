@@ -24,7 +24,7 @@
         STUDY_ID: $STUDY_ID,
         ...values
       };
-      const url = "/post-study-response";
+      const url = "/.netlify/functions/post-study-responses";
       fetch(url, {
         method: "POST",
         body: JSON.stringify(toSubmit),
@@ -32,7 +32,6 @@
           "Content-Type": "application/json"
         }
       })
-        // .then(r => r.json())
         .then(r => console.log(r))
         .catch(err => {
           console.log("POST error", err.message);
