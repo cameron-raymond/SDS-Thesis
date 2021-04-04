@@ -1,6 +1,5 @@
 require('dotenv').config();
 var admin = require("firebase-admin");
-
 const { type,
   project_id,
   private_key,
@@ -17,7 +16,7 @@ if (!admin.apps.length) {
     credential: admin.credential.cert({
       type,
       project_id,
-      private_key,
+      "private_key": private_key.replace(/\\n/g, '\n'),
       private_key_id,
       client_email,
       client_id,
@@ -60,6 +59,6 @@ exports.handler = async (event, context) => {
     'Access-Control-Allow-Origin': '*',
     /* Required for cookies, authorization headers with HTTPS */
     'Access-Control-Allow-Credentials': true,
-     body: JSON.stringify(data)
+    body: JSON.stringify(data)
   }
 }

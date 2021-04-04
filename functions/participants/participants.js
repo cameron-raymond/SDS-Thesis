@@ -4,20 +4,20 @@ var admin = require("firebase-admin");
 const { type,
   project_id,
   private_key,
-  private_key_id,
-  client_email,
-  client_id,
-  auth_uri,
-  token_uri,
-  auth_provider_x509_cert_url,
-  client_x509_cert_url } = process.env
+    private_key_id,
+    client_email,
+    client_id,
+    auth_uri,
+    token_uri,
+    auth_provider_x509_cert_url,
+    client_x509_cert_url } = process.env
 
 if (!admin.apps.length) {
   admin.initializeApp({
     credential: admin.credential.cert({
       type,
       project_id,
-      private_key,
+      "private_key": private_key.replace(/\\n/g, '\n'),
       private_key_id,
       client_email,
       client_id,
@@ -51,18 +51,7 @@ exports.handler = async (event, context) => {
     return {
       statusCode: 500,
       body: JSON.stringify({
-        error: error.message,
-        type,
-        project_id,
-        private_key,
-        private_key_id,
-        client_email,
-        client_id,
-        auth_uri,
-        token_uri,
-        auth_provider_x509_cert_url,
-        client_x509_cert_url
-
+        error: error.message
       })
     }
   }
