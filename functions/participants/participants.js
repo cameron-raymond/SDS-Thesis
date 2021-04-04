@@ -41,15 +41,6 @@ exports.handler = async (event, context) => {
   console.log("Creating a new participant for " + PROLIFIC_PID)
   try {
     const query = await firestore.collection('participants').doc(PROLIFIC_PID.toString()).set(data)
-    console.log(query)
-    if (query.empty) {
-      return {
-        statusCode: 404,
-        body: JSON.stringify({
-          message: 'User not found'
-        })
-      }
-    }
   } catch (error) {
     return {
       statusCode: 500,
@@ -64,6 +55,6 @@ exports.handler = async (event, context) => {
     'Access-Control-Allow-Origin': '*',
     /* Required for cookies, authorization headers with HTTPS */
     'Access-Control-Allow-Credentials': true,
-    body: JSON.stringify(cert)
+    body: JSON.stringify(data)
   }
 }

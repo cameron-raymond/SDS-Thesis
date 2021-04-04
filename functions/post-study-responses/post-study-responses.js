@@ -40,15 +40,6 @@ exports.handler = async (event, context) => {
   console.log("Creating a new post-study response for " + PROLIFIC_PID)
   try {
     const query = await firestore.collection('post-study-responses').doc(PROLIFIC_PID.toString()).set(data)
-    console.log(query)
-    if (query.empty) {
-      return {
-        statusCode: 404,
-        body: JSON.stringify({
-          message: 'User not found'
-        })
-      }
-    }
   } catch (error) {
     return {
       statusCode: 500,
