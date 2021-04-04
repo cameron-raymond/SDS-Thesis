@@ -2,6 +2,31 @@
   import Foot from "../components/ExitFooter.svelte";
   import { consent } from "../stores/local-store";
   export let segment;
+
+  const {
+    type,
+    project_id,
+    private_key,
+    private_key_id,
+    client_email,
+    client_id,
+    auth_uri,
+    token_uri,
+    auth_provider_x509_cert_url,
+    client_x509_cert_url
+  } = process.env;
+  console.log({
+    type,
+    project_id,
+    private_key,
+    private_key_id,
+    client_email,
+    client_id,
+    auth_uri,
+    token_uri,
+    auth_provider_x509_cert_url,
+    client_x509_cert_url
+  });
 </script>
 
 <style>
