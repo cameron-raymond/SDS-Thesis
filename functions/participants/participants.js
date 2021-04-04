@@ -1,10 +1,31 @@
+require('dotenv').config();
 var admin = require("firebase-admin");
 
-var serviceAccount = require("../../firebasekey.json");
+const { type,
+  project_id,
+  private_key,
+  private_key_id,
+  client_email,
+  client_id,
+  auth_uri,
+  token_uri,
+  auth_provider_x509_cert_url,
+  client_x509_cert_url } = process.env
 
 if (!admin.apps.length) {
   admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount)
+    credential: admin.credential.cert({
+      type,
+      project_id,
+      private_key,
+      private_key_id,
+      client_email,
+      client_id,
+      auth_uri,
+      token_uri,
+      auth_provider_x509_cert_url,
+      client_x509_cert_url
+    })
   });
 }
 
