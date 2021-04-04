@@ -1,5 +1,5 @@
 
 [build]
-  command = "npm netlify:build"
+  command = "yarn netlify:build"
   functions = "functions"
   publish = "__sapper__/export"
