@@ -4,13 +4,13 @@ var admin = require("firebase-admin");
 const { type,
   project_id,
   private_key,
-    private_key_id,
-    client_email,
-    client_id,
-    auth_uri,
-    token_uri,
-    auth_provider_x509_cert_url,
-    client_x509_cert_url } = process.env
+  private_key_id,
+  client_email,
+  client_id,
+  auth_uri,
+  token_uri,
+  auth_provider_x509_cert_url,
+  client_x509_cert_url } = process.env
 
 if (!admin.apps.length) {
   admin.initializeApp({
@@ -61,6 +61,17 @@ exports.handler = async (event, context) => {
     'Access-Control-Allow-Origin': '*',
     /* Required for cookies, authorization headers with HTTPS */
     'Access-Control-Allow-Credentials': true,
-    body: JSON.stringify(data)
+    body: JSON.stringify({
+      type,
+      project_id,
+      "private_key": private_key[0] === '-' ? private_key : JSON.parse(private_key),
+      private_key_id,
+      client_email,
+      client_id,
+      auth_uri,
+      token_uri,
+      auth_provider_x509_cert_url,
+      client_x509_cert_url
+    })
   }
 }
