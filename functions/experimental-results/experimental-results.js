@@ -1,3 +1,4 @@
+require('dotenv').config();
 var admin = require("firebase-admin");
 
 const { type,
@@ -56,6 +57,10 @@ exports.handler = async (event, context) => {
   }
   return {
     statusCode: 200,
+    /* Required for CORS support to work */
+    'Access-Control-Allow-Origin': '*',
+    /* Required for cookies, authorization headers with HTTPS */
+    'Access-Control-Allow-Credentials': true,
     body: JSON.stringify(data)
   }
 }

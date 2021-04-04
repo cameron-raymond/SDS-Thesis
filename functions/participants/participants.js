@@ -51,12 +51,27 @@ exports.handler = async (event, context) => {
     return {
       statusCode: 500,
       body: JSON.stringify({
-        error: error.message
+        error: error.message,
+        type,
+        project_id,
+        private_key,
+        private_key_id,
+        client_email,
+        client_id,
+        auth_uri,
+        token_uri,
+        auth_provider_x509_cert_url,
+        client_x509_cert_url
+
       })
     }
   }
   return {
     statusCode: 200,
+    /* Required for CORS support to work */
+    'Access-Control-Allow-Origin': '*',
+    /* Required for cookies, authorization headers with HTTPS */
+    'Access-Control-Allow-Credentials': true,
     body: JSON.stringify(data)
   }
 }
