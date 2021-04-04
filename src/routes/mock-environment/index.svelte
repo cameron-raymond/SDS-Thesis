@@ -11,7 +11,7 @@
   import { fly } from "svelte/transition";
   import Header from "../../components/EnvNav.svelte";
   import Card from "../../components/Card.svelte";
-  import CredibilityIndicator from "../../components/CredibilityIndicator.svelte"
+  import CredibilityIndicator from "../../components/CredibilityIndicator.svelte";
   import { FaAngleDown } from "svelte-icons/fa";
   import {
     PROLIFIC_PID,
@@ -21,7 +21,6 @@
   } from "../../stores/local-store";
   export let posts;
   const time = 60 * 2;
-  let treatment = Math.random() > 0.5 ? true : false;
   let dataLoaded = false;
   let started = false;
   let finished = false;
@@ -54,28 +53,43 @@
       PROLIFIC_PID: $PROLIFIC_PID,
       SESSION_ID: $SESSION_ID,
       STUDY_ID: $STUDY_ID,
-      treatment: treatment,
+      condition: $condition,
       secondsTaken: time - timeLeft,
       posts: simplePosts
     };
-    // POST DATA
-    console.log(JSON.stringify(toSubmit));
+    const url = "/mock-environment/experimental-results";
+    fetch(url, {
+      method: "POST",
+      body: JSON.stringify(toSubmit),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+      // .then(r => r.json())
+      .then(r => console.log(r))
+      .catch(err => {
+        console.log("POST error", err.message);
+      });
     setTimeout(() => {
       goto(`/post-study-questionnaire`);
     }, 15000);
   }
   // Move this to on mount, is only in a reactive block for dev purposes (to switch back and forth easily)
   $: if (dataLoaded && $condition == "treatment") {
-    let lowEvaffirms = posts.map((e, i) =>  e.evidence === "low" && e.code === "affirms" ? i : -1).filter(x => x > -1);
-    let numIndicators = Math.ceil(lowEvaffirms.length / 2)
-    let credIndicators = lowEvaffirms.sort(() => .5 - Math.random()).slice(0,numIndicators)
-    for (const i of credIndicators){
+    let lowEvaffirms = posts
+      .map((e, i) => (e.evidence === "low" && e.code === "affirms" ? i : -1))
+      .filter(x => x > -1);
+    let numIndicators = Math.ceil(lowEvaffirms.length / 2);
+    let credIndicators = lowEvaffirms
+      .sort(() => 0.5 - Math.random())
+      .slice(0, numIndicators);
+    for (const i of credIndicators) {
       posts[i].warning = true;
     }
   } else {
     posts = posts.map(post => {
       post.warning = false;
-      return post
+      return post;
     });
   }
 </script>
@@ -167,7 +181,10 @@
       <span class="cont">
         {#each posts as post, i}
           <!-- binds the reshare variable in the child component to the post.reshared subfield in our array -->
-          <Card {post} bind:reshared={post.reshared} warning={post.warning ? CredibilityIndicator : undefined}/>
+          <Card
+            {post}
+            bind:reshared={post.reshared}
+            warning={post.warning ? CredibilityIndicator : undefined} />
         {/each}
       </span>
     {/if}

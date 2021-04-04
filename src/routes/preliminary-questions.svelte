@@ -1,7 +1,12 @@
 <script>
-  import { prefetch } from '@sapper/app';
+  import { prefetch } from "@sapper/app";
   import { createForm } from "svelte-forms-lib";
-  import { PROLIFIC_PID, SESSION_ID, STUDY_ID,consent} from "../stores/local-store";
+  import {
+    PROLIFIC_PID,
+    SESSION_ID,
+    STUDY_ID,
+    consent
+  } from "../stores/local-store";
   import { goto } from "@sapper/app";
   import * as yup from "yup";
   var typedGender = "";
@@ -78,7 +83,18 @@
         consent: $consent,
         ...values
       };
-      console.log(JSON.stringify(toSubmit));
+      const url = "/participant";
+      fetch(url, {
+        method: "POST",
+        body: JSON.stringify(toSubmit),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+        // .then(r => r.json())
+        .then(r => console.log(r))
+        .catch(err => {console.log("POST error", err.message);});
+      // console.log(JSON.stringify(toSubmit));
       goto(`/mock-environment`);
     }
   });
@@ -371,6 +387,8 @@
         bind:value={typedSocialMedias} />
     {/if}
 
-    <button on:mouseover={() => prefetch(`/mock-environment`)} type="submit">Submit</button>
+    <button on:mouseover={() => prefetch(`/mock-environment`)} type="submit">
+      Submit
+    </button>
   </form>
 </span>

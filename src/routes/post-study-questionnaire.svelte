@@ -24,7 +24,19 @@
         STUDY_ID: $STUDY_ID,
         ...values
       };
-      console.log(JSON.stringify(toSubmit));
+      const url = "/post-study-response";
+      fetch(url, {
+        method: "POST",
+        body: JSON.stringify(toSubmit),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+        // .then(r => r.json())
+        .then(r => console.log(r))
+        .catch(err => {
+          console.log("POST error", err.message);
+        });
       // UPDATE WITH CORRECT COMPLETION CODE
       // goto("https://app.prolific.co/submissions/complete?cc=5297E3A5");
     }
@@ -61,7 +73,8 @@
     {/if}
 
     <label for="awareR2">
-      Were you previously aware of the rumour that federal agents were kidnapping protestors?
+      Were you previously aware of the rumour that federal agents were
+      kidnapping protestors?
     </label>
     <select
       id="awareR2"
