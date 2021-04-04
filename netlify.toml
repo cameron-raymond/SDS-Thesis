@@ -1,0 +1,5 @@
+
+[build]
+  command = "npm netlify:build"
+  functions = "functions"
+  publish = "__sapper__/export"
