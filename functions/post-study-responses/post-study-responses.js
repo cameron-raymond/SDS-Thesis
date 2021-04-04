@@ -1,5 +1,6 @@
 require('dotenv').config();
 var admin = require("firebase-admin");
+
 const { type,
   project_id,
   private_key,
@@ -11,20 +12,23 @@ const { type,
   auth_provider_x509_cert_url,
   client_x509_cert_url } = process.env
 
+
+cert = {
+  "type": type.replace(/\\n/g, '\n').replace(/\"/g, ''),
+  "project_id": project_id.replace(/\\n/g, '\n').replace(/\"/g, ''),
+  "private_key": private_key.replace(/\\n/g, '\n').replace(/\"/g, ''),
+  "private_key_id": private_key_id.replace(/\\n/g, '\n').replace(/\"/g, ''),
+  "client_email": client_email.replace(/\\n/g, '\n').replace(/\"/g, ''),
+  "client_id": client_id.replace(/\\n/g, '\n').replace(/\"/g, ''),
+  "auth_uri": auth_uri.replace(/\\n/g, '\n').replace(/\"/g, ''),
+  "token_uri": token_uri.replace(/\\n/g, '\n').replace(/\"/g, ''),
+  "auth_provider_x509_cert_url": auth_provider_x509_cert_url.replace(/\\n/g, '\n').replace(/\"/g, ''),
+  "client_x509_cert_url": client_x509_cert_url.replace(/\\n/g, '\n').replace(/\"/g, '')
+}
+
 if (!admin.apps.length) {
   admin.initializeApp({
-    credential: admin.credential.cert({
-      type,
-      project_id,
-      "private_key": private_key[0] === '-' ? private_key : JSON.parse(private_key),
-      private_key_id,
-      client_email,
-      client_id,
-      auth_uri,
-      token_uri,
-      auth_provider_x509_cert_url,
-      client_x509_cert_url
-    })
+    credential: admin.credential.cert(cert)
   });
 }
 
