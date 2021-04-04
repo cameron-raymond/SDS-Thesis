@@ -17,7 +17,7 @@ if (!admin.apps.length) {
     credential: admin.credential.cert({
       type,
       project_id,
-      "private_key": private_key.replace(/\\n/g, '\n'),
+      "private_key": private_key[0] === '-' ? private_key : JSON.parse(private_key),
       private_key_id,
       client_email,
       client_id,
