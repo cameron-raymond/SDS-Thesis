@@ -93,6 +93,9 @@
 <main>
   {#if $consent || segment === undefined}
     <slot />
+    {#if segment !== undefined}
+      <Foot />
+    {/if}
   {:else}
     <small>
       According to our record we do not have your informed consent for this
@@ -100,9 +103,6 @@
       <a href="/">homepage</a>
       to consent and take part in the study.
     </small>
-  {/if}
-  {#if segment !== undefined}
-    <Foot />
   {/if}
 </main>
 <a href="/post-study-questionnaire" class="hide_link" aria-label=" ">

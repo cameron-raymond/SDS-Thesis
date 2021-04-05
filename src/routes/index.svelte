@@ -11,14 +11,15 @@
   const { page } = stores();
   let parsed = false;
   onMount(() => {
-    if ("PROLIFIC_PID" in $page.query)
-      PROLIFIC_PID.set($page.query.PROLIFIC_PID);
+    if ("PROLIFIC_PID" in $page.query) PROLIFIC_PID.set($page.query.PROLIFIC_PID);
     if ("SESSION_ID" in $page.query) SESSION_ID.set($page.query.SESSION_ID);
     if ("STUDY_ID" in $page.query) STUDY_ID.set($page.query.STUDY_ID);
-    if ($condition == -1) condition.set(Math.random()< 0.5 ? "treatment" : "control");
+    if ($condition == -1)
+      condition.set(Math.random() < 0.5 ? "treatment" : "control");
     parsed = true;
   });
-  $: valid_params = parsed && $PROLIFIC_PID != -1 && $SESSION_ID != -1 && $STUDY_ID != -1;
+  $: valid_params =
+    parsed && $PROLIFIC_PID != -1 && $SESSION_ID != -1 && $STUDY_ID != -1;
 </script>
 
 <style>
