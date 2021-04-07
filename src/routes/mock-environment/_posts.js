@@ -25,5 +25,6 @@ export const posts = fs.readdirSync(dirPath).map((postFilename) => {
   post.text = marked(postFrontMatter.body).replace(/^\t{3}/gm, "")
   post.warning = false;
   post.reshared = false;
+  post.clickedWarning = false;
   return post
 });

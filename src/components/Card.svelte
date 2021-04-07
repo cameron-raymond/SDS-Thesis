@@ -3,6 +3,7 @@
   export let post;
   export let warning;
   export let reshared = false;
+  export let clickedWarning = false;
 </script>
 
 <style>
@@ -158,7 +159,7 @@
 
   <span class="foot">
     {#if warning}
-      <svelte:component this={warning} />
+      <svelte:component this={warning} bind:clickedWarning />
     {:else}
       <div />
     {/if}

@@ -1,6 +1,7 @@
 <script>
   import { FaInfoCircle, FaAngleRight } from "svelte-icons/fa";
   import { IoIosCloseCircleOutline } from "svelte-icons/io";
+  export let clickedWarning = false;
   let showModal = false;
 </script>
 
@@ -119,6 +120,7 @@
 <div
   class="credibilityIndicator"
   on:click={() => {
+    clickedWarning = true;
     showModal = true;
   }}>
   <span class="icon">

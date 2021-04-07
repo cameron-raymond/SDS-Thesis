@@ -183,6 +183,7 @@
           <Card
             {post}
             bind:reshared={post.reshared}
+            bind:clickedWarning={post.clickedWarning}
             warning={post.warning ? CredibilityIndicator : undefined} />
         {/each}
       </span>
