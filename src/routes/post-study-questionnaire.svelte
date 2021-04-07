@@ -117,11 +117,13 @@
       about this research, do not hesitate to contact Cameron Raymond at
       <a href="mailto:cameron.raymond@oii.ox.ac.uk" target="_blank">
         cameron.raymond@oii.ox.ac.uk
-      </a>. If you have any questions about your rights or treatment as a
+      </a>
+      . If you have any questions about your rights or treatment as a
       participant in this research project, please contact the Oxford Internet
       Institute's Departmental Research Ethics Committee (DREC) at
-      <a href="mailto:drec@oii.ox.ac.uk" target="_blank">drec@oii.ox.ac.uk</a>. If you are finished, please click the button below to
-      be redirected back to Prolific.
+      <a href="mailto:drec@oii.ox.ac.uk" target="_blank">drec@oii.ox.ac.uk</a>
+      . If you are finished, please click the button below to be redirected back
+      to Prolific.
     </p>
     <button type="submit">Finish</button>
   </form>

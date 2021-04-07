@@ -90,9 +90,12 @@
         headers: {
           "Content-Type": "application/json"
         }
-      }).then(r => r.json())
+      })
+        .then(r => r.json())
         .then(r => console.log(r))
-        .catch(err => {console.log("POST error", err.message);});
+        .catch(err => {
+          console.log("POST error", err.message);
+        });
       goto(`/mock-environment`);
     }
   });
@@ -283,6 +286,13 @@
           bind:group={$form.affiliatedMovements}
           value="religion" />
         Religious Rights
+      </label>
+      <label>
+        <input
+          type="checkbox"
+          bind:group={$form.affiliatedMovements}
+          value="lgbtqa" />
+        LGBTQA+ Rights
       </label>
       <label>
         <input

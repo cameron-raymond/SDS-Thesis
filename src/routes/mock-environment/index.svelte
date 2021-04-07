@@ -141,7 +141,7 @@
 <svelte:window bind:scrollY={y} />
 
 <Header {time} bind:started bind:finished bind:timeLeft />
-<h1>Social Media and Protests</h1>
+<h1>Protest Scenario</h1>
 {#if !finished}
   <div class="subtitle">
     <p>

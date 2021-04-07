@@ -71,7 +71,7 @@
 </style>
 
 <svelte:head>
-  <title>OII Social Media Protest Experiment</title>
+  <title>OII Social Media Protest Study</title>
 </svelte:head>
 
 <div class="buffer" />
