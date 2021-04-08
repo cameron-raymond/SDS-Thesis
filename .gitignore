@@ -6,3 +6,5 @@ yarn-error.log
 notebooks/
 firebasekey.json
 .env
+# Local Netlify folder
+.netlify

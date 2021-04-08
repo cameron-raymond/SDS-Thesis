@@ -19,7 +19,6 @@ body {
 	margin: 0;
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 400;
-	font-size: 16px;
 	line-height: 1.5;
 	color: var(--grey-dark);
 }
@@ -28,7 +27,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	margin: auto;
-	width: calc(80vw - 4em);
+	/* width: calc(80vw - 4em); */
 	min-width: 15rem;
 	max-width: 40rem;
 }
@@ -47,7 +46,6 @@ h1 {
 	font-weight: 700;
 	color: var(--grey-darkest);
 	text-transform: uppercase;
-	font-size: 2em;
 }
 
 a {
@@ -57,51 +55,16 @@ a {
 }
 
 /* used for errors */
-
 small {
 	display: block;
-	font-size: 12px;
+	font-size: smaller;
 	color: var(--red);
 	margin-top: 10px;
 }
 
-@media (max-width: 40rem) {
-	h1 {
-		font-size: 1.5em;
-	}
-	h2 {
-		font-size: 1.17em;
-	}
-	h3 {
-		font-size: 1.1em;
-	}
-	h4 {
-		font-size: 1em;
-	}
-	body {
-		font-size: 14px;
-	}
-}
-
 @media (max-width: 30rem) {
-	h1 {
-		font-size: 1.3em;
-	}
-	h2 {
-		font-size: 1.1em;
-	}
-	h3 {
-		font-size: 1em;
-	}
-	h4 {
-		font-size: 0.7em;
-	}
-	body {
-		font-size: 11px;
-	}
 	small {
 		display: block;
-		font-size: 9px;
 		color: var(--red);
 		margin-top: 10px;
 	}
@@ -109,7 +72,7 @@ small {
 
 .subtitle {
 	color: var(--grey);
-	/* margin-bottom: 0.5rem; */
+	font-size: smaller;
 }
 
 input, select, textarea {
@@ -180,9 +143,7 @@ button {
 	display: block;
 	margin-top: 12px;
 	line-height: 1.8;
-	font-size: 14px;
 	padding: 10px 18px;
-	/* min-width: 120px; */
 	transition: all 150ms ease;
 	cursor: pointer;
 }

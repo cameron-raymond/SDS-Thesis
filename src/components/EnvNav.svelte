@@ -32,43 +32,38 @@
     z-index: 2;
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: flex-start;
     background-color: white;
     border-bottom: 1px solid var(--grey-light);
     z-index: 1000;
-  }
-  .buffer {
-    height: 40px;
+    height: 3em;
   }
   @media (max-width: 40rem) {
     button {
-      font-size: 11px;
       padding: 4px 8px;
     }
   }
 </style>
 
-<div class="buffer">
-  <span class="header">
-    <span class="controls">
-      {#if !started}
-        <button class="margin" on:click={start}>Start</button>
-        <button disabled>I'm Done</button>
-      {:else if !finished}
-        <button class="margin" disabled>Start</button>
-        <button
-          on:mouseover={() => prefetch(`/post-study-questionnaire`)}
-          on:click={finish}>
-          I'm Done
-        </button>
-      {:else}
-        <button class="margin" disabled>Start</button>
-        <button disabled>I'm Done</button>
-      {/if}
-    </span>
-
-    {#if started}
-      <Timer {time} bind:finished bind:timeLeft />
+<span class="header">
+  <span class="controls">
+    {#if !started}
+      <button class="margin" on:click={start}>Start</button>
+      <button disabled>I'm Done</button>
+    {:else if !finished}
+      <button class="margin" disabled>Start</button>
+      <button
+        on:mouseover={() => prefetch(`/post-study-questionnaire`)}
+        on:click={finish}>
+        I'm Done
+      </button>
+    {:else}
+      <button class="margin" disabled>Start</button>
+      <button disabled>I'm Done</button>
     {/if}
   </span>
-</div>
+
+  {#if started}
+    <Timer {time} bind:finished bind:timeLeft />
+  {/if}
+</span>

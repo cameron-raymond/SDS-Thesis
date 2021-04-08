@@ -31,15 +31,15 @@
 
 <h3>
   Time Left:
+  <br/>
   <span
     class={timeLeft > time / 2 ? 'green' : timeLeft > time / 3 ? 'yellow' : 'red'}>
     {#if minutes > 0}
-      <span>{minutes}</span>
-      {minname}
+      <span>{minutes}</span>min
+      
     {/if}
     {#if seconds >= 0}
-      <span>{seconds}</span>
-      seconds
+      <span>{seconds}</span>s
     {/if}
   </span>
 </h3>
