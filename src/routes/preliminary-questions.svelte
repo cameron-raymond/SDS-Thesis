@@ -26,6 +26,7 @@
       politicalAffiliation: undefined,
       attendsProtests: "",
       affiliatedMovements: [],
+      attentionCheck: undefined,
       socialMedias: []
     },
     validationSchema: yup.object().shape({
@@ -42,6 +43,7 @@
       politicalAffiliation: yup.string().notRequired(),
       attendsProtests: yup.mixed().notRequired(),
       affiliatedMovements: yup.mixed().notRequired(),
+      attentionCheck: yup.string().notRequired(),
       socialMedias: yup.mixed().notRequired()
     }),
     onSubmit: values => {
@@ -322,6 +324,22 @@
         id="affiliatedMovements"
         name="affiliatedMovements"
         bind:value={typedAffiliatedMovements} />
+    {/if}
+
+    <label for="attentionCheck">
+      It's important that you pay attention to this study. Please tick 'Disagree'.
+    </label>
+    <select
+      id="attentionCheck"
+      name="attentionCheck"
+      on:blur={handleChange}
+      bind:value={$form.attentionCheck}>
+      <option value="fail1" />
+      <option value="fail2">Agree</option>
+      <option value="pass">Disagree</option>
+    </select>
+    {#if $errors.attentionCheck}
+      <small>{$errors.attentionCheck}</small>
     {/if}
 
     <label for="socialMedias">

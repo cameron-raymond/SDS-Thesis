@@ -34,11 +34,13 @@
       })
         .then(r => r.json())
         .then(r => console.log(r))
+        .then(r => {
+          // UPDATE WITH CORRECT COMPLETION CODE
+          goto("https://app.prolific.co/submissions/complete?cc=2FB2397B");
+        })
         .catch(err => {
           console.log("POST error", err.message);
         });
-      // UPDATE WITH CORRECT COMPLETION CODE
-      // goto("https://app.prolific.co/submissions/complete?cc=5297E3A5");
     }
   });
 </script>
