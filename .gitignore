@@ -6,6 +6,7 @@ src/
 __pycache__/
 *.py[cod]
 *$py.class
+.netlify
 
 # C extensions
 *.so
@@ -141,3 +142,4 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+notebooks/twitter_data/api-secret.yaml
