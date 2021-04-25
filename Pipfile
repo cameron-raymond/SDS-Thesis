@@ -27,7 +27,7 @@ bioinfokit = "*"
 numba = "*"
 tqdm = "*"
 pingouin = "*"
-searchtweets = "*"
+searchtweets-v2 = "*"
 
 [requires]
 python_version = "3.9"

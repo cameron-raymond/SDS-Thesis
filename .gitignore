@@ -1,5 +1,6 @@
 node_modules/
 __sapper__/
+statics/
 src/
 *.DS_STOREgi
 # Byte-compiled / optimized / DLL files
@@ -143,3 +144,4 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 notebooks/twitter_data/api-secret.yaml
+static
