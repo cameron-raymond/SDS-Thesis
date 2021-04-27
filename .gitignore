@@ -1,4 +1,9 @@
 node_modules
-src/
-__sapper__/
+yarn-error.log
+/cypress/screenshots/
+/__sapper__/
 notebooks/
+firebasekey.json
+.env
+# Local Netlify folder
+.netlify
