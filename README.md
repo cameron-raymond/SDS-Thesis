@@ -1,18 +1,19 @@
 # Experimental Analysis of Rumour Systems
 
-## Analysis
+## Scraping
 
-Code used to organize and quantify the results of any experiments.
+Code used to collect relevant rumour discussion to use in the experimental environment.
+Collect replies to the initial rumour tweet.
 
-Mock data from Mockaroo: [scheme](https://www.mockaroo.com/schemas/294135)
-
-Pregistration done with: [aspredicted.org](https://aspredicted.org/)
+* Thread showing original video of protestor being detained by [federal agents](https://twitter.com/matcha_chai/status/1283328232033411072)
+* Thread showing video of police saying they're using [contact tracing](https://twitter.com/NBCNews/status/1266758240018276352)
 
 ## Branches
 
-- [`/main`](https://github.com/cameron-raymond/SDS-Thesis/tree/main): information regarding the project
-- [`/website`](https://github.com/cameron-raymond/SDS-Thesis/tree/website): the study website
-- `/analysis`: code used to study the results of the experiment
+* [`/main`](https://github.com/cameron-raymond/SDS-Thesis/tree/main): information regarding the project
+* [`/website`](https://github.com/cameron-raymond/SDS-Thesis/tree/website): the study website
+* [`/analysis`](https://github.com/cameron-raymond/SDS-Thesis/tree/analysis): code used to study the results of the experiment
+* `/twitter-scraping`: code used to collect twitter discussion for the experimental environment
   
 ## License
 
