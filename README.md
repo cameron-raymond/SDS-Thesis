@@ -29,7 +29,7 @@ The presence of credibility indicators in the system will:
 * [`/main`](https://github.com/cameron-raymond/SDS-Thesis/tree/main): information regarding the project
 * [`/website`](https://github.com/cameron-raymond/SDS-Thesis/tree/website): the study website
 * `/analysis`: code used to study the results of the experiment
-* [`/twitter-scraping`](https://github.com/cameron-raymond/SDS-Thesis/tree/twitter-scraping): code used to collect twitter discussion for the experimental environment
+* [`/twitter-scraper`](https://github.com/cameron-raymond/SDS-Thesis/tree/twitter-scraper): code used to collect twitter discussion for the experimental environment
   
 ## License
 
