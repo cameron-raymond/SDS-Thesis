@@ -95,7 +95,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    flex-wrap: wrap;
+    flex-wrap: wrap-reverse;
   }
   .video {
     width: 500px;
@@ -134,6 +134,7 @@
     .video {
       margin-left: 0;
       width: 100%;
+      max-width: 40rem;
     }
   }
   @media (max-width: 40rem) {
