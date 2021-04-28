@@ -2,6 +2,8 @@
   import Foot from "../components/ExitFooter.svelte";
   import { consent } from "../stores/local-store";
   export let segment;
+
+  $: consentBool = !!(parseInt($consent))
 </script>
 
 <style>
@@ -90,7 +92,8 @@
 </span>
 
 <main>
-  {#if $consent || segment === undefined}
+
+  {#if consentBool || segment === undefined}
     <slot />
     {#if segment !== undefined}
       <Foot />

@@ -11,6 +11,7 @@
   import { fly } from "svelte/transition";
   import Header from "../../components/EnvNav.svelte";
   import Card from "../../components/Card.svelte";
+  import Video from "../../components/Video.svelte";
   import CredibilityIndicator from "../../components/CredibilityIndicator.svelte";
   import { FaAngleDown } from "svelte-icons/fa";
   import {
@@ -40,6 +41,19 @@
       post.timestamp = Math.floor(Math.random() * 59) + 1;
     }
     posts = posts.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+    // Add credibility indicators
+    if ($condition == "treatment") {
+      let lowEvaffirms = posts
+        .map((e, i) => (e.evidence === "low" && e.code === "affirms" ? i : -1))
+        .filter(x => x > -1);
+      let numIndicators = Math.ceil(lowEvaffirms.length / 2);
+      let credIndicators = lowEvaffirms
+        .sort(() => 0.5 - Math.random())
+        .slice(0, numIndicators);
+      for (const i of credIndicators) {
+        posts[i].warning = true;
+      }
+    }
     dataLoaded = true;
   });
   // A reactive block
@@ -64,7 +78,8 @@
       headers: {
         "Content-Type": "application/json"
       }
-    }).then(r => r.json())
+    })
+      .then(r => r.json())
       .then(r => console.log(r))
       .catch(err => {
         console.log("POST error", err.message);
@@ -73,27 +88,18 @@
       goto(`/post-study-questionnaire`);
     }, 15000);
   }
-  // Move this to on mount, is only in a reactive block for dev purposes (to switch back and forth easily)
-  $: if (dataLoaded && $condition == "treatment") {
-    let lowEvaffirms = posts
-      .map((e, i) => (e.evidence === "low" && e.code === "affirms" ? i : -1))
-      .filter(x => x > -1);
-    let numIndicators = Math.ceil(lowEvaffirms.length / 2);
-    let credIndicators = lowEvaffirms
-      .sort(() => 0.5 - Math.random())
-      .slice(0, numIndicators);
-    for (const i of credIndicators) {
-      posts[i].warning = true;
-    }
-  } else {
-    posts = posts.map(post => {
-      post.warning = false;
-      return post;
-    });
-  }
 </script>
 
 <style>
+  .video-cont {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .video {
+    width: 500px;
+  }
   .subtitle {
     color: #555;
     max-width: 40rem;
@@ -124,6 +130,12 @@
     width: 2.5rem;
     z-index: 1;
   }
+  @media (max-width: 800px) {
+    .video {
+      margin-left: 0;
+      width: 100%;
+    }
+  }
   @media (max-width: 40rem) {
     .down-arrow {
       height: 1.75rem;
@@ -143,36 +155,44 @@
 <Header {time} bind:started bind:finished bind:timeLeft />
 <h1>Protest Scenario</h1>
 {#if !finished}
-  <div class="subtitle">
-    <p>
-      In this study, we will describe the context of a particular protest
-      scenario. We will then ask you to participate in a simulated social media
-      environment as if you were in the scenario described. Specifically, we
-      would like you to share information that you feel is relevant for other
-      demonstrators to be aware of given the protest scenario. You can reshare
-      information by pressing the "reshare" button on the bottom right-hand
-      corner of a post.
-    </p>
-    <p>
-      This task involves a description of a scenario and real content from
-      social media activity during recent protests.
-      <span class="note">
-        Please do not particate if you anticipate that this content may cause
-        you significant distress.
-      </span>
-      You may end the experiment at any time without penalty. Please do not
-      refer to outside sources during the experiment. You will have two minutes
-      in the environment to reshare information. If you finish choosing what
-      posts to reshare early, you can press the "I'm Done" button at the top of
-      your screen.
-    </p>
-    <p>Press the "START" button at the top of your screen to begin.</p>
-    {#if started && y < 100}
-      <span class="down-arrow" in:fly={{ y: -50, duration: 300 }}>
-        <FaAngleDown />
-      </span>
-    {/if}
-  </div>
+  <span class="video-cont">
+    <div class="subtitle">
+      <p>
+        In this study, you will watch scenes from recent protests using the
+        video on your screen. We will then ask you to participate in a simulated
+        social media environment as if you were in the scenario described.
+        Specifically, we would like you to share information that you feel is
+        relevant for other demonstrators to be aware of given the protest
+        scenario. You can reshare information by pressing the "reshare" button
+        on the bottom right-hand corner of a post.
+        <strong>
+          Please watch the video before clicking start and entering the social media environment.
+        </strong>
+      </p>
+      <p>
+        This task involves watching a video of recent protest scenario and
+        interacting with discussion of the protest scenario on social media.
+        <span class="note">
+          Please do not particate if you anticipate that this content may cause
+          you significant distress.
+        </span>
+        You may end the experiment at any time without penalty. Please do not
+        refer to outside sources during the experiment. You will have two
+        minutes in the environment to reshare information. If you finish
+        choosing what posts to reshare early, you can press the "I'm Done"
+        button at the top of your screen.
+      </p>
+      <p><strong>After watching the video on your screen</strong> press the "START" button to enter the social media environment.</p>
+      {#if started && y < 100}
+        <span class="down-arrow" in:fly={{ y: -50, duration: 300 }}>
+          <FaAngleDown />
+        </span>
+      {/if}
+    </div>
+    <div class="video">
+      <Video />
+    </div>
+  </span>
 {/if}
 {#if started}
   {#if !finished}

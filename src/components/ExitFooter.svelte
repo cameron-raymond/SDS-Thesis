@@ -1,5 +1,5 @@
 <script>
-  import { consent, condition, PROLIFIC_PID } from "../stores/local-store";
+  import { consent, PROLIFIC_PID } from "../stores/local-store";
   const message = `Are you sure you want to withdraw consent and leave this study? \nIn doing so we will remove any data associated with your Prolific ID (`+$PROLIFIC_PID+`) that is not stored locally.`;
   const finish = () => {
     if (confirm(message)) {
@@ -48,19 +48,6 @@
   button:hover:not(:disabled) {
     background-color: var(--red-dark);
   }
-  select {
-    position: fixed;
-    bottom: 3em;
-    left: 3em;
-    z-index: 1001;
-    width: 10rem;
-  }
 </style>
 
 <button on:click={finish}>Withdraw</button>
-
-<select bind:value={$condition}>
-  <option value="-1" />
-  <option value="treatment">Treatment</option>
-  <option value="control">Control</option>
-</select>

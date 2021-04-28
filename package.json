@@ -22,6 +22,7 @@
     "sirv": "^1.0.0",
     "svelte-forms-lib": "^1.6.0",
     "svelte-icons": "^2.1.0",
+    "svelte-video-player": "^1.2.5",
     "yup": "^0.32.8"
   },
   "devDependencies": {
