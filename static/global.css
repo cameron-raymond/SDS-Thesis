@@ -72,7 +72,6 @@ small {
 
 .subtitle {
 	color: var(--grey);
-	font-size: smaller;
 }
 
 input, select, textarea {
