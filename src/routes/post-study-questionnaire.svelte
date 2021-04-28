@@ -8,12 +8,30 @@
     initialValues: {
       awareR1: undefined,
       awareR2: undefined,
+      veracityR1: undefined,
+      veracityR2: undefined,
       notice: "",
       comments: ""
     },
     validationSchema: yup.object().shape({
       awareR1: yup.mixed().notRequired(),
       awareR2: yup.mixed().notRequired(),
+      veracityR1: yup
+        .number()
+        .notRequired()
+        .nullable(true)
+        .typeError("Please enter a number from 1 to 10.")
+        .transform((v, o) => (o === "" ? null : v))
+        .max(10, "You can't input a number higher than 10.")
+        .min(1, "You can't input a number less than 1."),
+      veracityR2: yup
+        .number()
+        .notRequired()
+        .nullable(true)
+        .transform((v, o) => (o === "" ? null : v))
+        .typeError("Please enter a number from 1 to 10.")
+        .max(10, "You can't input a number higher than 10.")
+        .min(1, "You can't input a number less than 1."),
       notice: yup.string().notRequired(),
       comments: yup.string().notRequired()
     }),
@@ -58,8 +76,8 @@
   </p>
   <form on:submit|preventDefault={handleSubmit}>
     <label for="awareR1">
-      Were you previously aware of the rumour that law enforcement may be using
-      contact tracing application to track protestors?
+      Were you previously aware of the rumour that federal agents were
+      kidnapping protestors?
     </label>
     <select
       id="awareR1"
@@ -75,8 +93,8 @@
     {/if}
 
     <label for="awareR2">
-      Were you previously aware of the rumour that federal agents were
-      kidnapping protestors?
+      Were you previously aware of the rumour that law enforcement may be using
+      contact tracing technology to track protestors?
     </label>
     <select
       id="awareR2"
@@ -89,6 +107,38 @@
     </select>
     {#if $errors.awareR2}
       <small>{$errors.awareR2}</small>
+    {/if}
+
+    <label for="veracityR1">
+      On a scale from 1-10, where 1 is completely false and 10 is completely
+      true, how "true" do you think it is that Federal agents were kidnapping
+      protestors?
+    </label>
+    <input
+      type="number"
+      id="veracityR1"
+      name="veracityR1"
+      on:change={handleChange}
+      on:blur={handleChange}
+      bind:value={$form.veracityR1} />
+    {#if $errors.veracityR1}
+      <small>{$errors.veracityR1}</small>
+    {/if}
+
+    <label for="veracityR2">
+      On a scale from 1-10, where 1 is completely false and 10 is completely
+      true, how "true" do you think it is that law enforcement were using
+      contact tracing technology to track protestors?
+    </label>
+    <input
+      type="number"
+      id="veracityR2"
+      name="veracityR2"
+      on:change={handleChange}
+      on:blur={handleChange}
+      bind:value={$form.veracityR2} />
+    {#if $errors.veracityR2}
+      <small>{$errors.veracityR2}</small>
     {/if}
 
     <label for="notice">
@@ -118,13 +168,13 @@
       Thank you again for completing our study. Again, if you have any questions
       about this research, do not hesitate to contact Cameron Raymond at
       <a href="mailto:cameron.raymond@oii.ox.ac.uk" target="_blank">
-        cameron.raymond@oii.ox.ac.uk
+        cameron.raymond@oii.ox.ac.uk.
       </a>
-      . If you have any questions about your rights or treatment as a
-      participant in this research project, please contact the Oxford Internet
-      Institute's Departmental Research Ethics Committee (DREC) at
-      <a href="mailto:drec@oii.ox.ac.uk" target="_blank">drec@oii.ox.ac.uk</a>
-      . If you are finished, please click the button below to be redirected back
+      If you have any questions about your rights or treatment as a participant
+      in this research project, please contact the Oxford Internet Institute's
+      Departmental Research Ethics Committee (DREC) at
+      <a href="mailto:drec@oii.ox.ac.uk" target="_blank">drec@oii.ox.ac.uk.</a>
+      If you are finished, please click the button below to be redirected back
       to Prolific.
     </p>
     <button type="submit">Finish</button>
