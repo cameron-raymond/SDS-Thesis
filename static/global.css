@@ -172,6 +172,6 @@ label {
 	margin-top: 20px;
 	margin-bottom: 4px;
 	font-size: inherit;
-	letter-spacing: 1.5px;
+	/* letter-spacing: 1.5px; */
 	line-height: 2;
 }

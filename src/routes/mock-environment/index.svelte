@@ -161,20 +161,21 @@
         In this study, you will watch scenes from recent protests using the
         video on your screen. We will then ask you to participate in a simulated
         social media environment as if you were in the scenario described.
-        Specifically, we would like you to share information that you feel is
-        relevant for other demonstrators to be aware of given the protest
-        scenario. You can reshare information by pressing the "reshare" button
+        Specifically, we would like you to reshare social media posts that you
+        would feel are relevant for other demonstrators to be aware of given the
+        protest scenario. You may indicate this by pressing the "reshare" button
         on the bottom right-hand corner of a post.
         <strong>
-          Please watch the video before clicking start and entering the social media environment.
+          Please watch the video before clicking start and entering the social
+          media environment.
         </strong>
       </p>
       <p>
-        This task involves watching a video of recent protest scenario and
+        This task involves watching a video of a recent protest scenario and
         interacting with discussion of the protest scenario on social media.
         <span class="note">
-          Please do not particate if you anticipate that this content may cause
-          you significant distress.
+          Please do not participate if you anticipate that this content may
+          cause you significant distress.
         </span>
         You may end the experiment at any time without penalty. Please do not
         refer to outside sources during the experiment. You will have two
@@ -182,7 +183,10 @@
         choosing what posts to reshare early, you can press the "I'm Done"
         button at the top of your screen.
       </p>
-      <p><strong>After watching the video on your screen</strong> press the "START" button to enter the social media environment.</p>
+      <p>
+        <strong>After watching the video on your screen</strong>
+        press the "START" button to enter the social media environment.
+      </p>
       {#if started && y < 100}
         <span class="down-arrow" in:fly={{ y: -50, duration: 300 }}>
           <FaAngleDown />
@@ -213,8 +217,8 @@
     <p>
       You will be automatically redirected to the post-study questionnaire in 15
       seconds. If that does not happen, please click on this link:
-      <a href="/post-study-questionnaire">post-study questionnaire</a>
-      , to continue.
+      <a href="/post-study-questionnaire">post-study questionnaire,</a>
+      to continue.
     </p>
   {/if}
 {/if}

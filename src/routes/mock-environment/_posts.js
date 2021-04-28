@@ -17,7 +17,7 @@ export const posts = fs.readdirSync(dirPath).map((postFilename) => {
   });
   const postFrontMatter = frontMatter(postContent);
   let post = postFrontMatter.attributes
-  post.evidence = post.rumour == "R1" ? "low" : "high"
+  post.evidence = post.rumour == "R1" ? "high" : "low"
   post.profileImage = undefined;
   post.timestamp = undefined;
   post.username = undefined;
