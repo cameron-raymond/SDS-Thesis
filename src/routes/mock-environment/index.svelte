@@ -12,6 +12,7 @@
   import Header from "../../components/EnvNav.svelte";
   import Card from "../../components/Card.svelte";
   import Video from "../../components/Video.svelte";
+  import InView from "../../components/LazyLoad.svelte";
   import CredibilityIndicator from "../../components/CredibilityIndicator.svelte";
   import { FaAngleDown } from "svelte-icons/fa";
   import {
@@ -26,7 +27,7 @@
   let started = false;
   let finished = false;
   let timeLeft = time;
-  let y = 0;
+  var seenPosts = false;
   onMount(async () => {
     const res = await fetch(
       "https://randomuser.me/api/?inc=gender,name,picture&nat=us&results=" +
@@ -151,8 +152,6 @@
   }
 </style>
 
-<svelte:window bind:scrollY={y} />
-
 <Header {time} bind:started bind:finished bind:timeLeft />
 <h1>Protest Scenario</h1>
 {#if !finished}
@@ -188,7 +187,7 @@
         <strong>After watching the video on your screen</strong>
         press the "START" button to enter the social media environment.
       </p>
-      {#if started && y < 100}
+      {#if started && !seenPosts}
         <span class="down-arrow" in:fly={{ y: -50, duration: 300 }}>
           <FaAngleDown />
         </span>
@@ -204,12 +203,23 @@
     {#if dataLoaded}
       <span class="cont">
         {#each posts as post, i}
-          <!-- binds the reshare variable in the child component to the post.reshared subfield in our array -->
-          <Card
-            {post}
-            bind:reshared={post.reshared}
-            bind:clickedWarning={post.clickedWarning}
-            warning={post.warning ? CredibilityIndicator : undefined} />
+          {#if i == 1}
+            <!-- InView component keeps track of whether a post has come into view (useful for removing the down chevron indicator) -->
+            <InView bind:hasBeenVisible={seenPosts}>
+              <Card
+                {post}
+                bind:reshared={post.reshared}
+                bind:clickedWarning={post.clickedWarning}
+                warning={post.warning ? CredibilityIndicator : undefined} />
+            </InView>
+          {:else}
+            <!-- binds the reshare variable in the child component to the post.reshared subfield in our array -->
+            <Card
+              {post}
+              bind:reshared={post.reshared}
+              bind:clickedWarning={post.clickedWarning}
+              warning={post.warning ? CredibilityIndicator : undefined} />
+          {/if}
         {/each}
       </span>
     {/if}
