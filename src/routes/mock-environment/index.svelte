@@ -28,7 +28,9 @@
   let finished = false;
   let timeLeft = time;
   var seenPosts = false;
+
   onMount(async () => {
+    // Add random attributes like user picture and timestamp
     const res = await fetch(
       "https://randomuser.me/api/?inc=gender,name,picture&nat=us&results=" +
         posts.length
@@ -57,7 +59,7 @@
     }
     dataLoaded = true;
   });
-  // A reactive block
+  // A reactive block for posting the data to the server.
   $: if (started && finished) {
     let simplePosts = posts.map(post => {
       let { text, profileImage, username, name, gender, ...y } = post;

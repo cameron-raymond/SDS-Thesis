@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "@netlify/build": "^10.2.2",
-    "@vime/svelte": "^5.0.28",
+    "@vime/core": "^5.0.27",
+    "@vime/svelte": "^5.0.15",
     "body-parser": "^1.19.0",
     "compression": "^1.7.1",
     "dotenv": "^8.2.0",
