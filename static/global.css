@@ -55,6 +55,7 @@ a {
 }
 
 /* used for errors */
+
 small {
 	display: block;
 	font-size: smaller;
@@ -87,14 +88,11 @@ input, select, textarea {
 	background: var(--white);
 }
 
-@media screen and (-webkit-min-device-pixel-ratio:0) { 
-	select,
-	textarea,
-	input {
-	  font-size: 16px;
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+	select, textarea, input {
+		font-size: 16px;
 	}
-  }
-  
+}
 
 .multiselect {
 	display: inline-block;
@@ -174,4 +172,8 @@ label {
 	font-size: inherit;
 	/* letter-spacing: 1.5px; */
 	line-height: 2;
+}
+
+vm-player {
+	--vm-player-theme: var(--orange);
 }
