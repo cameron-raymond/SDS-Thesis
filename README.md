@@ -2,6 +2,8 @@
 
 ## Website
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/f668aa83-8625-4838-802f-f955d77940af/deploy-status)](https://app.netlify.com/sites/pedantic-bohr-7fc231/deploys)
+
 See: [https://pedantic-bohr-7fc231.netlify.app/](https://pedantic-bohr-7fc231.netlify.app/). An online experiment to measure the effect of design interventions on the affirmation of rumours.
 
 ## Branches
