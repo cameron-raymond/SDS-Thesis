@@ -1,7 +1,7 @@
 <script context="module">
   export async function preload() {
     const url =
-      "http://localhost:50894/.netlify/functions/posts?affirms=6&denies=6&neutral=3&questions=3";
+      "/.netlify/functions/posts?affirms=10&denies=10&neutral=4&questions=4";
     const posts = await this.fetch(url)
       .then(r => r.json())
       .catch(err => console.log(err));
@@ -26,8 +26,6 @@
     condition
   } from "../../stores/local-store";
   export let posts;
-  console.log(posts);
-
   const time = 60 * 2;
   let dataLoaded = false;
   let started = false;
@@ -54,12 +52,11 @@
       let lowEvaffirms = posts
         .map((e, i) => (e.evidence === "low" && e.code === "affirms" ? i : -1))
         .filter(x => x > -1);
-      let numIndicators = Math.ceil(lowEvaffirms.length / 2);
+      let numIndicators = Math.ceil(lowEvaffirms.length * 0.75);
       let credIndicators = lowEvaffirms
         .sort(() => 0.5 - Math.random())
         .slice(0, numIndicators);
-      // for (const i of credIndicators) {
-      for (const i of lowEvaffirms) {
+      for (const i of credIndicators) {
         posts[i].warning = true;
       }
     }

@@ -63,12 +63,12 @@ exports.handler = async (event, context) => {
             // For each rumour
             const sampledFrames = groupedByRumour.map(rumour => {
                 // group by code ID
-                const groupedByCode =  groupBy(posts, item => item.code);
+                const groupedByCode =  groupBy(rumour, item => item.code);
                 // Sample the specified number of posts
-                const sampledFrames = Object.keys(groupedByCode).map(key => sample(groupedByCode[key], toSample[key]));
+                const sampledRumourFrames = Object.keys(groupedByCode).map(key => sample(groupedByCode[key], toSample[key]));
                 // Concat the the 2d array (1 for each code) into one big array
-                const sampledPosts = [].concat.apply([], sampledFrames)
-                return sampledPosts
+                const sampledRumourPosts = [].concat.apply([], sampledRumourFrames)
+                return sampledRumourPosts
             })
             // Put all the frames back together
             const sampledPosts = [].concat.apply([], sampledFrames)
