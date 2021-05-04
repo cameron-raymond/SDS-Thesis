@@ -1,12 +1,16 @@
 <script context="module">
   export async function preload() {
-    const posts = await this.fetch(`mock-environment.json`).then(r => r.json());
+    const url =
+      "http://localhost:50894/.netlify/functions/posts?affirms=6&denies=6&neutral=3&questions=3";
+    const posts = await this.fetch(url)
+      .then(r => r.json())
+      .catch(err => console.log(err));
     return { posts };
   }
 </script>
 
 <script>
-  import { onMount, onDestroy } from "svelte";
+  import { onMount } from "svelte";
   import { goto } from "@sapper/app";
   import { fly } from "svelte/transition";
   import Header from "../../components/EnvNav.svelte";
@@ -22,13 +26,14 @@
     condition
   } from "../../stores/local-store";
   export let posts;
+  console.log(posts);
+
   const time = 60 * 2;
   let dataLoaded = false;
   let started = false;
   let finished = false;
   let timeLeft = time;
   var seenPosts = false;
-
   onMount(async () => {
     // Add random attributes like user picture and timestamp
     const res = await fetch(
@@ -53,7 +58,8 @@
       let credIndicators = lowEvaffirms
         .sort(() => 0.5 - Math.random())
         .slice(0, numIndicators);
-      for (const i of credIndicators) {
+      // for (const i of credIndicators) {
+      for (const i of lowEvaffirms) {
         posts[i].warning = true;
       }
     }
