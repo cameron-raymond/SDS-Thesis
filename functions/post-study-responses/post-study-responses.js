@@ -1,38 +1,9 @@
 require('dotenv').config();
-var admin = require("firebase-admin");
 
-const { type,
-  project_id,
-  private_key,
-  private_key_id,
-  client_email,
-  client_id,
-  auth_uri,
-  token_uri,
-  auth_provider_x509_cert_url,
-  client_x509_cert_url } = process.env
+var MongoClient = require('mongodb').MongoClient;
+var ObjectId = require('mongodb').ObjectID;
 
-
-cert = {
-  "type": type.replace(/\\n/g, '\n').replace(/\"/g, ''),
-  "project_id": project_id.replace(/\\n/g, '\n').replace(/\"/g, ''),
-  "private_key": private_key.replace(/\\n/g, '\n').replace(/\"/g, ''),
-  "private_key_id": private_key_id.replace(/\\n/g, '\n').replace(/\"/g, ''),
-  "client_email": client_email.replace(/\\n/g, '\n').replace(/\"/g, ''),
-  "client_id": client_id.replace(/\\n/g, '\n').replace(/\"/g, ''),
-  "auth_uri": auth_uri.replace(/\\n/g, '\n').replace(/\"/g, ''),
-  "token_uri": token_uri.replace(/\\n/g, '\n').replace(/\"/g, ''),
-  "auth_provider_x509_cert_url": auth_provider_x509_cert_url.replace(/\\n/g, '\n').replace(/\"/g, ''),
-  "client_x509_cert_url": client_x509_cert_url.replace(/\\n/g, '\n').replace(/\"/g, '')
-}
-
-if (!admin.apps.length) {
-  admin.initializeApp({
-    credential: admin.credential.cert(cert)
-  });
-}
-
-const firestore = admin.firestore()
+const { connection_string } = process.env
 
 exports.handler = async (event, context) => {
   let data = JSON.parse(event.body)
@@ -41,7 +12,10 @@ exports.handler = async (event, context) => {
     case "POST":
       console.log("Creating a new post-study response for " + PROLIFIC_PID)
       try {
-        const query = await firestore.collection('post-study-responses').doc(PROLIFIC_PID.toString()).set(data)
+        MongoClient.connect(connection_string, (err, client) => {
+          var db = client.db('sds-thesis-db');
+          db.collection('post-study-responses').replaceOne({ '_id': PROLIFIC_PID }, data, { upsert: true });
+        });
       } catch (error) {
         return {
           statusCode: 500,
@@ -62,7 +36,10 @@ exports.handler = async (event, context) => {
     case "DELETE":
       console.log("Removing post-study response for " + PROLIFIC_PID)
       try {
-        const query = await firestore.collection('post-study-responses').doc(PROLIFIC_PID.toString()).delete();
+        MongoClient.connect(connection_string, (err, client) => {
+          var db = client.db('sds-thesis-db');
+          db.collection('post-study-responses').deleteOne({ '_id': PROLIFIC_PID });
+        });
       } catch (error) {
         return {
           statusCode: 500,
