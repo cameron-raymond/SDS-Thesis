@@ -1,7 +1,7 @@
 require('dotenv').config();
 
-var MongoClient = require('mongodb').MongoClient;
-var ObjectId = require('mongodb').ObjectID;
+const MongoClient = require('mongodb').MongoClient;
+const ObjectId = require('mongodb').ObjectID;
 
 let { connection_string } = process.env
 connection_string = connection_string.replace(/\\n/g, '\n').replace(/\"/g, '');
@@ -13,10 +13,11 @@ exports.handler = async (event, context) => {
     case "POST":
       console.log("Creating a new participant for " + PROLIFIC_PID)
       try {
-        await MongoClient.connect(connection_string, (err, client) => {
-          var db = client.db('sds-thesis-db');
-          db.collection('participants').replaceOne({ '_id': PROLIFIC_PID }, data, { upsert: true });
-        });
+        console.log(connection_string)
+        const client = await MongoClient.connect(connection_string);
+        const db = await client.db('sds-thesis-db');
+        console.log(db)
+        await db.collection('participants').replaceOne({ '_id': PROLIFIC_PID }, data, { upsert: true });
       } catch (error) {
         return {
           statusCode: 500,
@@ -37,10 +38,9 @@ exports.handler = async (event, context) => {
     case "DELETE":
       console.log("Removing participant " + PROLIFIC_PID)
       try {
-        await MongoClient.connect(connection_string, (err, client) => {
-          var db = client.db('sds-thesis-db');
-          db.collection('participants').deleteOne({ '_id': PROLIFIC_PID });
-        });
+        const client = await MongoClient.connect(connection_string);
+        const db = await client.db('sds-thesis-db');
+        await db.collection('participants').deleteOne({ '_id': PROLIFIC_PID });
       } catch (error) {
         return {
           statusCode: 500,

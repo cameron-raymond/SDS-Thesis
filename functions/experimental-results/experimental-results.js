@@ -13,10 +13,9 @@ exports.handler = async (event, context) => {
     case "POST":
       console.log("Creating a new experimental result for " + PROLIFIC_PID)
       try {
-        await MongoClient.connect(connection_string, (err, client) => {
-          var db = client.db('sds-thesis-db');
-          db.collection('experimental-results').replaceOne({ '_id': PROLIFIC_PID }, data, { upsert: true });
-        });
+        const client = await MongoClient.connect(connection_string);
+        const db = await client.db('sds-thesis-db');
+        await db.collection('experimental-results').replaceOne({ '_id': PROLIFIC_PID }, data, { upsert: true });
       } catch (error) {
         return {
           statusCode: 500,
@@ -37,10 +36,9 @@ exports.handler = async (event, context) => {
     case "DELETE":
       console.log("Removing experimental result for " + PROLIFIC_PID)
       try {
-        await MongoClient.connect(connection_string, (err, client) => {
-          var db = client.db('sds-thesis-db');
-          db.collection('experimental-results').deleteOne({ '_id': PROLIFIC_PID });
-        });
+        const client = await MongoClient.connect(connection_string);
+        const db = await client.db('sds-thesis-db');
+        await db.collection('experimental-results').deleteOne({ '_id': PROLIFIC_PID });
       } catch (error) {
         return {
           statusCode: 500,
