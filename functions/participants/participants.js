@@ -13,11 +13,11 @@ exports.handler = async (event, context) => {
     case "POST":
       console.log("Creating a new participant for " + PROLIFIC_PID)
       try {
-        console.log(connection_string)
         const client = await MongoClient.connect(connection_string);
         const db = await client.db('sds-thesis-db');
-        console.log(db)
         await db.collection('participants').replaceOne({ '_id': PROLIFIC_PID }, data, { upsert: true });
+        db.close();
+        client.close();
       } catch (error) {
         return {
           statusCode: 500,
@@ -41,6 +41,8 @@ exports.handler = async (event, context) => {
         const client = await MongoClient.connect(connection_string);
         const db = await client.db('sds-thesis-db');
         await db.collection('participants').deleteOne({ '_id': PROLIFIC_PID });
+        db.close();
+        client.close();
       } catch (error) {
         return {
           statusCode: 500,
