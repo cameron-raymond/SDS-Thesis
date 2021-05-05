@@ -3,7 +3,8 @@ require('dotenv').config();
 var MongoClient = require('mongodb').MongoClient;
 var ObjectId = require('mongodb').ObjectID;
 
-const { connection_string } = process.env
+let { connection_string } = process.env
+connection_string = connection_string.replace(/\\n/g, '\n').replace(/\"/g, '');
 
 exports.handler = async (event, context) => {
   let data = JSON.parse(event.body)
