@@ -1,8 +1,6 @@
 <script context="module">
   export async function preload() {
-    const { NODE_ENV } = process.env;
-    const urlPrefix = NODE_ENV === "development" ? "http://localhost:8888/" : "/"
-    const url = urlPrefix + ".netlify/functions/posts?affirms=10&denies=10&neutral=4&questions=4";
+    const url =  "/.netlify/functions/posts?affirms=10&denies=10&neutral=4&questions=4";
     const posts = await this.fetch(url)
       .then(r => r.json())
       .catch(err => console.log(err));
