@@ -1,7 +1,8 @@
 <script context="module">
   export async function preload() {
-    const url =
-      "/.netlify/functions/posts?affirms=10&denies=10&neutral=4&questions=4";
+    const { NODE_ENV } = process.env;
+    const urlPrefix = NODE_ENV === "development" ? "http://localhost:8888/" : "/"
+    const url = urlPrefix + ".netlify/functions/posts?affirms=10&denies=10&neutral=4&questions=4";
     const posts = await this.fetch(url)
       .then(r => r.json())
       .catch(err => console.log(err));
@@ -104,7 +105,7 @@
     flex-wrap: wrap-reverse;
   }
   .video {
-    width: 500px;
+    width: 600px;
   }
   .subtitle {
     color: #555;
@@ -132,8 +133,8 @@
     bottom: 3em;
     left: 50%;
     color: var(--orange);
-    height: 2.5rem;
-    width: 2.5rem;
+    height: 3rem;
+    width: 3rem;
     z-index: 1;
   }
   @media (max-width: 800px) {
@@ -145,8 +146,8 @@
   }
   @media (max-width: 40rem) {
     .down-arrow {
-      height: 1.75rem;
-      width: 1.75rem;
+      height: 2.5rem;
+      width: 2.5rem;
     }
   }
 
@@ -163,37 +164,49 @@
   <span class="video-cont">
     <div class="subtitle">
       <p>
-        In this study, you will watch scenes from recent protests using the
-        video on your screen. We will then ask you to participate in a simulated
-        social media environment as if you were in the scenario described.
-        Specifically, we would like you to reshare social media posts that you
-        would feel are relevant for other demonstrators to be aware of given the
-        protest scenario. You may indicate this by pressing the "reshare" button
-        on the bottom right-hand corner of a post.
+        You will watch a video from recent protests which created
+        discussion on social media.
         <strong>
           Please watch the video before clicking start and entering the social
           media environment.
         </strong>
+        After watching the video you will be shown a simulated social-media
+        feed discussing the video's content. Imagine you are attending a protest
+        at the location and time of both the scenes in the video. Your task is
+        to reshare social media posts that you would feel are relevant for other
+        demonstrators to be aware of given these videos. You may indicate this
+        by pressing the "reshare" button on the bottom right-hand corner of a
+        post.
       </p>
+      <span>
+        <h3 style="margin: 0 0 -0.5em 0;">Tasks:</h3>
+        <ol>
+          <li>Click the video player on your screen to watch both videos.</li>
+          <li>
+            Click the “start” button on your screen to display the social media
+            posts below these instructions.
+          </li>
+          <li>Reshare posts that you feel are relevant.</li>
+          <li>
+            When two minutes is up, or you are finished, press “I’m Done” to
+            continue.
+          </li>
+        </ol>
+      </span>
       <p>
-        This task involves watching a video of a recent protest scenario and
-        interacting with discussion of the protest scenario on social media.
         <span class="note">
           Please do not participate if you anticipate that this content may
           cause you significant distress.
         </span>
-        You may end the experiment at any time without penalty. Please do not
-        refer to outside sources during the experiment. You will have two
-        minutes in the environment to reshare information. If you finish
-        choosing what posts to reshare early, you can press the "I'm Done"
-        button at the top of your screen.
+        You may end the study at any time without penalty. Please do not
+        refer to outside sources during the study.
       </p>
       <p>
-        <strong>After watching the video on your screen</strong>
-        press the "START" button to enter the social media environment.
+        <strong>After watching the video on your screen</strong> press the "start" button to
+        enter the social media environment.
       </p>
       {#if started && !seenPosts}
-        <span class="down-arrow" in:fly={{ y: -50, duration: 300 }}>
+        <span class="down-arrow" in:fly={{ y: -100, duration: 325 }}>
           <FaAngleDown />
         </span>
       {/if}

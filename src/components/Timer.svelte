@@ -13,7 +13,6 @@
   }, 1000);
 
   $: minutes = Math.floor(timeLeft / 60);
-  $: minname = minutes > 1 ? "minutes" : "minute";
   $: seconds = Math.floor(timeLeft - minutes * 60);
 </script>
 
@@ -22,24 +21,27 @@
     color: var(--primary);
   }
   .yellow {
+    font-weight: bolder;
     color: var(--yellow);
   }
   .red {
+    font-weight: bold;
     color: var(--red);
   }
 </style>
 
 <h3>
   Time Left:
-  <br/>
+  <br />
   <span
     class={timeLeft > time / 2 ? 'green' : timeLeft > time / 3 ? 'yellow' : 'red'}>
     {#if minutes > 0}
-      <span>{minutes}</span>min
-      
+      <span>{minutes}</span>
+      min
     {/if}
     {#if seconds >= 0}
-      <span>{seconds}</span>s
+      <span>{seconds}</span>
+      s
     {/if}
   </span>
 </h3>
