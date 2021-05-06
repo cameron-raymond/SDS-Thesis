@@ -16,7 +16,6 @@ exports.handler = async (event, context) => {
         const client = await MongoClient.connect(connection_string);
         const db = await client.db('sds-thesis-db');
         await db.collection('post-study-responses').replaceOne({ '_id': PROLIFIC_PID }, data, { upsert: true });
-        db.close();
         client.close();
       } catch (error) {
         return {
@@ -41,7 +40,6 @@ exports.handler = async (event, context) => {
         const client = await MongoClient.connect(connection_string);
         const db = await client.db('sds-thesis-db');
         await db.collection('post-study-responses').deleteOne({ '_id': PROLIFIC_PID });
-        db.close();
         client.close();
       } catch (error) {
         return {
