@@ -1,6 +1,7 @@
 <script context="module">
   export async function preload() {
-    const url =  "/.netlify/functions/posts?affirms=10&denies=10&neutral=4&questions=4";
+    const url =
+      "/.netlify/functions/posts?affirms=10&denies=10&neutral=4&questions=4";
     const posts = await this.fetch(url)
       .then(r => r.json())
       .catch(err => console.log(err));
@@ -162,22 +163,24 @@
   <span class="video-cont">
     <div class="subtitle">
       <p>
-        You will watch a video from recent protests which created
-        discussion on social media.
+        You will watch a video from recent protests which created discussion on
+        social media.
         <strong>
           Please watch the video before clicking start and entering the social
           media environment.
         </strong>
-        After watching the video you will be shown a simulated social-media
-        feed discussing the video's content. Imagine you are attending a protest
-        at the location and time of both the scenes in the video. Your task is
-        to reshare social media posts that you would feel are relevant for other
+        After watching the video you will be shown a simulated social-media feed
+        discussing the video's content. Imagine you are attending a protest at
+        the location and time of both the scenes in the video. Your task is to
+        reshare social media posts that you would feel are relevant for other
         demonstrators to be aware of given these videos. You may indicate this
         by pressing the "reshare" button on the bottom right-hand corner of a
         post.
       </p>
       <span>
-        <h3 style="margin: 0 0 -0.5em 0;">Tasks:</h3>
+        <p style="margin: 0 0 -0.5em 0;">
+          <strong>Tasks:</strong>
+        </p>
         <ol>
           <li>Click the video player on your screen to watch both videos.</li>
           <li>
@@ -196,12 +199,12 @@
           Please do not participate if you anticipate that this content may
           cause you significant distress.
         </span>
-        You may end the study at any time without penalty. Please do not
-        refer to outside sources during the study.
+        You may end the study at any time without penalty. Please do not refer
+        to outside sources during the study.
       </p>
       <p>
-        <strong>After watching the video on your screen</strong> press the "start" button to
-        enter the social media environment.
+        <strong>After watching the video on your screen</strong>
+        press the "start" button to enter the social media environment.
       </p>
       {#if started && !seenPosts}
         <span class="down-arrow" in:fly={{ y: -100, duration: 325 }}>
