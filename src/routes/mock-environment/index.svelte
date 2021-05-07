@@ -69,11 +69,13 @@
       y.mockGender = gender;
       return y;
     });
+    const timeSubmitted = new Date().toISOString();
     let toSubmit = {
       PROLIFIC_PID: $PROLIFIC_PID,
       SESSION_ID: $SESSION_ID,
       STUDY_ID: $STUDY_ID,
       condition: $condition,
+      timeSubmitted: timeSubmitted,
       secondsTaken: time - timeLeft,
       posts: simplePosts
     };

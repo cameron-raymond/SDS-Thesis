@@ -78,11 +78,13 @@
         $form.socialMedias = $form.socialMedias.filter(e => e !== "typedInput");
       }
 
+      const timeSubmitted = new Date().toISOString();
       let toSubmit = {
         PROLIFIC_PID: $PROLIFIC_PID,
         SESSION_ID: $SESSION_ID,
         STUDY_ID: $STUDY_ID,
         consent: $consent,
+        timeSubmitted: timeSubmitted,
         ...values
       };
       const url = "/.netlify/functions/participants";
@@ -327,7 +329,8 @@
     {/if}
 
     <label for="attentionCheck">
-      It's important that you pay attention to this study. Please tick 'Disagree'.
+      It's important that you pay attention to this study. Please tick
+      'Disagree'.
     </label>
     <select
       id="attentionCheck"

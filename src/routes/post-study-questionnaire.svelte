@@ -36,10 +36,12 @@
       comments: yup.string().notRequired()
     }),
     onSubmit: values => {
+      const timeSubmitted = new Date().toISOString()
       let toSubmit = {
         PROLIFIC_PID: $PROLIFIC_PID,
         SESSION_ID: $SESSION_ID,
         STUDY_ID: $STUDY_ID,
+        timeSubmitted: timeSubmitted,
         ...values
       };
       const url = "/.netlify/functions/post-study-responses";
