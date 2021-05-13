@@ -14,7 +14,7 @@ exports.handler = async (event, context) => {
       console.log("Creating a new participant for " + PROLIFIC_PID)
       try {
         const client = await MongoClient.connect(connection_string);
-        const db = await client.db('sds-thesis-db');
+        const db = await client.db('thesis-db');
         await db.collection('participants').replaceOne({ '_id': PROLIFIC_PID }, data, { upsert: true });
         client.close();
       } catch (error) {
@@ -38,7 +38,7 @@ exports.handler = async (event, context) => {
       console.log("Removing participant " + PROLIFIC_PID)
       try {
         const client = await MongoClient.connect(connection_string);
-        const db = await client.db('sds-thesis-db');
+        const db = await client.db('thesis-db');
         await db.collection('participants').deleteOne({ '_id': PROLIFIC_PID });
         client.close();
       } catch (error) {

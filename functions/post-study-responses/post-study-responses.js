@@ -14,7 +14,7 @@ exports.handler = async (event, context) => {
       console.log("Creating a new post-study response for " + PROLIFIC_PID)
       try {
         const client = await MongoClient.connect(connection_string);
-        const db = await client.db('sds-thesis-db');
+        const db = await client.db('thesis-db');
         await db.collection('post-study-responses').replaceOne({ '_id': PROLIFIC_PID }, data, { upsert: true });
         client.close();
       } catch (error) {
@@ -38,7 +38,7 @@ exports.handler = async (event, context) => {
       console.log("Removing post-study response for " + PROLIFIC_PID)
       try {
         const client = await MongoClient.connect(connection_string);
-        const db = await client.db('sds-thesis-db');
+        const db = await client.db('thesis-db');
         await db.collection('post-study-responses').deleteOne({ '_id': PROLIFIC_PID });
         client.close();
       } catch (error) {
