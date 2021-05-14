@@ -63,11 +63,20 @@ small {
 	margin-top: 10px;
 }
 
+blockquote {
+	border-left: 2px solid #a7a0a0;
+	padding: 0 0 0 10px;
+	margin: 0 0 0 15px;
+}
+
 @media (max-width: 30rem) {
 	small {
 		display: block;
 		color: var(--red);
 		margin-top: 10px;
+	}
+	blockquote {
+		margin: 0;
 	}
 }
 
@@ -138,7 +147,6 @@ button {
 	outline: none;
 	border-radius: 4px;
 	display: block;
-	margin-top: 12px;
 	line-height: 1.8;
 	padding: 10px 18px;
 	transition: all 150ms ease;

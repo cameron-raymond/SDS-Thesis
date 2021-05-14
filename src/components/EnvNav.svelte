@@ -16,8 +16,12 @@
 </script>
 
 <style>
+  button {
+    margin: 0;
+  }
   .controls {
     display: flex;
+    margin: 0 1em 0 0;
   }
   .margin {
     margin-right: 10px;
@@ -31,7 +35,7 @@
     padding: 2em;
     z-index: 2;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: flex-start;
     background-color: white;
     border-bottom: 1px solid var(--grey-light);
@@ -48,10 +52,10 @@
 <span class="header">
   <span class="controls">
     {#if !started}
-      <button class="margin" on:click={start}>Start</button>
+      <button style="margin: 0 10px; 0 0;" on:click={start}>Start</button>
       <button disabled>I'm Done</button>
     {:else if !finished}
-      <button class="margin" disabled>Start</button>
+      <button style="margin: 0 10px; 0 0;" disabled>Start</button>
       <button
         on:mouseover={() => prefetch(`/post-study-questionnaire`)}
         on:click={finish}>
