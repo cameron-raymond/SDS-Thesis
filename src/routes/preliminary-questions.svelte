@@ -87,7 +87,7 @@
         timeSubmitted: timeSubmitted,
         ...values
       };
-      const url = "/.netlify/functions/participants";
+      const url = "/.netlify/functions/azure?collection=participants";
       fetch(url, {
         method: "POST",
         body: JSON.stringify(toSubmit),
@@ -100,7 +100,7 @@
         .catch(err => {
           console.log("POST error", err.message);
         });
-      goto(`/mock-environment`);
+      goto(`/mock-environment-one/video`);
     }
   });
 </script>
@@ -129,31 +129,25 @@
       <small>{$errors.age}</small>
     {/if}
 
-    <label for="gender">How would you describe your gender?</label>
+    <label for="gender">
+      What is your gender? You may select any number or none.
+    </label>
     <span class="multiselect">
       <label>
-        <input type="checkbox" bind:group={$form.gender} value="female" />
-        Female
+        <input type="checkbox" bind:group={$form.gender} value="woman" />
+        Woman
       </label>
       <label>
-        <input type="checkbox" bind:group={$form.gender} value="intersex" />
-        Intersex
-      </label>
-      <label>
-        <input type="checkbox" bind:group={$form.gender} value="male" />
-        Male
+        <input type="checkbox" bind:group={$form.gender} value="man" />
+        Man
       </label>
       <label>
         <input type="checkbox" bind:group={$form.gender} value="nonBinary" />
         Non-binary
       </label>
       <label>
-        <input type="checkbox" bind:group={$form.gender} value="transgender" />
-        Transgender
-      </label>
-      <label>
         <input type="checkbox" bind:group={$form.gender} value="typedInput" />
-        Let me type... (not listed)
+        Prefer to self-describe
       </label>
     </span>
     {#if $errors.gender}
@@ -162,8 +156,7 @@
 
     {#if $form.gender.includes('typedInput')}
       <label for="name">
-        In addition to whatever you may have selected, how would you describe
-        your gender?
+        In addition to whatever you may have selected, what is your gender?
       </label>
       <input id="gender" name="gender" bind:value={typedGender} />
     {/if}
@@ -178,8 +171,7 @@
       bind:value={$form.educationLevel}>
       <option />
       <option value="none">No formal qualifications</option>
-      <option value="secondary">Secondary education (e.g. GED/GCSE)</option>
-      <option value="highSchool">High school diploma/A-levels</option>
+      <option value="highSchool">High school diploma</option>
       <option value="communityCollege">Technical/community college</option>
       <option value="undergrad">Undergraduate degree (BA/BSc/other)</option>
       <option value="graduateSchool">
@@ -209,7 +201,7 @@
       <option value="centreRight">Centre-right</option>
       <option value="right">Right</option>
       <option value="none">None</option>
-      <option value="typedInput">Let me type... (not listed)</option>
+      <option value="typedInput">Prefer to self-describe</option>
     </select>
     {#if $errors.politicalAffiliation}
       <small>{$errors.politicalAffiliation}</small>
@@ -229,7 +221,9 @@
     {/if}
 
     <label for="attendsProtests">
-      Have you attended a protest in the past 2 years?
+      Have you attended a protest in the past 2 years? You are not required to
+      answer this question and it will not be associated with your Prolific ID
+      in any analyses.
     </label>
     <select
       id="attendsProtests"
@@ -245,8 +239,8 @@
     {/if}
 
     <label for="affiliatedMovements">
-      Select the social movements that you would or have protested in support
-      of:
+      Which of the below social movements do you support in principle? You may
+      select any number or none.
     </label>
     <span class="multiselect">
       <label>
@@ -416,7 +410,7 @@
         bind:value={typedSocialMedias} />
     {/if}
 
-    <button on:mouseover={() => prefetch(`/mock-environment`)} type="submit">
+    <button on:mouseover={() => prefetch(`/mock-environment-one/video`)} type="submit">
       Submit
     </button>
   </form>

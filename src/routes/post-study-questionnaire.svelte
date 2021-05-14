@@ -49,7 +49,7 @@
         timeSubmitted: timeSubmitted,
         ...values
       };
-      const url = "/.netlify/functions/post-study-responses";
+      const url = "/.netlify/functions/azure?collection=post-study-responses";
       fetch(url, {
         method: "POST",
         body: JSON.stringify(toSubmit),
@@ -72,7 +72,16 @@
 </script>
 
 <style>
-
+  button {
+    display: flex;
+    align-self: center;
+    text-decoration: none;
+    margin-top: 1.25rem;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+  }
 </style>
 
 <span class="container">
