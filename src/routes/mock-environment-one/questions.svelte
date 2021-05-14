@@ -83,8 +83,7 @@
       <small>{$errors.attentionCheck}</small>
     {/if}
     <label for="awareR1">
-      Were you previously aware of the rumour that federal agents were
-      kidnapping protestors?
+      Have you ever seen this video before, or been aware of its existence?
     </label>
     <select
       id="awareR1"
