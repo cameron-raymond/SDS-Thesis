@@ -1,11 +1,13 @@
 <script context="module">
-  export async function preload() {
+  export function preload() {
     const url =
       "/.netlify/functions/posts?affirms=10&denies=10&neutral=4&questions=4";
-    const posts = await this.fetch(url)
+    return this.fetch(url)
       .then(r => r.json())
+      .then(posts => {
+        return { posts };
+      })
       .catch(err => console.log(err));
-    return { posts };
   }
 </script>
 

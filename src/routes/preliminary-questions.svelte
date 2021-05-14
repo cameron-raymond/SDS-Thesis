@@ -104,7 +104,16 @@
 </script>
 
 <style>
-
+  button {
+    display: flex;
+    align-self: center;
+    text-decoration: none;
+    margin-top: 1.25rem;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+  }
 </style>
 
 <span class="container">
