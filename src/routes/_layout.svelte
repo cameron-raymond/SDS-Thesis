@@ -3,7 +3,7 @@
   import { consent } from "../stores/local-store";
   export let segment;
 
-  $: consentBool = !!(parseInt($consent))
+  $: consentBool = !!parseInt($consent);
 </script>
 
 <style>
@@ -110,7 +110,24 @@
 <a href="/post-study-questionnaire" class="hide_link" aria-label=" ">
   post-study-questionnaire
 </a>
-<a href="/mock-environment" class="hide_link" aria-label=" ">mock-env</a>
+<a href="/mock-environment-one/video" class="hide_link" aria-label=" ">
+  mock-env
+</a>
+<a href="/mock-environment-one/questions" class="hide_link" aria-label=" ">
+  mock-env
+</a>
+<a href="/mock-environment-one/env" class="hide_link" aria-label=" ">
+  mock-env
+</a>
+<a href="/mock-environment-two/video" class="hide_link" aria-label=" ">
+  mock-env
+</a>
+<a href="/mock-environment-two/questions" class="hide_link" aria-label=" ">
+  mock-env
+</a>
+<a href="/mock-environment-two/env" class="hide_link" aria-label=" ">
+  mock-env
+</a>
 <a href="/preliminary-questions" class="hide_link" aria-label=" ">
   preliminary-questions
 </a>
