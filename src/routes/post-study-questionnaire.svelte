@@ -57,12 +57,8 @@
           "Content-Type": "application/json"
         }
       })
-        .then(r => r.json())
-        .then(r => console.log(r))
-        .then(r => {
-          setTimeout(() => {
-            goto(prolificReturnURl);
-          }, 30000);
+        .then(() => {
+          goto(prolificReturnURl);
         })
         .catch(err => {
           console.log("POST error", err.message);
@@ -89,7 +85,7 @@
   {#if submitted}
     <p class="subtitle">
       Thank you for completing our study. You will automatically be re-directed
-      back to Prolific to collect your reward in 30 seconds.
+      back to Prolific to collect your reward.
       <strong>
         If that does not happen click on this link:
         <a href={prolificReturnURl}>Prolific,</a>

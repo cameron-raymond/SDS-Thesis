@@ -92,12 +92,9 @@
         headers: {
           "Content-Type": "application/json"
         }
-      })
-        .then(r => r.json())
-        .then(r => console.log(r))
-        .catch(err => {
-          console.log("POST error", err.message);
-        });
+      }).catch(err => {
+        console.log("POST error", err.message);
+      });
       goto(`/mock-environment-one/video`);
     }
   });

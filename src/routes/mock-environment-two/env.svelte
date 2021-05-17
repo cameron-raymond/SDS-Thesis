@@ -1,11 +1,14 @@
 <script context="module">
-  export async function preload() {
+  export function preload() {
+    // UPDATE
     const url =
       "/.netlify/functions/posts?affirms=10&denies=10&neutral=4&questions=4";
-    const posts = await this.fetch(url)
+    return this.fetch(url)
       .then(r => r.json())
+      .then(posts => {
+        return { posts };
+      })
       .catch(err => console.log(err));
-    return { posts };
   }
 </script>
 
@@ -79,43 +82,26 @@
       secondsTaken: time - timeLeft,
       posts: simplePosts
     };
-    const url = "/.netlify/functions/experimental-results";
+    const url = "/.netlify/functions/azure?collection=rumour-two-results";
     fetch(url, {
       method: "POST",
       body: JSON.stringify(toSubmit),
       headers: {
         "Content-Type": "application/json"
       }
-    })
-      .then(r => r.json())
-      .then(r => console.log(r))
-      .catch(err => {
-        console.log("POST error", err.message);
-      });
-    setTimeout(() => {
-      goto(`/post-study-questionnaire`);
-    }, 15000);
+    }).catch(err => {
+      console.log("POST error", err.message);
+    });
+    goto(`/post-study-questionnaire`);
   }
 </script>
 
 <style>
-  .video-cont {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    flex-wrap: wrap-reverse;
-  }
-  .video {
-    width: 600px;
-  }
   .subtitle {
     color: #555;
     max-width: 40rem;
     margin-bottom: 0.5rem;
     padding-bottom: 2.5rem;
-  }
-  .note {
-    color: var(--red);
   }
   .cont {
     display: flex;
@@ -138,13 +124,7 @@
     width: 3rem;
     z-index: 1;
   }
-  @media (max-width: 800px) {
-    .video {
-      margin-left: 0;
-      width: 100%;
-      max-width: 40rem;
-    }
-  }
+
   @media (max-width: 40rem) {
     .down-arrow {
       height: 2.5rem;
@@ -160,62 +140,47 @@
 </style>
 
 <Header {time} bind:started bind:finished bind:timeLeft />
-<h1>Protest Scenario</h1>
 {#if !finished}
-  <span class="video-cont">
+  <span class="container">
+    <h1>Protest Scenario Two: Mock Environment</h1>
     <div class="subtitle">
+      <p>Please read all of these instructions before pressing "Start"</p>
       <p>
-        You will watch a video from recent protests which created discussion on
-        social media.
-        <strong>
-          Please watch the video before clicking start and entering the social
-          media environment.
-        </strong>
-        After watching the video you will be shown a simulated social-media feed
-        discussing the video's content. Imagine you are attending a protest at
-        the location and time of both the scenes in the video. Your task is to
-        reshare social media posts that you would feel are relevant for other
-        demonstrators to be aware of given these videos. You may indicate this
-        by pressing the "reshare" button on the bottom right-hand corner of a
-        post.
+        Now that you've watched the video from the previous screen, we would
+        like you to interact with a mock-social media feed as if you were in the
+        scenario described below.
       </p>
-      <span>
-        <p style="margin: 0 0 -0.5em 0;">
-          <strong>Tasks:</strong>
-        </p>
-        <ol>
-          <li>Click the video player on your screen to watch both videos.</li>
-          <li>
-            Click the “start” button on your screen to display the social media
-            posts below these instructions.
-          </li>
-          <li>Reshare posts that you feel are relevant.</li>
-          <li>
-            When two minutes is up, or you are finished, press “I’m Done” to
-            continue.
-          </li>
-        </ol>
-      </span>
       <p>
-        <span class="note">
-          Please do not participate if you anticipate that this content may
-          cause you significant distress.
-        </span>
+        Your task is to reshare social media posts that you would feel are
+        relevant given the video you've watched and the scenario described
+        below. You may do this by pressing the "reshare" button on the bottom
+        right-hand corner of a post.
+        <strong>
+          You will be given two minutes to reshare posts, at which time you will
+          move on to the next scenario.
+        </strong>
+      </p>
+      <p>
         You may end the study at any time without penalty. Please do not refer
         to outside sources during the study.
       </p>
-      <p>
-        <strong>After watching the video on your screen</strong>
-        press the "start" button to enter the social media environment.
+      <p style="margin: 0 0 -0.5em 0;">
+        <strong>Scenario:</strong>
       </p>
+      <blockquote>
+        <p>UPDATE UPDATE UPDATE UPDATE</p>
+      </blockquote>
+
+      <p>
+        Press the "Start" button at the top of your screen to enter the social
+        media environment.
+      </p>
+
       {#if started && !seenPosts}
         <span class="down-arrow" in:fly={{ y: -100, duration: 325 }}>
           <FaAngleDown />
         </span>
       {/if}
-    </div>
-    <div class="video">
-      <Video />
     </div>
   </span>
 {/if}
@@ -231,7 +196,8 @@
                 {post}
                 bind:reshared={post.reshared}
                 bind:clickedWarning={post.clickedWarning}
-                warning={post.warning ? CredibilityIndicator : undefined} />
+                warning={post.warning ? CredibilityIndicator : undefined}
+                rumour="R2" />
             </InView>
           {:else}
             <!-- binds the reshare variable in the child component to the post.reshared subfield in our array -->
@@ -239,18 +205,21 @@
               {post}
               bind:reshared={post.reshared}
               bind:clickedWarning={post.clickedWarning}
-              warning={post.warning ? CredibilityIndicator : undefined} />
+              warning={post.warning ? CredibilityIndicator : undefined}
+              rumour="R2" />
           {/if}
         {/each}
       </span>
     {/if}
   {:else}
-    <p>Thank you! You took {time - timeLeft} seconds.</p>
-    <p>
-      You will be automatically redirected to the post-study questionnaire in 15
-      seconds. If that does not happen, please click on this link:
-      <a href="/post-study-questionnaire">post-study questionnaire,</a>
-      to continue.
-    </p>
+    <span class="container">
+      <h1>Protest Scenario Two: Mock Environment</h1>
+      <p>
+        You will automatically be redirected to the next protest scenario. If
+        that does not happen, please click on this link:
+        <a href="/post-study-questionnaire">post-study questionnaire,</a>
+        to continue.
+      </p>
+    </span>
   {/if}
 {/if}

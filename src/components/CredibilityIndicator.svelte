@@ -1,6 +1,7 @@
 <script>
   import { FaInfoCircle, FaAngleRight } from "svelte-icons/fa";
   import { IoIosCloseCircleOutline } from "svelte-icons/io";
+  export let rumour = "R1";
   export let clickedWarning = false;
   let showModal = false;
 </script>
@@ -131,8 +132,8 @@
   <span class="icon" style="margin: 0 0 0 0.1rem;">
     <FaAngleRight />
   </span>
-
 </div>
+
 {#if showModal}
   <div
     class="modal"
@@ -140,21 +141,30 @@
       showModal = false;
     }}>
     <div class="modal-card" on:click|stopPropagation={() => {}}>
-      <p>
-        Others nearby have recently disputed this claim. Please be careful with
-        what you share as it is easy to misinterpret events. Rather than using
-        contact tracing apps to track protestors, others have said that:
-      </p>
-      <ul>
-        <li>
-          This was a poorly worded metaphor by law enforcment and is not to be
-          taken literally.
-        </li>
-        <li>
-          Law enforcment do not have access to data from contact tracing apps.
-        </li>
-      </ul>
-      <p>Please stay safe and think before you reshare.</p>
+      {#if rumour === 'R1'}
+        <p>UPDATE</p>
+        <ul>
+          <li>UPDATE</li>
+          <li>UPDATE</li>
+        </ul>
+        <p>Please stay safe and think before you reshare.</p>
+      {:else}
+        <p>
+          Others nearby have recently disputed this claim. Please be careful
+          with what you share as it is easy to misinterpret events. Rather than
+          using contact tracing apps to track protestors, others have said that:
+        </p>
+        <ul>
+          <li>
+            This was a poorly worded metaphor by law enforcment and is not to be
+            taken literally.
+          </li>
+          <li>
+            Law enforcment do not have access to data from contact tracing apps.
+          </li>
+        </ul>
+        <p>Please stay safe and think before you reshare.</p>
+      {/if}
       <span
         class="close"
         on:click={() => {

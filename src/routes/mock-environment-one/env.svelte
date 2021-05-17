@@ -17,7 +17,6 @@
   import { fly } from "svelte/transition";
   import Header from "../../components/EnvNav.svelte";
   import Card from "../../components/Card.svelte";
-  import Video from "../../components/Video.svelte";
   import InView from "../../components/LazyLoad.svelte";
   import CredibilityIndicator from "../../components/CredibilityIndicator.svelte";
   import { FaAngleDown } from "svelte-icons/fa";
@@ -51,11 +50,11 @@
     posts = posts.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
     // Add credibility indicators
     if ($condition == "treatment") {
-      let lowEvaffirms = posts
-        .map((e, i) => (e.evidence === "low" && e.code === "affirms" ? i : -1))
+      let highEvDen = posts
+        .map((e, i) => (e.evidence === "high" && e.code === "denies" ? i : -1))
         .filter(x => x > -1);
-      let numIndicators = Math.ceil(lowEvaffirms.length * 0.75);
-      let credIndicators = lowEvaffirms
+      let numIndicators = Math.ceil(highEvDen.length * 0.75);
+      let credIndicators = highEvDen
         .sort(() => 0.5 - Math.random())
         .slice(0, numIndicators);
       for (const i of credIndicators) {
@@ -88,25 +87,14 @@
       headers: {
         "Content-Type": "application/json"
       }
-    })
-      .then(r => r.json())
-      .then(r => {
-        console.log(r);
-        goto(`/post-study-questionnaire`);
-      })
-      .catch(err => {
-        console.log("POST error", err.message);
-      });
+    }).catch(err => {
+      console.log("POST error", err.message);
+    });
+    goto(`/mock-environment-two/video`);
   }
 </script>
 
 <style>
-  .video-cont {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    flex-wrap: wrap-reverse;
-  }
   .subtitle {
     color: #555;
     max-width: 40rem;
@@ -227,7 +215,8 @@
                 {post}
                 bind:reshared={post.reshared}
                 bind:clickedWarning={post.clickedWarning}
-                warning={post.warning ? CredibilityIndicator : undefined} />
+                warning={post.warning ? CredibilityIndicator : undefined}
+                rumour="R1" />
             </InView>
           {:else}
             <!-- binds the reshare variable in the child component to the post.reshared subfield in our array -->
@@ -235,7 +224,8 @@
               {post}
               bind:reshared={post.reshared}
               bind:clickedWarning={post.clickedWarning}
-              warning={post.warning ? CredibilityIndicator : undefined} />
+              warning={post.warning ? CredibilityIndicator : undefined}
+              rumour="R1" />
           {/if}
         {/each}
       </span>
@@ -246,7 +236,7 @@
       <p>
         You will automatically be redirected to the next protest scenario. If
         that does not happen, please click on this link:
-        <a href="/post-study-questionnaire">post-study questionnaire,</a>
+        <a href="/mock-environment-two/video">mock-environment two,</a>
         to continue.
       </p>
     </span>

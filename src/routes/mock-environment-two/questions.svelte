@@ -7,14 +7,14 @@
   const { form, errors, state, handleChange, handleSubmit } = createForm({
     initialValues: {
       attentionCheck: [],
-      awareR1: undefined
+      awareR2: undefined
     },
     validationSchema: yup.object().shape({
       attentionCheck: yup
         .array()
         .max(1, "You can only select one option.")
         .notRequired(),
-      awareR1: yup.mixed().notRequired()
+      awareR2: yup.mixed().notRequired()
     }),
     onSubmit: values => {
       const timeSubmitted = new Date().toISOString();
@@ -25,7 +25,7 @@
         timeSubmitted: timeSubmitted,
         ...values
       };
-      const url = "/.netlify/functions/azure?collection=rumour-one-check";
+      const url = "/.netlify/functions/azure?collection=rumour-two-check";
       fetch(url, {
         method: "POST",
         body: JSON.stringify(toSubmit),
@@ -35,7 +35,7 @@
       }).catch(err => {
         console.log("POST error", err.message);
       });
-      goto("/mock-environment-one/env");
+      goto("/mock-environment-two/env");
     }
   });
 </script>
@@ -65,31 +65,34 @@
     </label>
     <span class="multiselect">
       <label>
-        <input type="checkbox" bind:group={$form.attentionCheck} value="fail" />
-        A protestor climbing a government building.
+        <input type="checkbox" bind:group={$form.attentionCheck} value="pass" />
+        UPDATE PASS 
       </label>
       <label>
-        <input type="checkbox" bind:group={$form.attentionCheck} value="pass" />
-        A protestor being taken and driven away in an unmarked van.
+        <input
+          type="checkbox"
+          bind:group={$form.attentionCheck}
+          value="fail" />
+        UPDATE FAIL
       </label>
     </span>
     {#if $errors.attentionCheck}
       <small>{$errors.attentionCheck}</small>
     {/if}
-    <label for="awareR1">
+    <label for="awareR2">
       Have you ever seen this video before, or been aware of its existence?
     </label>
     <select
-      id="awareR1"
-      name="awareR1"
+      id="awareR2"
+      name="awareR2"
       on:blur={handleChange}
-      bind:value={$form.awareR1}>
+      bind:value={$form.awareR2}>
       <option />
       <option value={true}>Yes</option>
       <option value={false}>No</option>
     </select>
-    {#if $errors.awareR1}
-      <small>{$errors.awareR1}</small>
+    {#if $errors.awareR2}
+      <small>{$errors.awareR2}</small>
     {/if}
     <button type="submit">Next</button>
   </form>
