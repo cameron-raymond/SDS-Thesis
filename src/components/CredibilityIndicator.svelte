@@ -142,10 +142,17 @@
     }}>
     <div class="modal-card" on:click|stopPropagation={() => {}}>
       {#if rumour === 'R1'}
-        <p>UPDATE</p>
+        <p>
+          Others nearby have recently disputed this claim. Please be careful
+          with what you share as it is easy to misinterpret events. Rather than
+          retrieving an “undercover officer” posing as a protestor, others have
+          said that:
+        </p>
         <ul>
-          <li>UPDATE</li>
-          <li>UPDATE</li>
+          <li>
+            Protestors are being taken by federal agents without an explanation.
+          </li>
+          <li>The video in question is not staged.</li>
         </ul>
         <p>Please stay safe and think before you reshare.</p>
       {:else}
@@ -156,8 +163,8 @@
         </p>
         <ul>
           <li>
-            This was a poorly worded metaphor by law enforcment and is not to be
-            taken literally.
+            This was a poorly worded metaphor by law enforcement and is not to
+            be taken literally.
           </li>
           <li>
             Law enforcment do not have access to data from contact tracing apps.
