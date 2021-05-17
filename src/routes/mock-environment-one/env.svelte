@@ -146,60 +146,59 @@
   <span class="container">
     <h1>Protest Scenario One (1/2)</h1>
     <div class="subtitle">
-      <p>Please read all of these instructions before pressing "Start".</p>
-      <p>
-        Now that you've watched the video from the previous screen, we would
-        like you to interact with a simulated social media feed as if you were
-        in the scenario described below.
-      </p>
-      <p>
-        Your task will be to reshare social media posts that you would feel are
-        relevant given the video you've watched and the scenario described
-        below. You may do this by pressing the "reshare" button on the bottom
-        right-hand corner of a post.
-        <strong>
-          You will be given two minutes to reshare posts, at which time you will
-          move on to the next scenario.
-        </strong>
-      </p>
-      <p>
-        Please only reshare posts that you might consider sharing yourself in
-        the described situation.
-      </p>
-      <p>
-        You may end the study at any time without penalty. Please do not refer
-        to outside sources during the study.
-      </p>
-      <p style="margin: 0 0 -0.5em 0;">
-        <strong>Scenario:</strong>
-      </p>
-      <blockquote>
+        <p>Please read all of these instructions before pressing "Start".</p>
         <p>
-          You are on your way to a protest when you see on your social media
-          feed the video from the previous screen, which appears to show a
-          protestor being taken and driven away in an unmarked van. You
-          recognize the video's background as close to the place where your
-          protest is being held.
+          Now that you've watched the video from the previous screen, we would
+          like you to interact with a simulated social media feed as if you were
+          in the scenario described below.
         </p>
         <p>
-          You check the news, but you don't see it being covered by your local
-          news station yet.
+          Your task will be to reshare social media posts that you would feel
+          are relevant given the video you've watched and the scenario described
+          below. You may do this by pressing the "reshare" button on the bottom
+          right-hand corner of a post.
+          <strong>
+            You will be given two minutes to reshare posts, at which time you
+            will move on to the next scenario.
+          </strong>
         </p>
         <p>
-          As you scroll further through your social media feed, you see that
-          this video is the main topic of conversation.
+          Please only reshare posts that you might consider sharing yourself in
+          the described situation.
         </p>
         <p>
-          Please consider which of the following posts in your feed you might
-          think that other protestors should be aware of.
+          You may end the study at any time without penalty. Please do not refer
+          to outside sources during the study.
         </p>
-      </blockquote>
+        <p style="margin: 0 0 -0.5em 0;">
+          <strong>Scenario:</strong>
+        </p>
+        <blockquote>
+          <p>
+            You are on your way to a protest when you see on your social media
+            feed the video from the previous screen, which appears to show a
+            protestor being taken and driven away in an unmarked van. You
+            recognize the video's background as close to the place where your
+            protest is being held.
+          </p>
+          <p>
+            You check the news, but you don't see it being covered by your local
+            news station yet.
+          </p>
+          <p>
+            As you scroll further through your social media feed, you see that
+            this video is the main topic of conversation.
+          </p>
+          <p>
+            Please consider which of the following posts in your feed you might
+            think that other protestors should be aware of.
+          </p>
+        </blockquote>
 
-      <p>
-        Press the "Start" button at the bottom of your screen to start the timer
-        and view your mock social media feed.
-      </p>
-
+        <p>
+          Press the "Start" button at the bottom of your screen to start the
+          timer and view your mock social media feed.
+        </p>
       {#if started && !seenPosts}
         <span class="down-arrow" in:fly={{ y: -100, duration: 325 }}>
           <FaAngleDown />

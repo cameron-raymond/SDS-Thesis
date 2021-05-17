@@ -23,9 +23,6 @@
     display: flex;
     margin: 0 1em 0 0;
   }
-  .margin {
-    margin-right: 10px;
-  }
   .header {
     position: fixed;
     bottom: 0em;
@@ -65,7 +62,7 @@
         I'm Done
       </button>
     {:else}
-      <button class="margin" disabled>Start</button>
+      <button style="margin: 0 10px; 0 0;" disabled>Start</button>
       <button disabled>I'm Done</button>
     {/if}
   </span>
