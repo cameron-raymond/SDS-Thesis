@@ -4,7 +4,6 @@
   export let warning;
   export let reshared = false;
   export let clickedWarning = false;
-  export let rumour = "R1";
 </script>
 
 <style>
@@ -160,7 +159,7 @@
 
   <span class="foot">
     {#if warning}
-      <svelte:component this={warning} {rumour}  bind:clickedWarning />
+      <svelte:component this={warning} {...post}  bind:clickedWarning />
     {:else}
       <div />
     {/if}

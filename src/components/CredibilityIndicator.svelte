@@ -1,7 +1,7 @@
 <script>
   import { FaInfoCircle, FaAngleRight } from "svelte-icons/fa";
   import { IoIosCloseCircleOutline } from "svelte-icons/io";
-  export let rumour = "R1";
+  export let rumour
   export let clickedWarning = false;
   let showModal = false;
 </script>
