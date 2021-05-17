@@ -191,8 +191,8 @@
       </blockquote>
 
       <p>
-        Press the "Start" button at the bottom of your screen to enter the
-        social media environment.
+        Press the "Start" button at the bottom of your screen to start the timer
+        and view your mock social media feed.
       </p>
 
       {#if started && !seenPosts}
