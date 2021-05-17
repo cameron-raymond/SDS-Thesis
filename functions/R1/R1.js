@@ -34,11 +34,11 @@ exports.handler = async (event, context) => {
     switch (event.httpMethod) {
         case "GET":
             // Get posts
-            let posts = JSON.parse(fs.readFileSync(require.resolve('./assets/posts.json', {
+            let posts = JSON.parse(fs.readFileSync(require.resolve('./assets/R1-posts.json', {
                 encoding: "utf8",
             })));
             posts = posts.map(post => {
-                post.evidence = post.rumour == "R1" ? "high" : "low"
+                post.evidence = "high";
                 post.profileImage = undefined;
                 post.timestamp = undefined;
                 post.username = undefined;
@@ -56,23 +56,15 @@ exports.handler = async (event, context) => {
             denies = parseInt(denies) || posts.length
             neutral = parseInt(neutral) || posts.length
             questions = parseInt(questions) || posts.length
-            let toSample = { numPerCategory, affirms, denies, neutral, questions } 
-            
-            // group posts by rumour
-            const groupedByRumour = arrayFromObject(groupBy(posts, item => item.rumour));
-            // For each rumour
-            const sampledFrames = groupedByRumour.map(rumour => {
-                // group by code ID
-                const groupedByCode =  groupBy(rumour, item => item.code);
-                // Sample the specified number of posts
-                const sampledRumourFrames = Object.keys(groupedByCode).map(key => sample(groupedByCode[key], toSample[key]));
-                // Concat the the 2d array (1 for each code) into one big array
-                const sampledRumourPosts = [].concat.apply([], sampledRumourFrames)
-                return sampledRumourPosts
-            })
-            // Put all the frames back together
+            let toSample = { numPerCategory, affirms, denies, neutral, questions }
+
+            // group by code ID
+            const groupedByCode = groupBy(posts, item => item.code);
+            // Sample the specified number of posts
+            const sampledFrames = Object.keys(groupedByCode).map(key => sample(groupedByCode[key], toSample[key]));
+            // Concat the the 2d array (1 for each code) into one big array
             const sampledPosts = [].concat.apply([], sampledFrames)
-            console.log("2 * ("+affirms+" + "+denies+" + "+neutral+" + "+questions+") = "+sampledPosts.length)
+            console.log(affirms + " + " + denies + " + " + neutral + " + " + questions + " = " + sampledPosts.length)
             return {
                 statusCode: 200,
                 /* Required for CORS support to work */

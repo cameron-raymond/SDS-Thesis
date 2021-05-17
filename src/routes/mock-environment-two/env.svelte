@@ -2,7 +2,7 @@
   export function preload() {
     // UPDATE
     const url =
-      "/.netlify/functions/posts?affirms=10&denies=10&neutral=4&questions=4";
+      "/.netlify/functions/R2?affirms=10&denies=10&neutral=4&questions=4";
     return this.fetch(url)
       .then(r => r.json())
       .then(posts => {
@@ -51,7 +51,7 @@
     }
     posts = posts.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
     // Add credibility indicators
-    if ($condition == "treatment") {
+    if ($condition === "treatment") {
       let lowEvaffirms = posts
         .map((e, i) => (e.evidence === "low" && e.code === "affirms" ? i : -1))
         .filter(x => x > -1);
