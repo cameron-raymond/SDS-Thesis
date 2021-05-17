@@ -53,7 +53,10 @@
     </p>
   </div>
   <div class="video">
-    <Video />
+    <Video
+      mp4="/R1-context.mp4"
+      webm="/R1-context.webm"
+      vtt="/R1-context.vtt" />
   </div>
   <button
     on:click={() => {

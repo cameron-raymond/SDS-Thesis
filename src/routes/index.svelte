@@ -17,7 +17,6 @@
     if ("STUDY_ID" in $page.query) STUDY_ID.set($page.query.STUDY_ID);
     if ($condition == -1) {
       const boolNum = Math.random();
-      console.log(boolNum)
       condition.set(boolNum < 0.5 ? "treatment" : "control");
     }
 

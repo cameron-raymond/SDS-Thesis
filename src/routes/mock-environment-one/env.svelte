@@ -118,7 +118,7 @@
   .down-arrow {
     display: inline-block;
     position: fixed;
-    bottom: 3em;
+    bottom: 6.5em;
     left: 50%;
     color: var(--orange);
     height: 3rem;
@@ -128,6 +128,7 @@
 
   @media (max-width: 40rem) {
     .down-arrow {
+      bottom: 4em;
       height: 2.5rem;
       width: 2.5rem;
     }
@@ -143,7 +144,7 @@
 <Header {time} bind:started bind:finished bind:timeLeft />
 {#if !finished}
   <span class="container">
-    <h1>Protest Scenario One: Mock Environment</h1>
+    <h1>Protest Scenario One</h1>
     <div class="subtitle">
       <p>Please read all of these instructions before pressing "Start"</p>
       <p>
@@ -191,8 +192,8 @@
       </blockquote>
 
       <p>
-        Press the "Start" button at the top of your screen to enter the social
-        media environment.
+        Press the "Start" button at the bottom of your screen to enter the
+        social media environment.
       </p>
 
       {#if started && !seenPosts}

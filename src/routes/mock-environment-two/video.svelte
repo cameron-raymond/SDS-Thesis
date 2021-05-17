@@ -37,10 +37,9 @@
 
   <div class="subtitle">
     <p>
-       UPDATE UPDATE UPDATE
-      To begin we'd like you to watch a video, originally posted on social
-      media, which appears to show a protestor being taken and driven away in an
-      unmarked van.
+      UPDATE UPDATE UPDATE To begin we'd like you to watch a video, originally
+      posted on social media, which appears to show a protestor being taken and
+      driven away in an unmarked van.
       <strong class="note">
         Please do not participate if you anticipate that this content may cause
         you significant distress.
@@ -54,7 +53,10 @@
     </p>
   </div>
   <div class="video">
-    <Video />
+    <Video
+      mp4="/R2-context.mp4"
+      webm="/R2-context.webm"
+      vtt="/R2-context.vtt" />
   </div>
   <button
     on:click={() => {
