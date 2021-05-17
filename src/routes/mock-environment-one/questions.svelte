@@ -25,6 +25,11 @@
         timeSubmitted: timeSubmitted,
         ...values
       };
+      toSubmit["attentionCheck"] =
+        toSubmit["attentionCheck"].length == 1
+          ? toSubmit["attentionCheck"][0]
+          : "DNA";
+
       const url = "/.netlify/functions/azure?collection=rumour-one-check";
       fetch(url, {
         method: "POST",

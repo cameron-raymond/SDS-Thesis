@@ -25,6 +25,11 @@
         timeSubmitted: timeSubmitted,
         ...values
       };
+      toSubmit["attentionCheck"] =
+        toSubmit["attentionCheck"].length == 1
+          ? toSubmit["attentionCheck"][0]
+          : "DNA";
+          
       const url = "/.netlify/functions/azure?collection=rumour-two-check";
       fetch(url, {
         method: "POST",
@@ -66,13 +71,10 @@
     <span class="multiselect">
       <label>
         <input type="checkbox" bind:group={$form.attentionCheck} value="pass" />
-        UPDATE PASS 
+        UPDATE PASS
       </label>
       <label>
-        <input
-          type="checkbox"
-          bind:group={$form.attentionCheck}
-          value="fail" />
+        <input type="checkbox" bind:group={$form.attentionCheck} value="fail" />
         UPDATE FAIL
       </label>
     </span>
