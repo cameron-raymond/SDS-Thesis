@@ -50,7 +50,7 @@
   <p>
     This research is being conducted by Cameron Raymond, an MSc student at the
     University of Oxford, under the supervision of Dr. Peaks Krafft and Dr. Joss
-    Wright, faculty members at the the University of the Arts London and the
+    Wright, faculty members at the University of the Arts London and the
     University of Oxford respectively - and in collaboration with Dr. Emma Spiro
     a faculty member at the University of Washington.
   </p>
@@ -58,7 +58,7 @@
   <p>
     This study takes approximately 10 minutes. If you agree to take part in the
     research, you will complete a study that involves answering a short survey,
-    and interacting with a mock social media environment that simulates an
+    and interacting with two mock social media environments that simulate an
     ongoing protest. All of the information we obtain during the research will
     be kept confidential, and not associated with your name or social media
     accounts in any way, however, while the study is running it will be
@@ -69,13 +69,13 @@
     this study at any time with no penalty. If you have any questions about this
     research, do not hesitate to contact Cameron Raymond at
     <a href="mailto:cameron.raymond@oii.ox.ac.uk" target="_blank">
-      cameron.raymond@oii.ox.ac.uk
+      cameron.raymond@oii.ox.ac.uk.
     </a>
-    . If you have any questions about your rights or treatment as a participant
-    in this research project, please contact the Oxford Internet Institute's
+    If you have any questions about your rights or treatment as a participant in
+    this research project, please contact the Oxford Internet Institute's
     Departmental Research Ethics Committee (DREC) at
-    <a href="mailto:drec@oii.ox.ac.uk" target="_blank">drec@oii.ox.ac.uk</a>
-    . By consenting to participate, you acknowledge that you are 18 years or
+    <a href="mailto:drec@oii.ox.ac.uk" target="_blank">drec@oii.ox.ac.uk.</a>
+    By consenting to participate, you acknowledge that you are 18 years or
     older, have read this consent form, agree to its contents, and agree to take
     part in this research.
   </p>

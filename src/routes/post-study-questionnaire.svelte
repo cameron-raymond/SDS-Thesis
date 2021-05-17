@@ -137,7 +137,7 @@
       {/if}
 
       <label for="decisionProcess">
-        How did you decide which if any posts to reshare?
+        How did you decide which, if any, posts to reshare?
       </label>
       <textarea
         id="decisionProcess"

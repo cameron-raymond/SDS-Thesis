@@ -33,22 +33,22 @@
 </style>
 
 <span class="container">
-  <h1>Protest Scenario Two: Video</h1>
+  <h1>Protest Scenario Two (2/2): Video</h1>
 
   <div class="subtitle">
     <p>
-      UPDATE UPDATE UPDATE To begin we'd like you to watch a video, originally
-      posted on social media, which appears to show a protestor being taken and
-      driven away in an unmarked van.
+      Next, we’d like you to watch another video, also from social media, of a
+      press conference with law enforcement after a protest.
       <strong class="note">
-        Please do not participate if you anticipate that this content may cause
-        you significant distress.
+        Please do not watch the video and withdraw from the experiment if you
+        anticipate that content mentioning arrests or ‘white supremacists’ may
+        cause you significant distress.
       </strong>
       This video created lots of discussion on social media, which you will
       later interact with.
     </p>
     <p>
-      After watching the video click "next" at the bottom of your screen to be
+      After watching the video click "Next" at the bottom of your screen to be
       taken to the next page.
     </p>
   </div>

@@ -116,9 +116,8 @@
 <span class="container">
   <h1>Preliminary Questionnaire</h1>
   <p class="subtitle">
-    Before entering the simulation please answer some of these basic questions
-    about you and your social media habits. You are free to skip any question
-    that you would not like to answer.
+    Please answer some of these basic questions about you and your social media
+    habits. You are free to skip any question that you would not like to answer.
   </p>
   <form on:submit|preventDefault={handleSubmit}>
     <label for="age">Age</label>
@@ -157,7 +156,6 @@
     {#if $errors.gender}
       <small>{$errors.gender}</small>
     {/if}
-
     {#if $form.gender.includes('typedInput')}
       <label for="name">
         In addition to whatever you may have selected, what is your gender?
@@ -210,7 +208,6 @@
     {#if $errors.politicalAffiliation}
       <small>{$errors.politicalAffiliation}</small>
     {/if}
-
     {#if $form.politicalAffiliation === 'typedInput'}
       <label for="name">
         In a word, how would you describe your political affiliation?
@@ -328,7 +325,7 @@
 
     <label for="socialMedias">
       Which of the following social media sites do you use on a regular basis
-      (at least once a month)?
+      (at least once a month)? You may select any number or none.
     </label>
     <span class="multiselect">
       <label>

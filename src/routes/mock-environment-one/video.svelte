@@ -33,7 +33,7 @@
 </style>
 
 <span class="container">
-  <h1>Protest Scenario One: Video</h1>
+  <h1>Protest Scenario One (1/2): Video</h1>
 
   <div class="subtitle">
     <p>
@@ -41,14 +41,15 @@
       media, which appears to show a protestor being taken and driven away in an
       unmarked van.
       <strong class="note">
-        Please do not participate if you anticipate that this content may cause
+        Please do not watch the video and withdraw from the experiment if you
+        anticipate that content related to abduction or state violence may cause
         you significant distress.
       </strong>
-      This video created lots of discussion on social media, which you will
+      This video created extensive discussion on social media, which you will
       later interact with.
     </p>
     <p>
-      After watching the video click "next" at the bottom of your screen to be
+      After watching the video click "Next" at the bottom of your screen to be
       taken to the next page.
     </p>
   </div>

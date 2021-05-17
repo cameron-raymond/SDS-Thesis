@@ -1,4 +1,5 @@
 <script>
+  import { prefetch } from "@sapper/app";
   import { createForm } from "svelte-forms-lib";
   import { PROLIFIC_PID, SESSION_ID, STUDY_ID } from "../../stores/local-store";
   import { goto } from "@sapper/app";
@@ -65,8 +66,8 @@
   </p>
   <form on:submit|preventDefault={handleSubmit}>
     <label for="attentionCheck">
-      What did the video in the previous screen depict? Please select one
-      option.
+      What did the video in the previous screen depict? Please select
+      <strong>one option.</strong>
     </label>
     <span class="multiselect">
       <label>
@@ -81,6 +82,7 @@
     {#if $errors.attentionCheck}
       <small>{$errors.attentionCheck}</small>
     {/if}
+
     <label for="awareR1">
       Have you ever seen this video before, or been aware of its existence?
     </label>
@@ -96,6 +98,10 @@
     {#if $errors.awareR1}
       <small>{$errors.awareR1}</small>
     {/if}
-    <button type="submit">Next</button>
+    <button
+      on:mouseover={() => prefetch(`/mock-environment-one/env`)}
+      type="submit">
+      Next
+    </button>
   </form>
 </span>

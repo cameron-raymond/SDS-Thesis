@@ -1,4 +1,5 @@
 <script>
+  import { prefetch } from "@sapper/app";
   import { createForm } from "svelte-forms-lib";
   import { PROLIFIC_PID, SESSION_ID, STUDY_ID } from "../../stores/local-store";
   import { goto } from "@sapper/app";
@@ -29,7 +30,7 @@
         toSubmit["attentionCheck"].length == 1
           ? toSubmit["attentionCheck"][0]
           : "DNA";
-          
+
       const url = "/.netlify/functions/azure?collection=rumour-two-check";
       fetch(url, {
         method: "POST",
@@ -71,11 +72,11 @@
     <span class="multiselect">
       <label>
         <input type="checkbox" bind:group={$form.attentionCheck} value="pass" />
-        UPDATE PASS
+        An official discussing arrests made after a protest.
       </label>
       <label>
         <input type="checkbox" bind:group={$form.attentionCheck} value="fail" />
-        UPDATE FAIL
+        An official discussing calls to defund the police.
       </label>
     </span>
     {#if $errors.attentionCheck}
@@ -96,6 +97,10 @@
     {#if $errors.awareR2}
       <small>{$errors.awareR2}</small>
     {/if}
-    <button type="submit">Next</button>
+    <button
+      on:mouseover={() => prefetch(`/mock-environment-two/env`)}
+      type="submit">
+      Next
+    </button>
   </form>
 </span>

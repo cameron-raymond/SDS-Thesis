@@ -143,16 +143,16 @@
 <Header {time} bind:started bind:finished bind:timeLeft />
 {#if !finished}
   <span class="container">
-    <h1>Protest Scenario Two</h1>
+    <h1>Protest Scenario Two (2/2)</h1>
     <div class="subtitle">
-      <p>Please read all of these instructions before pressing "Start"</p>
+      <p>Please read all of these instructions before pressing "Start".</p>
       <p>
-        Now that you've watched the video from the previous screen, we would
-        like you to interact with a mock-social media feed as if you were in the
-        scenario described below.
+        Now that you've watched the second video, we would like you to interact
+        with a simulated social media feed as if you were in the scenario
+        described below.
       </p>
       <p>
-        Your task is to reshare social media posts that you would feel are
+        Your task will be to reshare social media posts that you would feel are
         relevant given the video you've watched and the scenario described
         below. You may do this by pressing the "reshare" button on the bottom
         right-hand corner of a post.
@@ -169,7 +169,25 @@
         <strong>Scenario:</strong>
       </p>
       <blockquote>
-        <p>UPDATE UPDATE UPDATE UPDATE</p>
+        <p>
+          On your way home, you get a notification that your local government is
+          holding a press conference to discuss the protest you were just at.
+        </p>
+
+        <p>
+          You tune in and see an official casually mention that they’re "contact
+          tracing" arrestees and seeing if they have links to organized crime.
+        </p>
+
+        <p>
+          Most of your social media feed is discussing what this press
+          conference means for tomorrow’s protest, which you are planning on
+          attending.
+        </p>
+        <p>
+          Please consider which of the following posts in your feed you might
+          think that other protestors should be aware of.
+        </p>
       </blockquote>
 
       <p>
@@ -197,8 +215,7 @@
                 {post}
                 bind:reshared={post.reshared}
                 bind:clickedWarning={post.clickedWarning}
-                warning={post.warning ? CredibilityIndicator : undefined}
-                rumour="R2" />
+                warning={post.warning ? CredibilityIndicator : undefined} />
             </InView>
           {:else}
             <!-- binds the reshare variable in the child component to the post.reshared subfield in our array -->
@@ -206,15 +223,14 @@
               {post}
               bind:reshared={post.reshared}
               bind:clickedWarning={post.clickedWarning}
-              warning={post.warning ? CredibilityIndicator : undefined}
-              rumour="R2" />
+              warning={post.warning ? CredibilityIndicator : undefined} />
           {/if}
         {/each}
       </span>
     {/if}
   {:else}
     <span class="container">
-      <h1>Protest Scenario Two: Mock Environment</h1>
+      <h1>Protest Scenario Two (2/2)</h1>
       <p>
         You will automatically be redirected to the next protest scenario. If
         that does not happen, please click on this link:

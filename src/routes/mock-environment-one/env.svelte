@@ -144,16 +144,16 @@
 <Header {time} bind:started bind:finished bind:timeLeft />
 {#if !finished}
   <span class="container">
-    <h1>Protest Scenario One</h1>
+    <h1>Protest Scenario One (1/2)</h1>
     <div class="subtitle">
-      <p>Please read all of these instructions before pressing "Start"</p>
+      <p>Please read all of these instructions before pressing "Start".</p>
       <p>
         Now that you've watched the video from the previous screen, we would
-        like you to interact with a mock-social media feed as if you were in the
-        scenario described below.
+        like you to interact with a simulated social media feed as if you were
+        in the scenario described below.
       </p>
       <p>
-        Your task is to reshare social media posts that you would feel are
+        Your task will be to reshare social media posts that you would feel are
         relevant given the video you've watched and the scenario described
         below. You may do this by pressing the "reshare" button on the bottom
         right-hand corner of a post.
@@ -161,6 +161,10 @@
           You will be given two minutes to reshare posts, at which time you will
           move on to the next scenario.
         </strong>
+      </p>
+      <p>
+        Please only reshare posts that you might consider sharing yourself in
+        the described situation.
       </p>
       <p>
         You may end the study at any time without penalty. Please do not refer
@@ -171,29 +175,29 @@
       </p>
       <blockquote>
         <p>
-          You are on your way to a protest when you see the video from the
-          previous screen, which appears to show a protestor being taken and
-          driven away in an unmarked van, on your social media feed. You
+          You are on your way to a protest when you see on your social media
+          feed the video from the previous screen, which appears to show a
+          protestor being taken and driven away in an unmarked van. You
           recognize the video's background as close to the place where your
           protest is being held.
         </p>
         <p>
-          You check the news report, but it hasn't yet been covered by your
-          local station yet.
+          You check the news, but you don't see it being covered by your local
+          news station yet.
         </p>
         <p>
           As you scroll further through your social media feed, you see that
           this video is the main topic of conversation.
         </p>
         <p>
-          You think to yourself that this is something other protestors need to
-          be aware of and you start resharing some of the posts...
+          Please consider which of the following posts in your feed you might
+          think that other protestors should be aware of.
         </p>
       </blockquote>
 
       <p>
-        Press the "Start" button at the bottom of your screen to enter the
-        social media environment.
+        Press the "Start" button at the bottom of your screen to start the timer
+        and view your mock social media feed.
       </p>
 
       {#if started && !seenPosts}
@@ -233,7 +237,7 @@
     {/if}
   {:else}
     <span class="container">
-      <h1>Protest Scenario One: Mock Environment</h1>
+      <h1>Protest Scenario One (1/2)</h1>
       <p>
         You will automatically be redirected to the next protest scenario. If
         that does not happen, please click on this link:
