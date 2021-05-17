@@ -28,7 +28,7 @@
   }
   .header {
     position: fixed;
-    top: 0em;
+    bottom: 0em;
     left: 0em;
     width: calc(100% - 4em);
     min-width: 20rem;
@@ -38,11 +38,14 @@
     justify-content: flex-start;
     align-items: flex-start;
     background-color: white;
-    border-bottom: 1px solid var(--grey-light);
+    border-top: 1px solid var(--grey-light);
     z-index: 1000;
     height: 3em;
   }
   @media (max-width: 40rem) {
+    .header {
+      flex-direction: column;
+    }
     button {
       padding: 4px 8px;
     }
