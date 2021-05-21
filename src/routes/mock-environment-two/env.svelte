@@ -116,10 +116,12 @@
   }
   .down-arrow {
     display: inline-block;
-    position: fixed;
-    bottom: 6.5em;
-    left: 50%;
     color: var(--orange);
+    font-weight: bold;
+    position: fixed;
+    text-align: center;
+    bottom: 9em;
+    left: 50%;
     height: 3rem;
     width: 3rem;
     z-index: 1;
@@ -127,7 +129,6 @@
 
   @media (max-width: 40rem) {
     .down-arrow {
-      bottom: 4em;
       height: 2.5rem;
       width: 2.5rem;
     }
@@ -197,6 +198,7 @@
 
       {#if started && !seenPosts}
         <span class="down-arrow" in:fly={{ y: -100, duration: 325 }}>
+          <small style="margin: 0 0 -8px;">Scroll Down</small>
           <FaAngleDown />
         </span>
       {/if}
