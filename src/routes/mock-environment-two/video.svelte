@@ -38,14 +38,8 @@
   <div class="subtitle">
     <p>
       Next, we’d like you to watch another video, also from social media, of a
-      press conference with law enforcement after a protest.
-      <strong class="note">
-        Please do not watch the video and withdraw from the experiment if you
-        anticipate that content mentioning arrests or ‘white supremacists’ may
-        cause you significant distress.
-      </strong>
-      This video created lots of discussion on social media, which you will
-      later interact with.
+      press conference with law enforcement after a protest. This video created
+      lots of discussion on social media, which you will later interact with.
     </p>
     <p>
       After watching the video click "Next" at the bottom of your screen to be

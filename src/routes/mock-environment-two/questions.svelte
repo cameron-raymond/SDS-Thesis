@@ -93,6 +93,7 @@
       <option />
       <option value={true}>Yes</option>
       <option value={false}>No</option>
+      <option value="unsure">Not sure</option>
     </select>
     {#if $errors.awareR2}
       <small>{$errors.awareR2}</small>
