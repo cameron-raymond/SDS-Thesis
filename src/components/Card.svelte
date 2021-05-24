@@ -88,6 +88,7 @@
     margin: 0;
     padding: 0;
     font-size: smaller;
+    font-weight: bold;
   }
   .icon {
     width: 1.2rem;

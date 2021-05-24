@@ -185,8 +185,9 @@
         </p>
 
         <p>
-          You tune in and see an official casually mention that they’re "contact
-          tracing" arrestees and seeing if they have links to organized crime.
+          You tune in and see an official casually mention that they are
+          "contact tracing" arrestees and seeing if they have links to organized
+          crime.
         </p>
 
         <p>
@@ -194,10 +195,10 @@
           conference means for tomorrow’s protest, which you are planning on
           attending.
         </p>
-        <p>
+        <strong>
           Please consider which of the following posts in your feed you might
           think that other protestors should be aware of.
-        </p>
+        </strong>
       </blockquote>
 
       <p>

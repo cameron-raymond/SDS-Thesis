@@ -189,17 +189,17 @@
           protest is being held.
         </p>
         <p>
-          You check the news, but you don't see it being covered by your local
-          news station yet.
+          You check the news, but it's not being covered by your local news
+          station when you check.
         </p>
         <p>
           As you scroll further through your social media feed, you see that
           this video is the main topic of conversation.
         </p>
-        <p>
+        <strong>
           Please consider which of the following posts in your feed you might
           think that other protestors should be aware of.
-        </p>
+        </strong>
       </blockquote>
 
       <p>

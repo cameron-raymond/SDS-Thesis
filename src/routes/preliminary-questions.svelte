@@ -290,6 +290,20 @@
         <input
           type="checkbox"
           bind:group={$form.affiliatedMovements}
+          value="freeSpeech" />
+        Free Speech
+      </label>
+       <label>
+        <input
+          type="checkbox"
+          bind:group={$form.affiliatedMovements}
+          value="smallGov" />
+        Small Government
+      </label>
+      <label>
+        <input
+          type="checkbox"
+          bind:group={$form.affiliatedMovements}
           value="lgbtqa" />
         LGBTQA+ Rights
       </label>
