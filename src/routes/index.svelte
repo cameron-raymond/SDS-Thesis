@@ -82,8 +82,10 @@
 
   <p>
     If you do not wish to consent you may close this page. If you would like to
-    participate, press "Begin" now. Please do not access external information
-    during the experiment.
+    participate, press "Begin" now.
+    <strong>
+      Once started please do not leave this tab or access any external information.
+    </strong>
   </p>
   <a
     href="/preliminary-questions"
