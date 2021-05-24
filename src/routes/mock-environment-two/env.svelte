@@ -126,6 +126,9 @@
     width: 3rem;
     z-index: 1;
   }
+  .hidden {
+    visibility: hidden;
+  }
 
   @media (max-width: 40rem) {
     .down-arrow {
@@ -146,6 +149,12 @@
   <span class="container">
     <h1>Protest Scenario Two (2/2)</h1>
     <div class="subtitle">
+      <strong class:hidden={!started}>
+        Scroll down, or
+        <a href="mock-environment-two/env#feed">
+          click here to jump to the social media feed
+        </a>
+      </strong>
       <p>Please read all of these instructions before pressing "Start".</p>
       <p>
         Now that you've watched the second video, we would like you to interact
@@ -195,6 +204,12 @@
         Press the "Start" button at the bottom of your screen to start the timer
         and view your mock social media feed.
       </p>
+      <strong class:hidden={!started}>
+        Scroll down, or
+        <a href="mock-environment-two/env#feed">
+          click here to jump to the social media feed
+        </a>
+      </strong>
 
       {#if started && !seenPosts}
         <span class="down-arrow" in:fly={{ y: -100, duration: 325 }}>
@@ -208,7 +223,7 @@
 {#if started}
   {#if !finished}
     {#if dataLoaded}
-      <span class="cont">
+      <span class="cont" id="feed">
         {#each posts as post, i}
           {#if i == 1}
             <!-- InView component keeps track of whether a post has come into view (useful for removing the down chevron indicator) -->

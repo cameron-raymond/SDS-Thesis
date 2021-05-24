@@ -101,8 +101,8 @@
     margin-bottom: 0.5rem;
     padding-bottom: 2.5rem;
   }
-  .note {
-    color: var(--red);
+  .hidden {
+    visibility: hidden;
   }
   .cont {
     display: flex;
@@ -147,6 +147,12 @@
   <span class="container">
     <h1>Protest Scenario One (1/2)</h1>
     <div class="subtitle">
+      <strong class:hidden={!started}>
+        Scroll down, or
+        <a href="mock-environment-one/env#feed">
+          click here to jump to the social media feed
+        </a>
+      </strong>
       <p>Please read all of these instructions before pressing "Start".</p>
       <p>
         Now that you've watched the video from the previous screen, we would
@@ -200,6 +206,13 @@
         Press the "Start" button at the bottom of your screen to start the timer
         and view your mock social media feed.
       </p>
+      <strong class:hidden={!started}>
+        Scroll down, or
+        <a href="mock-environment-one/env#feed">
+          click here to jump to the social media feed
+        </a>
+      </strong>
+
       {#if started && !seenPosts}
         <span class="down-arrow" in:fly={{ y: -100, duration: 325 }}>
           <small style="margin: 0 0 -8px;">Scroll Down</small>
@@ -212,7 +225,7 @@
 {#if started}
   {#if !finished}
     {#if dataLoaded}
-      <span class="cont">
+      <span class="cont" id="feed">
         {#each posts as post, i}
           {#if i == 1}
             <!-- InView component keeps track of whether a post has come into view (useful for removing the down chevron indicator) -->
