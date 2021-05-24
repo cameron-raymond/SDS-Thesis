@@ -52,6 +52,8 @@
         timeSubmitted: timeSubmitted,
         ...values
       };
+      if (toSubmit.veracityR1 === undefined) toSubmit.veracityR1 = -1
+      if (toSubmit.veracityR2 === undefined) toSubmit.veracityR2 = -1
       const url = "/.netlify/functions/azure?collection=post-study-responses";
       fetch(url, {
         method: "POST",

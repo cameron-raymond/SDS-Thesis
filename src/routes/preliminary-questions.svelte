@@ -23,7 +23,7 @@
       age: undefined,
       gender: [],
       educationLevel: "",
-      politicalAffiliation: undefined,
+      politicalAffiliation: "",
       attendsProtests: "",
       affiliatedMovements: [],
       socialMedias: []
@@ -33,7 +33,7 @@
         .number()
         .notRequired()
         .nullable(true)
-        .transform((v, o) => (o === "" ? null : v))
+        .transform((v, o) => (o === "" ? undefined : v))
         .typeError("Please enter your age in years.")
         .max(120, "Are you sure you're over 120 years old?")
         .min(18, "You must be 18 or older to participate in this study."),
@@ -85,6 +85,7 @@
         timeSubmitted: timeSubmitted,
         ...values
       };
+      if (toSubmit.age === undefined) toSubmit.age = -1
       const url = "/.netlify/functions/azure?collection=participants";
       fetch(url, {
         method: "POST",
