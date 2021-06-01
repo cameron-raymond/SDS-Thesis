@@ -20,7 +20,8 @@
       decisionProcess: "",
       interventionFactor: $condition === "treatment" ? "" : "control",
       issues: "",
-      comments: ""
+      comments: "",
+      canShareData: undefined
     },
     validationSchema: yup.object().shape({
       veracityR1: yup
@@ -40,7 +41,8 @@
         .max(10, "You can't input a number higher than 10.")
         .min(1, "You can't input a number less than 1."),
       decisionProcess: yup.string().notRequired(),
-      comments: yup.string().notRequired()
+      comments: yup.string().notRequired(),
+      attendsProtests: yup.mixed().notRequired()
     }),
     onSubmit: values => {
       submitted = true;
@@ -52,8 +54,8 @@
         timeSubmitted: timeSubmitted,
         ...values
       };
-      if (toSubmit.veracityR1 === undefined) toSubmit.veracityR1 = -1
-      if (toSubmit.veracityR2 === undefined) toSubmit.veracityR2 = -1
+      if (toSubmit.veracityR1 === undefined) toSubmit.veracityR1 = -1;
+      if (toSubmit.veracityR2 === undefined) toSubmit.veracityR2 = -1;
       const url = "/.netlify/functions/azure?collection=post-study-responses";
       fetch(url, {
         method: "POST",
@@ -175,6 +177,25 @@
         bind:value={$form.issues} />
       {#if $errors.issues}
         <small>{$errors.issues}</small>
+      {/if}
+
+      <label for="canShareData">
+        As noted in the consent agreement, we will publicly release the data
+        from this experiment, with Prolific IDs removed. If you would like to be
+        <strong>excluded</strong>
+        from the publicly released data set please indicate below.
+      </label>
+      <select
+        id="canShareData"
+        name="canShareData"
+        on:blur={handleChange}
+        bind:value={$form.canShareData}>
+        <option />
+        <option value={false}>Do NOT share my answers</option>
+        <option value={true}>You may share my answers</option>
+      </select>
+      {#if $errors.canShareData}
+        <small>{$errors.canShareData}</small>
       {/if}
 
       <label for="comments">
