@@ -67,7 +67,12 @@
   $: if (started && finished) {
     let simplePosts = posts.map(post => {
       let { text, profileImage, username, name, gender, ...y } = post;
-      y.mockGender = gender;
+      y.posterGender = gender;
+      try {
+        y.posterId = btoa(unescape(encodeURIComponent(name + profileImage)));
+      } catch (error) {
+        y.posterId = name + profileImage;
+      }
       return y;
     });
     const timeSubmitted = new Date().toISOString();

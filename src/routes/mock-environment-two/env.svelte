@@ -1,6 +1,5 @@
 <script context="module">
   export function preload() {
-    // UPDATE
     const url =
       "/.netlify/functions/R2?affirms=10&denies=10&neutral=4&questions=4";
     return this.fetch(url)
@@ -18,7 +17,6 @@
   import { fly } from "svelte/transition";
   import Header from "../../components/EnvNav.svelte";
   import Card from "../../components/Card.svelte";
-  import Video from "../../components/Video.svelte";
   import InView from "../../components/LazyLoad.svelte";
   import CredibilityIndicator from "../../components/CredibilityIndicator.svelte";
   import { FaAngleDown } from "svelte-icons/fa";
@@ -69,7 +67,12 @@
   $: if (started && finished) {
     let simplePosts = posts.map(post => {
       let { text, profileImage, username, name, gender, ...y } = post;
-      y.mockGender = gender;
+      y.posterGender = gender;
+      try {
+        y.posterId = btoa(unescape(encodeURIComponent(name + profileImage)));
+      } catch (error) {
+        y.posterId = name + profileImage;
+      }
       return y;
     });
     const timeSubmitted = new Date().toISOString();
@@ -103,6 +106,9 @@
     margin-bottom: 0.5rem;
     padding-bottom: 2.5rem;
   }
+  .hidden {
+    visibility: hidden;
+  }
   .cont {
     display: flex;
     flex-direction: column;
@@ -125,9 +131,6 @@
     height: 3rem;
     width: 3rem;
     z-index: 1;
-  }
-  .hidden {
-    visibility: hidden;
   }
 
   @media (max-width: 40rem) {
