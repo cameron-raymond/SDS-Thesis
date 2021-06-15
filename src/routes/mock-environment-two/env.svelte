@@ -65,36 +65,6 @@
   });
   // A reactive block for posting the data to the server.
   $: if (started && finished) {
-    let simplePosts = posts.map(post => {
-      let { text, profileImage, username, name, gender, ...y } = post;
-      y.posterGender = gender;
-      try {
-        y.posterId = btoa(unescape(encodeURIComponent(name + profileImage)));
-      } catch (error) {
-        y.posterId = name + profileImage;
-      }
-      return y;
-    });
-    const timeSubmitted = new Date().toISOString();
-    let toSubmit = {
-      PROLIFIC_PID: $PROLIFIC_PID,
-      SESSION_ID: $SESSION_ID,
-      STUDY_ID: $STUDY_ID,
-      condition: $condition,
-      timeSubmitted: timeSubmitted,
-      secondsTaken: time - timeLeft,
-      posts: simplePosts
-    };
-    const url = "/.netlify/functions/azure?collection=rumour-two-results";
-    fetch(url, {
-      method: "POST",
-      body: JSON.stringify(toSubmit),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    }).catch(err => {
-      console.log("POST error", err.message);
-    });
     goto(`/post-study-questionnaire`);
   }
 </script>

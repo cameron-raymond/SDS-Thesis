@@ -46,30 +46,6 @@
     }),
     onSubmit: values => {
       submitted = true;
-      const timeSubmitted = new Date().toISOString();
-      let toSubmit = {
-        PROLIFIC_PID: $PROLIFIC_PID,
-        SESSION_ID: $SESSION_ID,
-        STUDY_ID: $STUDY_ID,
-        timeSubmitted: timeSubmitted,
-        ...values
-      };
-      if (toSubmit.veracityR1 === undefined) toSubmit.veracityR1 = -1;
-      if (toSubmit.veracityR2 === undefined) toSubmit.veracityR2 = -1;
-      const url = "/.netlify/functions/azure?collection=post-study-responses";
-      fetch(url, {
-        method: "POST",
-        body: JSON.stringify(toSubmit),
-        headers: {
-          "Content-Type": "application/json"
-        }
-      })
-        .then(() => {
-          goto(prolificReturnURl);
-        })
-        .catch(err => {
-          console.log("POST error", err.message);
-        });
     }
   });
 </script>
@@ -212,14 +188,11 @@
 
       <p class="subtitle">
         Thank you again for completing our study. Again, if you have any
-        questions about this research, do not hesitate to contact Cameron
-        Raymond at
-        <a href="mailto:cameron.raymond@oii.ox.ac.uk" target="_blank">
-          cameron.raymond@oii.ox.ac.uk.
-        </a>
-        If you have any questions about your rights or treatment as a
-        participant in this research project, please contact the Oxford Internet
-        Institute's Departmental Research Ethics Committee (DREC) at
+        questions about this research, do not hesitate to contact XXXXX at
+        XXXX@oii.ox.ac.uk. If you have any questions about your rights or
+        treatment as a participant in this research project, please contact the
+        Oxford Internet Institute's Departmental Research Ethics Committee
+        (DREC) at
         <a href="mailto:drec@oii.ox.ac.uk" target="_blank">
           drec@oii.ox.ac.uk.
         </a>

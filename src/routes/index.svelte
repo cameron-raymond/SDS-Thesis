@@ -48,11 +48,8 @@
     </small>
   {/if}
   <p>
-    This research is being conducted by Cameron Raymond, an MSc student at the
-    University of Oxford, under the supervision of Dr. Peaks Krafft and Dr. Joss
-    Wright, faculty members at the University of the Arts London and the
-    University of Oxford respectively - and in collaboration with Dr. Emma Spiro
-    a faculty member at the University of Washington.
+    This research is being conducted by XXXXXX, an MSc student at the University
+    of Oxford, under the supervision of XXXXXX.
   </p>
 
   <p>
@@ -67,12 +64,9 @@
     this research is voluntary. You are free to refuse to take part, and you may
     stop taking part at any time. You are free to discontinue participation in
     this study at any time with no penalty. If you have any questions about this
-    research, do not hesitate to contact Cameron Raymond at
-    <a href="mailto:cameron.raymond@oii.ox.ac.uk" target="_blank">
-      cameron.raymond@oii.ox.ac.uk.
-    </a>
-    If you have any questions about your rights or treatment as a participant in
-    this research project, please contact the Oxford Internet Institute's
+    research, do not hesitate to contact XXXXXX at XXXX@oii.ox.ac.uk. If you
+    have any questions about your rights or treatment as a participant in this
+    research project, please contact the Oxford Internet Institute's
     Departmental Research Ethics Committee (DREC) at
     <a href="mailto:drec@oii.ox.ac.uk" target="_blank">drec@oii.ox.ac.uk.</a>
     By consenting to participate, you acknowledge that you are 18 years or
@@ -84,7 +78,8 @@
     If you do not wish to consent you may close this page. If you would like to
     participate, press "Begin" now.
     <strong>
-      Once started please do not leave this tab or access any external information.
+      Once started please do not leave this tab or access any external
+      information.
     </strong>
   </p>
   <a

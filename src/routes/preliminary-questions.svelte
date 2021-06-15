@@ -45,57 +45,6 @@
       socialMedias: yup.mixed().notRequired()
     }),
     onSubmit: values => {
-      // If the user typed in their own gender we will add that to the list and remove the "typedInput" value
-      if ($form.gender.includes("typedInput")) {
-        // If the user didn't actually type anything just keep the list as is
-        $form.gender =
-          typedGender === "" ? $form.gender : [typedGender, ...$form.gender];
-        // Remove the typedInput button
-        $form.gender = $form.gender.filter(e => e !== "typedInput");
-      }
-      if ($form.politicalAffiliation === "typedInput") {
-        $form.politicalAffiliation = typedPolAffiliation;
-      }
-      // Same for the affiliated movements Q
-      if ($form.affiliatedMovements.includes("typedInput")) {
-        // If the user didn't actually type anything just keep the list as is
-        $form.affiliatedMovements = [
-          ...parsedMovements,
-          ...$form.affiliatedMovements
-        ];
-        // Remove the typedInput button
-        $form.affiliatedMovements = $form.affiliatedMovements.filter(
-          e => e !== "typedInput"
-        );
-      }
-      // Same for the affiliated movements Q
-      if ($form.socialMedias.includes("typedInput")) {
-        // If the user didn't actually type anything just keep the list as is
-        $form.socialMedias = [...parsedSocialMedias, ...$form.socialMedias];
-        // Remove the typedInput button
-        $form.socialMedias = $form.socialMedias.filter(e => e !== "typedInput");
-      }
-
-      const timeSubmitted = new Date().toISOString();
-      let toSubmit = {
-        PROLIFIC_PID: $PROLIFIC_PID,
-        SESSION_ID: $SESSION_ID,
-        STUDY_ID: $STUDY_ID,
-        consent: $consent,
-        timeSubmitted: timeSubmitted,
-        ...values
-      };
-      if (toSubmit.age === undefined) toSubmit.age = -1
-      const url = "/.netlify/functions/azure?collection=participants";
-      fetch(url, {
-        method: "POST",
-        body: JSON.stringify(toSubmit),
-        headers: {
-          "Content-Type": "application/json"
-        }
-      }).catch(err => {
-        console.log("POST error", err.message);
-      });
       goto(`/mock-environment-one/video`);
     }
   });
@@ -294,7 +243,7 @@
           value="freeSpeech" />
         Free Speech
       </label>
-       <label>
+      <label>
         <input
           type="checkbox"
           bind:group={$form.affiliatedMovements}
