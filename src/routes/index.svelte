@@ -37,16 +37,6 @@
 
 <span class="container">
   <h1>We need your consent to proceed</h1>
-  {#if !valid_params}
-    <small>
-      Did you come to this study from
-      <a href="https://app.prolific.co/">Prolific</a>
-      ? We had trouble getting your Prolific ID (it should be appended to the
-      URL in the form
-      <code>/?PROLIFIC_PID=YOUR_ID</code>
-      ). Without this we have no means of ensuring you are paid for your time.
-    </small>
-  {/if}
   <p>
     This research is being conducted by XXXXXX, an MSc student at the University
     of Oxford, under the supervision of XXXXXX.
