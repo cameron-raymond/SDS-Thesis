@@ -29,6 +29,7 @@ tqdm = "*"
 pingouin = "*"
 searchtweets-v2 = "*"
 pymongo = "*"
+ipykernel = "*"
 
 [requires]
 python_version = "3.9"
