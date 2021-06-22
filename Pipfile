@@ -30,6 +30,7 @@ pingouin = "*"
 searchtweets-v2 = "*"
 pymongo = "*"
 ipykernel = "*"
+stargazer = "*"
 
 [requires]
 python_version = "3.9"
