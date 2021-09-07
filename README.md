@@ -6,23 +6,24 @@ Code used to organize and quantify the results of any experiments.
 
 Mock data from Mockaroo: [scheme](https://www.mockaroo.com/schemas/294135)
 
-Pregistration done with: [aspredicted.org](https://aspredicted.org/)
+Pregistration can be seen on the [Open Science Framework](https://osf.io/6ug4m/) (OSF).
 
 ## Hypotheses
 
-### System level hypotheses
+### Confirmatory hypotheses
 
 The presence of credibility indicators in the system will:
 
-- $H_1$: *decrease* the *affirmation rate* for rumours with lower evidence levels.
-- $H_2$: *increase* the *denial rate* for rumours with lower evidence levels.
-- $H_3$: *increase* the *affirmation rate* for rumours with higher evidence levels.
-- $H_4$: *decrease* the *denial rate* for rumours with higher evidence levels.
+- **H1**: *decrease* the *affirmation rate* for rumours with lower evidence levels.
+- **H2**: *increase* the *denial rate* for rumours with lower evidence levels.
+- **H3**: *increase* the *affirmation rate* for rumours with higher evidence levels.
+- **H4**: *decrease* the *denial rate* for rumours with higher evidence levels.
 
-### Post level hypotheses
+### Exploratory Research Questions
 
-- $H_5$: No credibility indicator will moderate the effect of evidence in resharing
-- $H_6$: The effect of credibility indicators will be impacted by post meta-data, such as the poster's gender and the temporal proximity of the information.
+- **RQ1**: How does the post-source affect sharing behaviour during protest demonstrations?
+- **RQ2**: How does the temporal proximity of online content affect sharing behaviour during protest demonstrations?
+- **RQ3**: Is there any evidence of an implied truth effect, whereby attaching credibility indicators to a subset of false posts is considered to imply truthfulness in the posts without a credibility indicator.
 
 ## Branches
 
