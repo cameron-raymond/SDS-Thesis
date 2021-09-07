@@ -1,6 +1,6 @@
 # Experimental Analysis of Rumour Systems
 
-Protests are a key mechanism for collective action and are increasingly reliant on online communication. Large, offline protests are also events with tremendous amounts of ambiguity. Those on the ground are the first to know of new developments, which happen in real time, but it is difficult to verify information in a timely manner. Instead of relying on traditional media outlets, activists often turn to platforms like Twitter, Facebook or WhatsApp to organize and alert others to changes – like threats or acts of violence – quickly. Conversely, if a rumour ends up being false it has the potential to increase tensions in a setting that is often already quite charged. Thus, there are benefits for platforms to manage ambiguous and timely information in a transparent and community-oriented manner. This thesis implements an experimental analysis of rumour and misinformation sharing on social media during ambiguous, temporally constrained contexts, called rumour systems. To provide empirical focus, the study concentrates its attention on the case of large, offline protest demonstrations. This study complements and extends the relevant human-computer interaction literature on misinformation in two ways. First, it goes beyond the general misinformation stimuli, i.e. false news articles, that are frequently used – and instead, fine-tunes stimuli and interventions to the case of activists during protests. Second, rather than deterministically viewing information as true or false, the study accounts for the intrinsic uncertainty of information in rumour systems through a Bayesian “rumour proportions” framework. The experimental analysis implements credibility indicators as an intervention to encourage evidence-based sharing of information during a mock-protest scenario. 
+Protests are a key mechanism for collective action and are increasingly reliant on on- line communication. In addition, large, offline protests are also events with tremen- dous amounts of ambiguity. Those on the ground are the first to know of new developments, but it is difficult to verify information in a timely manner. Further- more, little experimental research has been done to understand how design factors online affect the information that activists have access to. This preregistered study investigates this gap by implementing an experimental analysis of rumour and mis- information sharing during a mock-protest demonstration. Through a Bayesian, “rumour proportions” framework, this study observes how adding credibility indi- cators (i.e., warnings) to misleading content affects the belief in, and rate at which participants share, rumours. Additional exploratory analyses examine the role of post attributes in sharing and the possibility of an “implied truth effect.” The re- sults show that the treatment made participants share in greater alignment with what they perceived as accurate, but did not alter those perceptions themselves. Thus, those with biased accuracy estimates continued to share misleading informa- tion. By moving beyond general misinformation stimuli and focusing on a specific application of credibility indicators, this study calls into question the notion that individuals spread misleading information simply because their attention is focused on factors other than accuracy.
 
 ## &#9745; Managing Online Rumours During Offline Protest
 
@@ -18,19 +18,20 @@ Protests are a key mechanism for collective action and are increasingly reliant 
 
 ## Hypotheses
 
-### System level hypotheses
+### Confirmatory hypotheses
 
 The presence of credibility indicators in the system will:
 
-- **H_1**: *decrease* the *affirmation rate* for rumours with lower evidence levels.
-- **H_2**: *increase* the *denial rate* for rumours with lower evidence levels.
-- **H_3**: *increase* the *affirmation rate* for rumours with higher evidence levels.
-- **H_4**: *decrease* the *denial rate* for rumours with higher evidence levels.
+- **H1**: *decrease* the *affirmation rate* for rumours with lower evidence levels.
+- **H2**: *increase* the *denial rate* for rumours with lower evidence levels.
+- **H3**: *increase* the *affirmation rate* for rumours with higher evidence levels.
+- **H4**: *decrease* the *denial rate* for rumours with higher evidence levels.
 
-### Post level hypotheses
+### Exploratory Research Questions
 
-- **H_5**: No credibility indicator will moderate the effect of evidence in resharing
-- **H_6**: The effect of credibility indicators will be impacted by post meta-data, such as the poster's gender and the temporal proximity of the information.
+- **RQ1**: How does the post-source affect sharing behaviour during protest demonstrations?
+- **RQ2**: How does the temporal proximity of online content affect sharing behaviour during protest demonstrations?
+- **RQ3**: Is there any evidence of an implied truth effect, whereby attaching credibility indicators to a subset of false posts is considered to imply truthfulness in the posts without a credibility indicator.
 
 ## Branches
 
