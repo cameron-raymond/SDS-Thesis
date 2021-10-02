@@ -1,20 +1,6 @@
-# Experimental Analysis of Rumour Systems
+# Managing Online Protests During Offline Protests
 
-Protests are a key mechanism for collective action and are increasingly reliant on on- line communication. In addition, large, offline protests are also events with tremen- dous amounts of ambiguity. Those on the ground are the first to know of new developments, but it is difficult to verify information in a timely manner. Further- more, little experimental research has been done to understand how design factors online affect the information that activists have access to. This preregistered study investigates this gap by implementing an experimental analysis of rumour and mis- information sharing during a mock-protest demonstration. Through a Bayesian, “rumour proportions” framework, this study observes how adding credibility indi- cators (i.e., warnings) to misleading content affects the belief in, and rate at which participants share, rumours. Additional exploratory analyses examine the role of post attributes in sharing and the possibility of an “implied truth effect.” The re- sults show that the treatment made participants share in greater alignment with what they perceived as accurate, but did not alter those perceptions themselves. Thus, those with biased accuracy estimates continued to share misleading informa- tion. By moving beyond general misinformation stimuli and focusing on a specific application of credibility indicators, this study calls into question the notion that individuals spread misleading information simply because their attention is focused on factors other than accuracy.
-
-## &#9745; Managing Online Rumours During Offline Protest
-
-- Context: information shared during protests.
-- Data: Threads discussing the two rumours below.
-- Rumours: Two rumours, one that is more plausible than the other. Derived from fact-checking news sites after the fact.
-  - Were Portland Protesters ‘Kidnapped’ by Federal Officers in Unmarked Vans? [Snopes](https://www.snopes.com/fact-check/feds-unmarked-vans-portland/), [Politifact](https://www.politifact.com/factchecks/2020/aug/04/bob-casey/sen-bob-casey-said-federal-agents-kidnapped-protes/)
-    - Twitter Threads / articles: [thread](https://twitter.com/matcha_chai/status/1283328232033411072), [denying rumour](https://twitter.com/honeybearius/status/1283951101486731264), [denying rumour](https://twitter.com/BootsyMagnums/status/1284014453621772288), [affirming rumour](https://twitter.com/bitsandsnatches/status/1283520381249191936)
-  - [Minnesota law enforcement isn’t “contact tracing” protesters, despite an official’s comment](https://www.vox.com/recode/2020/6/1/21277393/minnesota-protesters-contact-tracing-covid-19)
-    - Twitter Threads/ articles: [thread](https://twitter.com/mikarv/status/1266855229557014531), [article](https://www.verdict.co.uk/brittany-kaiser-contact-tracing-police/), [article](https://www.coindesk.com/minnesota-official-alarms-privacy-advocates-with-contact-tracing-comments)
-- Intervention(s):
-  - &#9744; Salience content intervention  (Be aware that not everything online is true.)
-  - &#9745; Contrastive content warning (others disagree with this statement)
-  - &#9744; Birdwatch warning (see: [birdwatch homepage](https://twitter.github.io/birdwatch/))
+Protests are a key mechanism for collective action and are increasingly reliant on online communication. In addition, large, offline protests are also events with tremendous amounts of ambiguity. Those on the ground are the first to know of new developments, but it is difficult to verify information in a timely manner. Furthermore, little experimental research has been done to understand how design factors online affect the information that activists have access to. This preregistered study investigates this gap by implementing an experimental analysis of rumour and misinformation sharing during a mock-protest demonstration. Through a Bayesian, “rumour proportions” framework, this study observes how adding credibility indicators (i.e., warnings) to misleading content affects the belief in, and rate at which participants share, rumours. Additional exploratory analyses examine the role of post attributes in sharing and the possibility of an “implied truth effect.” The results show that the treatment made participants share in greater alignment with what they perceived as accurate, but did not alter those perceptions themselves. Thus, those with biased accuracy estimates continued to share misleading information. By moving beyond general misinformation stimuli and focusing on a specific application of credibility indicators, this study calls into question the notion that individuals spread misleading information simply because their attention is focused on factors other than accuracy.
 
 ## Hypotheses
 
@@ -36,9 +22,9 @@ The presence of credibility indicators in the system will:
 ## Branches
 
 - `/main`: information regarding the project
-- [`/website`](https://github.com/cameron-raymond/SDS-Thesis/tree/website): the study website
+- [`/website`](https://github.com/cameron-raymond/SDS-Thesis/tree/website): code for the study website
 - [`/analysis`](https://github.com/cameron-raymond/SDS-Thesis/tree/analysis): code used to study the results of the experiment
-- [`/twitter-scraper`](https://github.com/cameron-raymond/SDS-Thesis/tree/twitter-scraper): code used to collect relevant rumour discussion to use in the experimental environment.
+- [`/twitter-scraper`](https://github.com/cameron-raymond/SDS-Thesis/tree/twitter-scraper): code used to collect relevant rumour discussion to use in the experimental environment
 
 ## License
 
