@@ -37,6 +37,10 @@
 
 <span class="container">
   <h1>We need your consent to proceed</h1>
+  <strong>
+    NOTE: This is an archived version of this experimental environment. No data
+    will be recorded by progressing through the environment.
+  </strong>
   {#if !valid_params}
     <small>
       Did you come to this study from
@@ -84,7 +88,8 @@
     If you do not wish to consent you may close this page. If you would like to
     participate, press "Begin" now.
     <strong>
-      Once started please do not leave this tab or access any external information.
+      Once started please do not leave this tab or access any external
+      information.
     </strong>
   </p>
   <a
