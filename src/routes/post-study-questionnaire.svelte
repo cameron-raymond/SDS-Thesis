@@ -56,20 +56,20 @@
       };
       if (toSubmit.veracityR1 === undefined) toSubmit.veracityR1 = -1;
       if (toSubmit.veracityR2 === undefined) toSubmit.veracityR2 = -1;
-      const url = "/.netlify/functions/azure?collection=post-study-responses";
-      fetch(url, {
-        method: "POST",
-        body: JSON.stringify(toSubmit),
-        headers: {
-          "Content-Type": "application/json"
-        }
-      })
-        .then(() => {
-          goto(prolificReturnURl);
-        })
-        .catch(err => {
-          console.log("POST error", err.message);
-        });
+      // const url = "/.netlify/functions/azure?collection=post-study-responses";
+      // fetch(url, {
+      //   method: "POST",
+      //   body: JSON.stringify(toSubmit),
+      //   headers: {
+      //     "Content-Type": "application/json"
+      //   }
+      // })
+      //   .then(() => {
+      //     goto(prolificReturnURl);
+      //   })
+      //   .catch(err => {
+      //     console.log("POST error", err.message);
+      //   });
     }
   });
 </script>

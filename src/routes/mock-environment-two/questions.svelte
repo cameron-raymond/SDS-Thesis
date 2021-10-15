@@ -31,16 +31,16 @@
           ? toSubmit["attentionCheck"][0]
           : "DNA";
 
-      const url = "/.netlify/functions/azure?collection=rumour-two-check";
-      fetch(url, {
-        method: "POST",
-        body: JSON.stringify(toSubmit),
-        headers: {
-          "Content-Type": "application/json"
-        }
-      }).catch(err => {
-        console.log("POST error", err.message);
-      });
+      // const url = "/.netlify/functions/azure?collection=rumour-two-check";
+      // fetch(url, {
+      //   method: "POST",
+      //   body: JSON.stringify(toSubmit),
+      //   headers: {
+      //     "Content-Type": "application/json"
+      //   }
+      // }).catch(err => {
+      //   console.log("POST error", err.message);
+      // });
       goto("/mock-environment-two/env");
     }
   });
