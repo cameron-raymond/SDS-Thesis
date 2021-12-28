@@ -38,8 +38,7 @@
 <span class="container">
   <h1>We need your consent to proceed</h1>
   <p>
-    This research is being conducted by XXXXXX, an MSc student at the University
-    of Oxford, under the supervision of XXXXXX.
+    This research is being conducted by XXXXXX, an XXX at the XXXXX.
   </p>
 
   <p>
@@ -54,11 +53,10 @@
     this research is voluntary. You are free to refuse to take part, and you may
     stop taking part at any time. You are free to discontinue participation in
     this study at any time with no penalty. If you have any questions about this
-    research, do not hesitate to contact XXXXXX at XXXX@oii.ox.ac.uk. If you
+    research, do not hesitate to contact XXXXXX at XXXX@XXXX. If you
     have any questions about your rights or treatment as a participant in this
-    research project, please contact the Oxford Internet Institute's
-    Departmental Research Ethics Committee (DREC) at
-    <a href="mailto:drec@oii.ox.ac.uk" target="_blank">drec@oii.ox.ac.uk.</a>
+    research project, please contact XXXXX's
+    Departmental Research Ethics Committee (DREC) at XXX@XXXX.
     By consenting to participate, you acknowledge that you are 18 years or
     older, have read this consent form, agree to its contents, and agree to take
     part in this research.
