@@ -77,7 +77,7 @@
 
 <div class="buffer" />
 <span>
-  <a href="https://www.oii.ox.ac.uk/">
+  <!-- <a href="https://www.oii.ox.ac.uk/">
     <div
       role="navigation"
       aria-label="Oxford Internet Institute"
@@ -88,7 +88,7 @@
       role="navigation"
       aria-label="Oxford University"
       class="oxford_blue_logo" />
-  </a>
+  </a> -->
 </span>
 
 <main>
