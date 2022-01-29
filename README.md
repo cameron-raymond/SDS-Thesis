@@ -1,5 +1,8 @@
 # Managing Online Protests During Offline Protests
 
+**View the CSCW article [here](Managing%20Online%20Rumour%20Proportions%20During%20Protests%20CSCW%202022.pdf)**
+
+
 Protests are a key mechanism for collective action and are increasingly reliant on online communication. In addition, large, offline protests are also events with tremendous amounts of ambiguity. Those on the ground are the first to know of new developments, but it is difficult to verify information in a timely manner. Furthermore, little experimental research has been done to understand how design factors online affect the information that activists have access to. This preregistered study investigates this gap by implementing an experimental analysis of rumour and misinformation sharing during a mock-protest demonstration. Through a Bayesian, “rumour proportions” framework, this study observes how adding credibility indicators (i.e., warnings) to misleading content affects the belief in, and rate at which participants share, rumours. Additional exploratory analyses examine the role of post attributes in sharing and the possibility of an “implied truth effect.” The results show that the treatment made participants share in greater alignment with what they perceived as accurate, but did not alter those perceptions themselves. Thus, those with biased accuracy estimates continued to share misleading information. By moving beyond general misinformation stimuli and focusing on a specific application of credibility indicators, this study calls into question the notion that individuals spread misleading information simply because their attention is focused on factors other than accuracy.
 
 ## Hypotheses
