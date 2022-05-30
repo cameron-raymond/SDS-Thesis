@@ -1,4 +1,4 @@
-# Managing Online Protests During Offline Protests
+# Managing Online Rumour Proportions During Offline Protests
 
 **View the CSCW article [here](Managing%20Online%20Rumour%20Proportions%20During%20Protests%20CSCW%202022.pdf)**
 
